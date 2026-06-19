@@ -1,0 +1,45 @@
+[
+  {
+    "id": "imedf",
+    "nome_exibicao": "IMedf",
+    "prefixo": "IMedf",
+    "supabase_cliente_id": "96fac03d-243a-4b33-9651-18966d0b7dd7",
+    "clickup_list_ids": ["901309543820", "901306090780", "901306892028", "901327525981"],
+    "logica": "simples"
+  },
+  {
+    "id": "vd",
+    "nome_exibicao": "VD Design",
+    "prefixo": "VD",
+    "supabase_cliente_id": "ac66d378-f61d-41e1-8bac-c9b27eaa2e56",
+    "clickup_list_ids": ["901415177765","901416098944","901414014620","901416566674","901413826550","901414147656","901414147654","901413826557","901413387453","901408536573","901415880808","901414228546","901415747619","901407377680","901413946886","901407377682","901415184334","901414014617","901413904970","901413946771","901413561108"],
+    "logica": "simples",
+    "buscar_subtasks": true,
+    "filtrar_assignee": false
+  },
+  {
+    "id": "fader",
+    "nome_exibicao": "Fader",
+    "prefixo": "Fader",
+    "supabase_cliente_id": "7c2d3e96-52aa-4c52-9115-b3b78770f1fb",
+    "clickup_list_ids": ["901113228527"],
+    "logica": "simples"
+  },
+  {
+    "id": "mentesmob",
+    "nome_exibicao": "Mentesimob",
+    "prefixo": "MentesMob",
+    "supabase_cliente_id": "e4d4f5ed-e426-4e9d-b66c-b7aed999111a",
+    "clickup_list_ids": ["901326902075"],
+    "logica": "agrupamento",
+    "campo_cliente_final": "CLIENTE"
+  },
+  {
+    "id": "lemos",
+    "nome_exibicao": "Lemos Design",
+    "prefixo": "Lemos",
+    "supabase_cliente_id": "d3de84f6-1334-429f-8f0b-3e44aaa49080",
+    "clickup_list_ids": ["901306357942"],
+    "logica": "lemos"
+  }
+]

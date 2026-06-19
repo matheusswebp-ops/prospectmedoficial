@@ -1,0 +1,1479 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <!-- COMPLIANCE CFM 1974/2011: não adicionar superlativos nem depoimentos com resultados específicos -->
+  <title>Dr(a). {{NOME}} - {{ESPECIALIDADE}} em {{CIDADE}}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ============================================================
+       RESET E VARIÁVEIS
+    ============================================================ */
+    :root {
+      --primary: {{COR_PRIMARIA}};
+      --secondary: {{COR_SECUNDARIA}};
+      --primary-light: {{COR_PRIMARIA}}18;
+      --primary-mid: {{COR_PRIMARIA}}35;
+      --text-dark: #1a1a2e;
+      --text-mid: #4a5568;
+      --text-light: #718096;
+      --bg-light: #f7f9fc;
+      --bg-white: #ffffff;
+      --border: #e2e8f0;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04);
+      --shadow-md: 0 4px 16px rgba(0,0,0,0.1), 0 2px 6px rgba(0,0,0,0.06);
+      --shadow-lg: 0 10px 40px rgba(0,0,0,0.12), 0 4px 12px rgba(0,0,0,0.06);
+      --radius: 12px;
+      --radius-sm: 8px;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--text-dark);
+      background: var(--bg-white);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    /* ============================================================
+       UTILIDADES
+    ============================================================ */
+    .container {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+
+    .section-subtitle {
+      font-size: 1.05rem;
+      color: var(--text-mid);
+      max-width: 560px;
+      line-height: 1.65;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .section-header .section-subtitle {
+      margin: 0 auto;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      background: var(--primary-light);
+      color: var(--primary);
+      border: 1px solid var(--primary-mid);
+      border-radius: 100px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 100px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: none;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+    }
+
+    .btn-primary:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+
+    .btn-outline:hover {
+      background: var(--primary-light);
+    }
+
+    .btn-white {
+      background: #fff;
+      color: var(--primary);
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn-white:hover {
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* WhatsApp green icon */
+    .icon-whatsapp {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+
+    /* ============================================================
+       NAVBAR
+    ============================================================ */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .navbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+    }
+
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .navbar-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--primary-mid);
+    }
+
+    .navbar-name {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      line-height: 1.1;
+    }
+
+    .navbar-specialty {
+      font-size: 0.75rem;
+      color: var(--text-light);
+      font-weight: 500;
+    }
+
+    .navbar-cta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* ============================================================
+       HERO
+    ============================================================ */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 80px 0 72px;
+      background: linear-gradient(135deg, #f8faff 0%, var(--bg-white) 50%, #f0f4ff 100%);
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 70% 50%, var(--primary-light) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .hero-name {
+      font-size: 2.6rem;
+      font-weight: 800;
+      line-height: 1.15;
+      color: var(--text-dark);
+    }
+
+    .hero-name span {
+      color: var(--primary);
+    }
+
+    .hero-specialty-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: var(--primary-light);
+      border-left: 3px solid var(--primary);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      color: var(--primary);
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .hero-text {
+      font-size: 1.05rem;
+      color: var(--text-mid);
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .hero-image-wrap {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-image-bg {
+      position: absolute;
+      width: 90%;
+      height: 90%;
+      background: var(--primary-light);
+      border-radius: 40% 60% 60% 40% / 40% 40% 60% 60%;
+      top: 5%;
+      left: 5%;
+    }
+
+    .hero-image {
+      position: relative;
+      z-index: 1;
+      width: 380px;
+      height: 440px;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 40% 40% 50% 50% / 35% 35% 50% 50%;
+      box-shadow: var(--shadow-lg);
+      border: 4px solid var(--bg-white);
+    }
+
+    .hero-stat-card {
+      position: absolute;
+      z-index: 2;
+      background: var(--bg-white);
+      border-radius: var(--radius);
+      padding: 12px 16px;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.82rem;
+    }
+
+    .hero-stat-card.card-left {
+      bottom: 60px;
+      left: -20px;
+    }
+
+    .hero-stat-card.card-right {
+      top: 60px;
+      right: -20px;
+    }
+
+    .stat-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-sm);
+      background: var(--primary-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .stat-text strong {
+      display: block;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--text-dark);
+      line-height: 1.1;
+    }
+
+    .stat-text span {
+      color: var(--text-light);
+      font-size: 0.75rem;
+    }
+
+    /* ============================================================
+       SOBRE
+    ============================================================ */
+    .sobre {
+      padding: 88px 0;
+      background: var(--bg-white);
+    }
+
+    .sobre-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+
+    .sobre-content {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .sobre-content .section-title {
+      text-align: left;
+    }
+
+    .sobre-content .section-subtitle {
+      max-width: 100%;
+    }
+
+    .sobre-content p {
+      color: var(--text-mid);
+      line-height: 1.75;
+    }
+
+    .sobre-highlights {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .highlight-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .highlight-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--primary);
+      margin-top: 6px;
+      flex-shrink: 0;
+    }
+
+    .highlight-item span {
+      font-size: 0.95rem;
+      color: var(--text-mid);
+    }
+
+    .sobre-image-wrap {
+      position: relative;
+    }
+
+    .sobre-image {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-md);
+    }
+
+    .sobre-accent {
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      width: 100px;
+      height: 100px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border-radius: var(--radius);
+      opacity: 0.15;
+      z-index: -1;
+    }
+
+    /* ============================================================
+       ESPECIALIDADES
+    ============================================================ */
+    .especialidades {
+      padding: 88px 0;
+      background: var(--bg-light);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .service-card {
+      background: var(--bg-white);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border);
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--primary-mid);
+    }
+
+    .service-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: var(--radius);
+      background: var(--primary-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .service-icon svg {
+      color: var(--primary);
+    }
+
+    .service-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    .service-card p {
+      font-size: 0.9rem;
+      color: var(--text-mid);
+      line-height: 1.65;
+    }
+
+    /* ============================================================
+       DIFERENCIAIS
+    ============================================================ */
+    .diferenciais {
+      padding: 88px 0;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .diferenciais::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .diferenciais .section-title {
+      color: #fff;
+    }
+
+    .diferenciais .section-subtitle {
+      color: rgba(255,255,255,0.85);
+    }
+
+    .diferenciais-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      position: relative;
+    }
+
+    .diferencial-card {
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: var(--radius);
+      padding: 36px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: all 0.25s ease;
+    }
+
+    .diferencial-card:hover {
+      background: rgba(255,255,255,0.18);
+      transform: translateY(-4px);
+    }
+
+    .diferencial-icon {
+      width: 56px;
+      height: 56px;
+      background: rgba(255,255,255,0.2);
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .diferencial-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .diferencial-card p {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.82);
+      line-height: 1.65;
+    }
+
+    /* ============================================================
+       DEPOIMENTOS (EXEMPLOS — somente para demonstração)
+    ============================================================ */
+    .depoimentos {
+      padding: 88px 0;
+      background: var(--bg-white);
+    }
+
+    /* COMPLIANCE: Este bloco é apenas demonstrativo.
+       Não representa depoimentos reais de pacientes.
+       Proibido incluir resultados de tratamento ou afirmações específicas. */
+    .depoimentos-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .depoimento-card {
+      background: var(--bg-light);
+      border-radius: var(--radius);
+      padding: 28px;
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      position: relative;
+    }
+
+    .depoimento-quote {
+      font-size: 3rem;
+      line-height: 1;
+      color: var(--primary-mid);
+      font-family: Georgia, serif;
+      position: absolute;
+      top: 16px;
+      left: 24px;
+      pointer-events: none;
+    }
+
+    .depoimento-text {
+      font-size: 0.92rem;
+      color: var(--text-mid);
+      line-height: 1.7;
+      margin-top: 16px;
+    }
+
+    .depoimento-author {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-top: 1px solid var(--border);
+      padding-top: 12px;
+    }
+
+    .depoimento-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--primary-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--primary);
+      flex-shrink: 0;
+    }
+
+    .depoimento-name {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    .depoimento-note {
+      font-size: 0.72rem;
+      color: var(--text-light);
+      font-style: italic;
+    }
+
+    .demo-notice {
+      text-align: center;
+      margin-top: 32px;
+      padding: 12px 20px;
+      background: #fffbeb;
+      border: 1px solid #fbbf24;
+      border-radius: var(--radius-sm);
+      font-size: 0.82rem;
+      color: #92400e;
+    }
+
+    /* ============================================================
+       LOCALIZAÇÃO
+    ============================================================ */
+    .localizacao {
+      padding: 88px 0;
+      background: var(--bg-light);
+    }
+
+    .localizacao-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .localizacao-map {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border);
+    }
+
+    .localizacao-map iframe {
+      width: 100%;
+      height: 380px;
+      display: block;
+      border: none;
+    }
+
+    .localizacao-info {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      padding-top: 8px;
+    }
+
+    .localizacao-info .section-title {
+      text-align: left;
+    }
+
+    .localizacao-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .localizacao-detail-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: var(--radius-sm);
+      background: var(--primary-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .localizacao-detail-text strong {
+      display: block;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--text-dark);
+      margin-bottom: 2px;
+    }
+
+    .localizacao-detail-text span {
+      font-size: 0.88rem;
+      color: var(--text-mid);
+    }
+
+    /* ============================================================
+       CTA FINAL
+    ============================================================ */
+    .cta-final {
+      padding: 96px 0;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-final::after {
+      content: '';
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+      bottom: -300px;
+      right: -200px;
+      pointer-events: none;
+    }
+
+    .cta-final .section-title {
+      color: #fff;
+      font-size: 2.4rem;
+    }
+
+    .cta-final .section-subtitle {
+      color: rgba(255,255,255,0.85);
+      margin: 0 auto 40px;
+      max-width: 520px;
+    }
+
+    .cta-final-actions {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    .footer {
+      background: #0f172a;
+      color: rgba(255,255,255,0.6);
+      padding: 40px 0 32px;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      text-align: center;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .footer-logo {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      object-fit: cover;
+      opacity: 0.8;
+    }
+
+    .footer-brand-name {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.85);
+    }
+
+    .footer-copy {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .footer-disclaimer {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.35);
+      margin-top: 4px;
+      padding: 8px 16px;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 6px;
+      max-width: 540px;
+    }
+
+    /* ============================================================
+       RESPONSIVO — TABLET
+    ============================================================ */
+    @media (max-width: 900px) {
+      .hero-grid,
+      .sobre-grid,
+      .localizacao-grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+
+      .hero-image-wrap {
+        order: -1;
+      }
+
+      .hero-image {
+        width: 280px;
+        height: 320px;
+        margin: 0 auto;
+      }
+
+      .hero-stat-card.card-left {
+        left: 0;
+        bottom: 40px;
+      }
+
+      .hero-stat-card.card-right {
+        right: 0;
+        top: 40px;
+      }
+
+      .hero-name {
+        font-size: 2rem;
+      }
+
+      .section-title {
+        font-size: 1.7rem;
+      }
+
+      .services-grid,
+      .diferenciais-grid,
+      .depoimentos-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+    }
+
+    /* ============================================================
+       RESPONSIVO — MOBILE
+    ============================================================ */
+    @media (max-width: 600px) {
+      .navbar-inner {
+        height: 60px;
+      }
+
+      .navbar-cta .btn-outline {
+        display: none;
+      }
+
+      .hero {
+        padding: 52px 0 56px;
+      }
+
+      .hero-name {
+        font-size: 1.75rem;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .hero-actions .btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .sobre,
+      .especialidades,
+      .diferenciais,
+      .depoimentos,
+      .localizacao {
+        padding: 64px 0;
+      }
+
+      .cta-final {
+        padding: 72px 0;
+      }
+
+      .cta-final .section-title {
+        font-size: 1.8rem;
+      }
+
+      .cta-final-actions {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .cta-final-actions .btn {
+        width: 100%;
+        max-width: 320px;
+      }
+
+      .services-grid,
+      .diferenciais-grid,
+      .depoimentos-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       NAVBAR
+  ============================================================ -->
+  <header class="navbar">
+    <div class="container">
+      <div class="navbar-inner">
+        <div class="navbar-brand">
+          <img
+            src="{{FOTO_URL}}"
+            alt="Dr(a). {{NOME}}"
+            class="navbar-avatar"
+            loading="eager"
+          />
+          <div>
+            <div class="navbar-name">Dr(a). {{NOME}}</div>
+            <div class="navbar-specialty">{{ESPECIALIDADE}}</div>
+          </div>
+        </div>
+        <div class="navbar-cta">
+          <a href="#localizacao" class="btn btn-outline">
+            Localização
+          </a>
+          <a
+            href="https://wa.me/{{TELEFONE_E164}}"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-primary"
+          >
+            <svg class="icon-whatsapp" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+            </svg>
+            Agendar Consulta
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       HERO
+  ============================================================ -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <span class="badge">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+              <polyline points="22 4 12 14.01 9 11.01"/>
+            </svg>
+            {{ESPECIALIDADE}} em {{CIDADE}}
+          </span>
+          <h1 class="hero-name">
+            <span>Dr(a).</span><br>
+            {{NOME}}
+          </h1>
+          <div class="hero-specialty-tag">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+            </svg>
+            Especialista em {{SLUG_TRATAMENTO}} · {{CIDADE}}
+          </div>
+          <p class="hero-text">
+            Cuidado humanizado e atendimento de qualidade em {{CIDADE}}.
+            Marque sua consulta de forma prática pelo WhatsApp e receba atendimento personalizado.
+          </p>
+          <div class="hero-actions">
+            <a
+              href="https://wa.me/{{TELEFONE_E164}}"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-primary"
+            >
+              <svg class="icon-whatsapp" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+              </svg>
+              Agendar Consulta pelo WhatsApp
+            </a>
+            <a href="#sobre" class="btn btn-outline">
+              Saiba mais
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-image-wrap">
+          <div class="hero-image-bg"></div>
+          <img
+            src="{{FOTO_URL}}"
+            alt="Dr(a). {{NOME}} — {{ESPECIALIDADE}}"
+            class="hero-image"
+            loading="eager"
+          />
+          <div class="hero-stat-card card-left">
+            <div class="stat-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2.5">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            </div>
+            <div class="stat-text">
+              <strong>Atendimento</strong>
+              <span>Humanizado</span>
+            </div>
+          </div>
+          <div class="hero-stat-card card-right">
+            <div class="stat-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2.5">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+              </svg>
+            </div>
+            <div class="stat-text">
+              <strong>{{ESPECIALIDADE}}</strong>
+              <span>{{CIDADE}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SOBRE
+  ============================================================ -->
+  <section id="sobre" class="sobre">
+    <div class="container">
+      <div class="sobre-grid">
+        <div class="sobre-content">
+          <span class="badge">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <circle cx="12" cy="8" r="7"/>
+              <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>
+            </svg>
+            Sobre o Profissional
+          </span>
+          <h2 class="section-title">Sobre Dr(a).<br>{{NOME}}</h2>
+          <p>
+            Dr(a). {{NOME}} é especialista em {{ESPECIALIDADE}} atuando em {{CIDADE}}.
+            Com foco no cuidado integral do paciente, oferece atendimento clínico de qualidade,
+            utilizando práticas baseadas em evidências e tecnologias atuais da área da saúde.
+          </p>
+          <p>
+            O consultório de {{ESPECIALIDADE}} em {{CIDADE}} proporciona um ambiente acolhedor,
+            pensado para que cada paciente se sinta seguro e bem orientado durante toda a jornada
+            de cuidado com a saúde.
+          </p>
+          <div class="sobre-highlights">
+            <div class="highlight-item">
+              <div class="highlight-dot"></div>
+              <span>Atendimento clínico individualizado e cuidadoso</span>
+            </div>
+            <div class="highlight-item">
+              <div class="highlight-dot"></div>
+              <span>Abordagem baseada em evidências científicas atualizadas</span>
+            </div>
+            <div class="highlight-item">
+              <div class="highlight-dot"></div>
+              <span>Ambiente acolhedor e equipe qualificada em {{CIDADE}}</span>
+            </div>
+            <div class="highlight-item">
+              <div class="highlight-dot"></div>
+              <span>Agendamento fácil pelo WhatsApp: {{TELEFONE_DISPLAY}}</span>
+            </div>
+          </div>
+        </div>
+        <div class="sobre-image-wrap">
+          <img
+            src="{{FOTO_URL}}"
+            alt="Consultório de {{ESPECIALIDADE}} em {{CIDADE}}"
+            class="sobre-image"
+            loading="lazy"
+          />
+          <div class="sobre-accent"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       ESPECIALIDADES / SERVIÇOS
+  ============================================================ -->
+  <section id="servicos" class="especialidades">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+            <line x1="3" y1="9" x2="21" y2="9"/>
+            <line x1="9" y1="21" x2="9" y2="9"/>
+          </svg>
+          Serviços
+        </span>
+        <h2 class="section-title">Área de Atuação</h2>
+        <p class="section-subtitle">
+          Conheça as principais frentes de atendimento do consultório de {{ESPECIALIDADE}} em {{CIDADE}}.
+        </p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+            </svg>
+          </div>
+          <h3>Consulta Clínica</h3>
+          <p>
+            Avaliação completa do paciente com anamnese detalhada, exame físico e
+            orientações personalizadas em {{ESPECIALIDADE}}.
+          </p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+              <polyline points="10 9 9 9 8 9"/>
+            </svg>
+          </div>
+          <h3>Diagnóstico e Orientação</h3>
+          <p>
+            Solicitação e interpretação de exames, diagnóstico preciso e
+            plano de cuidados baseado em evidências científicas atualizadas.
+          </p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+            </svg>
+          </div>
+          <h3>Acompanhamento Contínuo</h3>
+          <p>
+            Retornos periódicos e acompanhamento longitudinal do paciente,
+            garantindo continuidade e qualidade no cuidado em {{SLUG_TRATAMENTO}}.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       DIFERENCIAIS
+  ============================================================ -->
+  <section class="diferenciais">
+    <div class="container">
+      <div class="section-header" style="position:relative;">
+        <span class="badge" style="background:rgba(255,255,255,0.15);color:#fff;border-color:rgba(255,255,255,0.3);">
+          Por que nos escolher
+        </span>
+        <h2 class="section-title">Nossos Diferenciais</h2>
+        <p class="section-subtitle">
+          O consultório de Dr(a). {{NOME}} em {{CIDADE}} é pensado para proporcionar a
+          melhor experiência de cuidado para você e sua família.
+        </p>
+      </div>
+
+      <div class="diferenciais-grid">
+        <div class="diferencial-card">
+          <div class="diferencial-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <h3>Atendimento Humanizado</h3>
+          <p>
+            Cada paciente é acolhido de forma individualizada, com escuta ativa e
+            respeito à sua história e necessidades específicas.
+          </p>
+        </div>
+
+        <div class="diferencial-card">
+          <div class="diferencial-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="8" r="7"/>
+              <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>
+            </svg>
+          </div>
+          <h3>Equipe Qualificada</h3>
+          <p>
+            Profissionais com formação sólida e atualização constante na área de
+            {{ESPECIALIDADE}}, comprometidos com as melhores práticas clínicas.
+          </p>
+        </div>
+
+        <div class="diferencial-card">
+          <div class="diferencial-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2"/>
+              <path d="M3 9h18"/>
+              <path d="M9 21V9"/>
+            </svg>
+          </div>
+          <h3>Ambiente Moderno</h3>
+          <p>
+            Estrutura moderna e confortável em {{CIDADE}}, pensada para oferecer
+            bem-estar e tranquilidade durante todo o atendimento.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       DEPOIMENTOS (APENAS EXEMPLO — NÃO REPRESENTAM PACIENTES REAIS)
+       COMPLIANCE: Seção de exemplo comercial — sem resultados específicos
+  ============================================================ -->
+  <section class="depoimentos">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+          </svg>
+          Relatos de Pacientes
+        </span>
+        <h2 class="section-title">O que dizem nossos pacientes</h2>
+        <p class="section-subtitle">
+          A satisfação e o bem-estar dos nossos pacientes são nossa maior motivação
+          no atendimento diário em {{CIDADE}}.
+        </p>
+      </div>
+
+      <div class="depoimentos-grid">
+        <!-- COMPLIANCE CFM 1974/2011: Depoimentos abaixo são ilustrativos.
+             Não contêm resultados de tratamento ou afirmações específicas de cura.
+             Substituir por depoimentos reais autorizados antes de publicar. -->
+        <div class="depoimento-card">
+          <div class="depoimento-quote">"</div>
+          <p class="depoimento-text">
+            O atendimento foi muito atencioso e cuidadoso. Me senti acolhido desde a
+            primeira consulta. Profissional dedicado e ambiente agradável.
+          </p>
+          <div class="depoimento-author">
+            <div class="depoimento-avatar">MR</div>
+            <div>
+              <div class="depoimento-name">M. R.</div>
+              <div class="depoimento-note">Paciente — (Exemplo. A ser substituído)</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="depoimento-card">
+          <div class="depoimento-quote">"</div>
+          <p class="depoimento-text">
+            Explicações claras e atendimento humanizado. A consulta foi tranquila e
+            pude tirar todas as minhas dúvidas com calma e atenção.
+          </p>
+          <div class="depoimento-author">
+            <div class="depoimento-avatar">CS</div>
+            <div>
+              <div class="depoimento-name">C. S.</div>
+              <div class="depoimento-note">Paciente — (Exemplo. A ser substituído)</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="depoimento-card">
+          <div class="depoimento-quote">"</div>
+          <p class="depoimento-text">
+            Ambiente limpo, organizado e com boa infraestrutura. Recomendo o
+            consultório para quem busca atendimento de qualidade em {{CIDADE}}.
+          </p>
+          <div class="depoimento-author">
+            <div class="depoimento-avatar">JP</div>
+            <div>
+              <div class="depoimento-name">J. P.</div>
+              <div class="depoimento-note">Paciente — (Exemplo. A ser substituído)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="demo-notice">
+        ⚠️ Depoimentos acima são ilustrativos e devem ser substituídos por relatos reais autorizados antes da publicação oficial.
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       LOCALIZAÇÃO
+  ============================================================ -->
+  <section id="localizacao" class="localizacao">
+    <div class="container">
+      <div class="localizacao-grid">
+        <div class="localizacao-map">
+          <iframe
+            src="https://maps.google.com/maps?q={{MAPS_QUERY}}&output=embed"
+            width="100%"
+            height="380"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Localização do consultório de Dr(a). {{NOME}} em {{CIDADE}}"
+          ></iframe>
+        </div>
+        <div class="localizacao-info">
+          <span class="badge">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            Como chegar
+          </span>
+          <h2 class="section-title">Localização</h2>
+
+          <div class="localizacao-detail">
+            <div class="localizacao-detail-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+            </div>
+            <div class="localizacao-detail-text">
+              <strong>Cidade</strong>
+              <span>{{CIDADE}}</span>
+            </div>
+          </div>
+
+          <div class="localizacao-detail">
+            <div class="localizacao-detail-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.8a16 16 0 0 0 5.29 5.29l.88-1a2 2 0 0 1 2.11-.45c.908.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.03z"/>
+              </svg>
+            </div>
+            <div class="localizacao-detail-text">
+              <strong>Contato WhatsApp</strong>
+              <span>{{TELEFONE_DISPLAY}}</span>
+            </div>
+          </div>
+
+          <div class="localizacao-detail">
+            <div class="localizacao-detail-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                <line x1="16" y1="2" x2="16" y2="6"/>
+                <line x1="8" y1="2" x2="8" y2="6"/>
+                <line x1="3" y1="10" x2="21" y2="10"/>
+              </svg>
+            </div>
+            <div class="localizacao-detail-text">
+              <strong>Agendamento</strong>
+              <span>Via WhatsApp — Consultar disponibilidade</span>
+            </div>
+          </div>
+
+          <a
+            href="https://wa.me/{{TELEFONE_E164}}"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-primary"
+            style="margin-top: 12px; align-self: flex-start;"
+          >
+            <svg class="icon-whatsapp" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+            </svg>
+            Agendar pelo WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CTA FINAL
+  ============================================================ -->
+  <section class="cta-final">
+    <div class="container" style="position:relative;z-index:1;">
+      <h2 class="section-title">Cuide da sua saúde<br>com quem entende</h2>
+      <p class="section-subtitle">
+        Agende sua consulta com Dr(a). {{NOME}} em {{CIDADE}} de forma rápida e prática
+        pelo WhatsApp. Não deixe sua saúde para depois.
+      </p>
+      <div class="cta-final-actions">
+        <a
+          href="https://wa.me/{{TELEFONE_E164}}"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-white"
+        >
+          <svg class="icon-whatsapp" viewBox="0 0 24 24" fill="#25d366">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+          </svg>
+          Agendar Consulta — {{TELEFONE_DISPLAY}}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <img
+            src="{{FOTO_URL}}"
+            alt=""
+            class="footer-logo"
+            loading="lazy"
+          />
+          <span class="footer-brand-name">Dr(a). {{NOME}}</span>
+        </div>
+        <p class="footer-copy">
+          © {{ANO_ATUAL}} Dr(a). {{NOME}} · {{ESPECIALIDADE}} em {{CIDADE}}
+        </p>
+        <p class="footer-disclaimer">
+          Esta é uma demonstração de site. Não representa o profissional real.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

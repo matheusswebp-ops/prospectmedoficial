@@ -1,0 +1,18 @@
+{
+  "cardiologia": { "primaria": "#C0392B", "secundaria": "#E74C3C" },
+  "pediatria": { "primaria": "#27AE60", "secundaria": "#2ECC71" },
+  "dermatologia": { "primaria": "#8E44AD", "secundaria": "#9B59B6" },
+  "odontologia": { "primaria": "#2980B9", "secundaria": "#3498DB" },
+  "psicologia": { "primaria": "#E67E22", "secundaria": "#F39C12" },
+  "nutricao": { "primaria": "#16A085", "secundaria": "#1ABC9C" },
+  "fisioterapia": { "primaria": "#2ECC71", "secundaria": "#27AE60" },
+  "oftalmologia": { "primaria": "#1ABC9C", "secundaria": "#16A085" },
+  "ortopedia": { "primaria": "#2C3E50", "secundaria": "#34495E" },
+  "neurologia": { "primaria": "#6C3483", "secundaria": "#8E44AD" },
+  "endocrinologia": { "primaria": "#D35400", "secundaria": "#E67E22" },
+  "ginecologia": { "primaria": "#C0392B", "secundaria": "#E91E8C" },
+  "urologia": { "primaria": "#1565C0", "secundaria": "#1976D2" },
+  "gastroenterologia": { "primaria": "#558B2F", "secundaria": "#689F38" },
+  "reumatologia": { "primaria": "#4527A0", "secundaria": "#5E35B1" },
+  "default": { "primaria": "#2C3E50", "secundaria": "#34495E" }
+}
