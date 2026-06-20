@@ -26,6 +26,9 @@
       --dark:   #0E0D0C;
       --dark2:  #161412;
       --dark3:  #1E1B18;
+      --dark-bg:  color-mix(in srgb, var(--primary) 13%, #09080A 87%);
+      --dark-bg2: color-mix(in srgb, var(--primary)  9%, #0F0D10 91%);
+      --dark-bg3: color-mix(in srgb, var(--primary)  6%, #161318 94%);
       --text:   #1A1816;
       --text2:  #57534E;
       --text3:  #9C9189;
@@ -148,7 +151,7 @@
     .hero-dot{width:5px;height:5px;border-radius:50%;background:var(--p25)}
 
     /* ── PROBLEMA (DARK) ───────────────────────────── */
-    .problema{padding:100px 0;background:var(--dark);position:relative;overflow:hidden}
+    .problema{padding:100px 0;background:var(--dark-bg);position:relative;overflow:hidden}
     .problema::before{content:'';position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,var(--p25) 0%,transparent 70%);top:-220px;left:-160px;pointer-events:none}
     .problema::after{content:'';position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,var(--p25) 0%,transparent 70%);bottom:-200px;right:-150px;pointer-events:none}
     .problema-inner{position:relative;z-index:1;text-align:center}
@@ -171,7 +174,7 @@
     .solucao-panel h3{font-size:1.15rem;font-weight:800;color:var(--text);letter-spacing:-.025em}
 
     /* ── TRATAMENTOS (DARK) ────────────────────────── */
-    .tratamentos{padding:100px 0;background:var(--dark2);position:relative;overflow:hidden}
+    .tratamentos{padding:100px 0;background:var(--dark-bg2);position:relative;overflow:hidden}
     .tratamentos::before{content:'';position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,var(--p25) 0%,transparent 70%);top:-200px;left:-200px;pointer-events:none}
     .tratamentos::after{content:'';position:absolute;width:450px;height:450px;border-radius:50%;background:radial-gradient(circle,var(--p25) 0%,transparent 70%);bottom:-170px;right:-140px;pointer-events:none}
     .trat-intro{position:relative;z-index:1;margin-bottom:56px;text-align:center}
@@ -217,7 +220,7 @@
     .star{color:var(--primary);font-size:.8rem}
 
     /* ── PROCESSO (DARK) ───────────────────────────── */
-    .processo{padding:100px 0;background:var(--dark3);position:relative;overflow:hidden}
+    .processo{padding:100px 0;background:var(--dark-bg3);position:relative;overflow:hidden}
     .processo::before{content:'';position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,var(--p25) 0%,transparent 70%);top:-150px;right:-100px;pointer-events:none}
     .processo::after{content:'';position:absolute;width:350px;height:350px;border-radius:50%;background:radial-gradient(circle,var(--p25) 0%,transparent 70%);bottom:-120px;left:-90px;pointer-events:none}
     .processo-header{text-align:center;display:flex;flex-direction:column;align-items:center;gap:10px;margin-bottom:56px;position:relative;z-index:1}
@@ -236,6 +239,7 @@
     .objecoes{padding:100px 0;background:var(--cream)}
     .objecoes-grid{display:grid;grid-template-columns:1fr 1.6fr;gap:80px;align-items:start}
     .objecoes-left{position:sticky;top:96px;display:flex;flex-direction:column;gap:20px}
+    .objecoes-btn{align-self:flex-start}
     .objecoes-left p{font-weight:300;color:var(--text2);line-height:1.85}
     .faq-list{display:flex;flex-direction:column;gap:8px}
     .faq-item{border:1px solid var(--bdr);border-radius:14px;overflow:hidden;transition:all .25s}
@@ -251,7 +255,7 @@
     .faq-a em{color:var(--primary);font-style:normal;font-weight:500}
 
     /* ── OFERTA / CTA FINAL (DARK) ─────────────────── */
-    .cta-final{padding:120px 0;background:var(--dark);position:relative;overflow:hidden}
+    .cta-final{padding:120px 0;background:var(--dark-bg);position:relative;overflow:hidden}
     .cta-orb1{position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,var(--p25) 0%,transparent 70%);top:-280px;right:-220px;pointer-events:none;animation:orb1 9s ease-in-out infinite}
     .cta-orb2{position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,var(--p25) 0%,transparent 70%);bottom:-220px;left:-180px;pointer-events:none;animation:orb2 11s ease-in-out infinite}
     @keyframes orb1{0%,100%{transform:translate(0,0)}50%{transform:translate(-50px,40px)}}
@@ -270,7 +274,7 @@
     .cta-item::before{content:'✓';color:var(--secondary);font-weight:700;flex-shrink:0;width:16px;text-align:center;font-size:.9rem;margin-top:.1em}
 
     /* ── FECHAMENTO (DARK2) ────────────────────────── */
-    .fechamento{padding:100px 0;background:var(--dark2);border-top:1px solid rgba(255,255,255,.05);position:relative;overflow:hidden}
+    .fechamento{padding:100px 0;background:var(--dark-bg2);border-top:1px solid rgba(255,255,255,.05);position:relative;overflow:hidden}
     .fechamento::before{content:'';position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,var(--p25) 0%,transparent 70%);top:-200px;right:-150px;pointer-events:none}
     .fechamento::after{content:'';position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,var(--p25) 0%,transparent 70%);bottom:-150px;left:-100px;pointer-events:none}
     .fechamento-inner{text-align:center;display:flex;flex-direction:column;align-items:center;gap:24px;max-width:660px;margin:0 auto;position:relative;z-index:1}
@@ -318,6 +322,7 @@
       .auto-content,.objecoes-left,.cta-left,.fechamento-inner{text-align:center;align-items:center}
       .auto-content .eyebrow,.cta-left .eyebrow,.objecoes-left .eyebrow{justify-content:center}
       .auto-btn{align-self:center}
+      .objecoes-btn{align-self:center}
       .creds{align-self:stretch}
       .cta-panel{text-align:left}
       .cta-final .container{padding:0 18px}
@@ -607,7 +612,7 @@
         <div class="eyebrow"><span class="eyebrow-line"></span>Tire suas dúvidas</div>
         <h2>Suas dúvidas, respondidas com honestidade.</h2>
         <p>Ainda tem dúvidas? Fala pelo WhatsApp — respondo pessoalmente, sem enrolação.</p>
-        <a href="https://wa.me/{{TELEFONE_E164}}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm" style="align-self:flex-start;margin-top:4px">
+        <a href="https://wa.me/{{TELEFONE_E164}}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm objecoes-btn" style="margin-top:4px">
           <svg class="icon-wa" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
           Falar pelo WhatsApp
         </a>
@@ -657,10 +662,10 @@
       <div class="cta-panel reveal d2">
         <h3>O que acontece na sua primeira consulta</h3>
         <div class="cta-items">
-          <div class="cta-item"><em>Escuta completa</em> do seu histórico e das suas queixas — sem pressa</div>
-          <div class="cta-item">Avaliação clínica <em>individualizada</em></div>
-          <div class="cta-item">Orientações iniciais <em>já na primeira sessão</em></div>
-          <div class="cta-item">Proposta de <em>plano de tratamento personalizado</em></div>
+          <div class="cta-item">Escuta completa do seu histórico, <em>sem pressa</em></div>
+          <div class="cta-item">Avaliação clínica <em>individualizada</em> para o seu caso</div>
+          <div class="cta-item">Orientações práticas <em>já na primeira consulta</em></div>
+          <div class="cta-item">Plano de tratamento <em>feito para você</em></div>
         </div>
       </div>
     </div>
