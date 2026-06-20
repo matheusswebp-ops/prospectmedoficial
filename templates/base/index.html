@@ -109,12 +109,14 @@
     .hero-dot{width:6px;height:6px;border-radius:50%;background:var(--p20)}
 
     /* STATS BAR */
-    .stats-bar{background:var(--white);border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr);padding:40px 0}
+    .stats-bar{background:var(--white);border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr);padding:28px 0}
     .stats-grid{display:grid;grid-template-columns:repeat(3,1fr)}
-    .stat-item{text-align:center;padding:0 24px;border-right:1px solid var(--bdr)}
+    .stat-item{display:flex;align-items:center;justify-content:center;gap:12px;padding:0 24px;border-right:1px solid var(--bdr)}
     .stat-item:last-child{border-right:none}
-    .stat-value{font-family:var(--ff-s);font-size:2.4rem;font-weight:700;color:var(--primary);line-height:1;letter-spacing:-.02em}
-    .stat-label{font-size:.82rem;font-weight:400;color:var(--text3);margin-top:5px}
+    .stat-icon{width:36px;height:36px;border-radius:50%;background:var(--p10);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .stat-text{}
+    .stat-value{font-size:.88rem;font-weight:600;color:var(--text);line-height:1.3}
+    .stat-label{font-size:.75rem;font-weight:400;color:var(--text3);margin-top:2px}
 
     /* SOBRE */
     .sobre{padding:100px 0;background:var(--cream)}
@@ -240,7 +242,7 @@
       .faq-left{position:static}
       .loc-grid{grid-template-columns:1fr;gap:40px}
       .stats-grid{grid-template-columns:1fr}
-      .stat-item{border-right:none;border-bottom:1px solid var(--bdr);padding:20px 0}
+      .stat-item{border-right:none;border-bottom:1px solid var(--bdr);padding:16px 0;justify-content:flex-start}
       .stat-item:last-child{border-bottom:none}
       .cta-box{padding:48px 28px}
     }
@@ -326,8 +328,8 @@
     <div class="hero-grid">
       <div class="hero-content" style="animation:fadeUp .8s ease both">
         <div class="eyebrow"><span class="eyebrow-line"></span>{{ESPECIALIDADE}} em {{CIDADE}}</div>
-        <h1 class="hero-title">Cuidado que<br><em>transforma</em><br>a sua saúde</h1>
-        <p class="hero-desc"><strong>{{NOME}}</strong> — {{ESPECIALIDADE}} com atendimento humanizado e personalizado em {{CIDADE}}. Cada consulta pensada para <strong>você</strong>.</p>
+        <h1 class="hero-title">{{ESPECIALIDADE}}<br>de verdade,<br><em>em {{CIDADE}}</em></h1>
+        <p class="hero-desc"><strong>{{NOME}}</strong> — atendimento especializado em {{ESPECIALIDADE}} com escuta real e tratamento personalizado. Agende sua consulta direto pelo WhatsApp.</p>
         <div class="hero-actions">
           <a href="https://wa.me/{{TELEFONE_E164}}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg">
             <svg class="icon-wa" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
@@ -336,10 +338,7 @@
           <a href="#sobre" class="btn btn-outline btn-lg">Saiba mais</a>
         </div>
         <div class="hero-trust">
-          <div class="trust-avatars">
-            <div class="trust-avatar">✓</div><div class="trust-avatar">✓</div><div class="trust-avatar">✓</div>
-          </div>
-          <span class="trust-text"><strong>Atendimento humanizado</strong> · {{CIDADE}}</span>
+          <span class="trust-text">📍 <strong>{{CIDADE}}</strong> · Agendamento via WhatsApp</span>
         </div>
       </div>
       <div class="hero-visual" style="animation:fadeIn 1s ease .3s both">
@@ -369,9 +368,18 @@
 <div class="stats-bar">
   <div class="container">
     <div class="stats-grid reveal">
-      <div class="stat-item"><div class="stat-value">100%</div><div class="stat-label">Atendimento humanizado</div></div>
-      <div class="stat-item"><div class="stat-value">{{CIDADE}}</div><div class="stat-label">Consultório presencial</div></div>
-      <div class="stat-item"><div class="stat-value">24h</div><div class="stat-label">Agendamento via WhatsApp</div></div>
+      <div class="stat-item">
+        <div class="stat-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2.5" stroke-linecap="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+        <div class="stat-text"><div class="stat-value">{{ESPECIALIDADE}}</div><div class="stat-label">Área de especialização</div></div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div class="stat-text"><div class="stat-value">{{CIDADE}}</div><div class="stat-label">Atendimento presencial</div></div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.8a16 16 0 0 0 5.29 5.29l.88-1a2 2 0 0 1 2.11-.45c.908.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.03z"/></svg></div>
+        <div class="stat-text"><div class="stat-value">Agendamento pelo WhatsApp</div><div class="stat-label">Rápido e sem burocracia</div></div>
+      </div>
     </div>
   </div>
 </div>
@@ -388,8 +396,8 @@
       <div class="sobre-content reveal d2">
         <div class="eyebrow"><span class="eyebrow-line"></span>Quem sou eu</div>
         <h2 class="section-title">Conheça<br><em>{{NOME}}</em></h2>
-        <p class="section-body">Especialista em <strong>{{ESPECIALIDADE}}</strong>, atuo em {{CIDADE}} com foco no cuidado integral e na escuta ativa de cada paciente. Minha abordagem é baseada em <strong>evidências científicas atualizadas</strong> e adaptada à realidade individual.</p>
-        <p class="section-body">O consultório foi pensado para proporcionar um ambiente <strong>acolhedor e seguro</strong>, onde você se sente ouvido e bem orientado em toda a jornada de cuidado.</p>
+        <p class="section-body">Sou especialista em <strong>{{ESPECIALIDADE}}</strong> e atendo em {{CIDADE}} com foco no que realmente importa: <strong>você</strong>. Cada consulta é um espaço de escuta genuína, onde trabalhamos juntos para entender sua situação e definir o melhor caminho.</p>
+        <p class="section-body">Acredito que bons resultados vêm de uma relação de confiança. Por isso, explico cada etapa com clareza e adapto o atendimento à sua necessidade — sem pressa e sem enrolação.</p>
         <div class="check-list">
           <div class="check-item"><div class="check-dot"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>Atendimento clínico individualizado</div>
           <div class="check-item"><div class="check-dot"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>Abordagem baseada em evidências científicas</div>
@@ -456,9 +464,9 @@
 <section id="servicos" class="servicos">
   <div class="container">
     <div class="section-header reveal">
-      <div class="eyebrow"><span class="eyebrow-line"></span>O que oferecemos</div>
-      <h2 class="section-title">Nossos <em>serviços</em></h2>
-      <p class="section-body">Atendimento completo em <strong>{{ESPECIALIDADE}}</strong> com foco na sua saúde e bem-estar.</p>
+      <div class="eyebrow"><span class="eyebrow-line"></span>O que ofereço</div>
+      <h2 class="section-title">Meus <em>serviços</em></h2>
+      <p class="section-body">Atendimento especializado em <strong>{{ESPECIALIDADE}}</strong> com foco no seu resultado.</p>
     </div>
     <div class="services-grid">
       <div class="service-card reveal d1">
@@ -488,8 +496,8 @@
   <div class="container">
     <div class="section-header reveal">
       <div class="eyebrow"><span class="eyebrow-line"></span>Áreas de atuação</div>
-      <h2 class="section-title">O que <em>tratamos</em></h2>
-      <p class="section-body">Áreas de atuação clínica em <strong>{{ESPECIALIDADE}}</strong> em {{CIDADE}}.</p>
+      <h2 class="section-title">O que <em>trato</em></h2>
+      <p class="section-body">Condições e situações que atendo como especialista em <strong>{{ESPECIALIDADE}}</strong>.</p>
     </div>
     <div class="esp-grid">
       <div class="esp-card reveal d1">
@@ -525,18 +533,18 @@
   <div class="container">
     <div class="dif-grid">
       <div class="dif-left reveal">
-        <div class="eyebrow"><span class="eyebrow-line"></span>Por que nos escolher</div>
-        <h2 class="section-title">O que nos<br><em>diferencia</em></h2>
-        <p class="section-body">Em {{CIDADE}}, o atendimento de <strong>{{NOME}}</strong> se destaca pelo cuidado genuíno, rigor científico e dedicação a cada paciente.</p>
+        <div class="eyebrow"><span class="eyebrow-line"></span>Por que me escolher</div>
+        <h2 class="section-title">O que me<br><em>diferencia</em></h2>
+        <p class="section-body">Meu compromisso é simples: que você saia de cada consulta com clareza, confiança e o cuidado que precisa.</p>
         <div class="dif-cards">
-          <div class="dif-card"><div class="dif-card-num">01</div><div><h3>Escuta ativa</h3><p>Você é ouvido com atenção total — suas dúvidas são prioridade em cada consulta.</p></div></div>
-          <div class="dif-card"><div class="dif-card-num">02</div><div><h3>Ciência atualizada</h3><p>Práticas clínicas baseadas nas evidências mais recentes de {{ESPECIALIDADE}}.</p></div></div>
-          <div class="dif-card"><div class="dif-card-num">03</div><div><h3>Ambiente acolhedor</h3><p>Estrutura pensada para seu bem-estar, em {{CIDADE}}.</p></div></div>
+          <div class="dif-card"><div class="dif-card-num">01</div><div><h3>Você é ouvido</h3><p>Sem pressa. Cada dúvida e cada queixa importa — a consulta é focada em você.</p></div></div>
+          <div class="dif-card"><div class="dif-card-num">02</div><div><h3>Explicação clara</h3><p>Nada de linguagem técnica sem sentido. Explico tudo de forma simples e direta.</p></div></div>
+          <div class="dif-card"><div class="dif-card-num">03</div><div><h3>Atendimento em {{CIDADE}}</h3><p>Consultório acessível, com agendamento fácil e rápido via WhatsApp.</p></div></div>
         </div>
       </div>
       <div class="dif-cta-panel reveal d2">
-        <p class="dif-cta-title">Pronto para<br><em>cuidar da sua saúde?</em></p>
-        <p class="dif-cta-desc">Agende sua consulta com <strong style="color:#fff">{{NOME}}</strong> em {{CIDADE}} de forma rápida e prática pelo WhatsApp.</p>
+        <p class="dif-cta-title">Pronto para<br><em>dar o primeiro passo?</em></p>
+        <p class="dif-cta-desc">Agende com <strong style="color:#fff">{{NOME}}</strong> agora. É rápido, direto pelo WhatsApp — sem formulários, sem espera.</p>
         <a href="https://wa.me/{{TELEFONE_E164}}" target="_blank" rel="noopener noreferrer" class="btn btn-white btn-lg" style="align-self:flex-start">
           <svg class="icon-wa" viewBox="0 0 24 24" fill="var(--primary)"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
           Agendar agora
@@ -637,8 +645,8 @@
   <div class="container">
     <div class="cta-box reveal">
       <div class="cta-eyebrow"><svg width="8" height="8" viewBox="0 0 8 8" fill="var(--primary)"><circle cx="4" cy="4" r="4"/></svg>Comece hoje</div>
-      <h2 class="cta-title">Cuide da sua saúde<br>com <em>quem entende</em></h2>
-      <p class="cta-desc">Agende agora com <strong>{{NOME}}</strong> em {{CIDADE}}. Atendimento humanizado, rápido e sem burocracia — direto pelo WhatsApp.</p>
+      <h2 class="cta-title">Agende sua consulta<br>com <em>{{NOME}}</em></h2>
+      <p class="cta-desc">Atendimento especializado em <strong>{{ESPECIALIDADE}}</strong> em {{CIDADE}}. Sem fila de espera, sem formulário — só uma mensagem no WhatsApp.</p>
       <div class="cta-actions">
         <a href="https://wa.me/{{TELEFONE_E164}}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg">
           <svg class="icon-wa" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
