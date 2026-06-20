@@ -1,8 +1,10 @@
 import fs from 'fs'
 import path from 'path'
 import specialtyColors from '@/lib/specialty-colors.json'
+import specialtyContent from '@/lib/specialty-content.json'
 
 type SpecialtyKey = keyof typeof specialtyColors
+type SpecialtyContentKey = keyof typeof specialtyContent
 
 /**
  * Mapeia qualquer string de especialidade para uma chave do specialty-colors.json.
@@ -28,6 +30,11 @@ function mapearEspecialidade(especialidade: string): SpecialtyKey {
   if (/reumat/.test(lower)) return 'reumatologia'
 
   return 'default'
+}
+
+function mapearConteudo(especialidade: string): typeof specialtyContent['default'] {
+  const key = mapearEspecialidade(especialidade) as SpecialtyContentKey
+  return specialtyContent[key] ?? specialtyContent['default']
 }
 
 /**
@@ -143,9 +150,10 @@ export function gerarHtml(lead: GerarHtmlInput): string {
     )
   }
 
-  // Determinar paleta de cores
+  // Determinar paleta de cores e conteúdo por especialidade
   const specialtyKey = mapearEspecialidade(lead.especialidade)
   const cores = specialtyColors[specialtyKey]
+  const conteudo = mapearConteudo(lead.especialidade)
 
   // Preparar os valores dos tokens
   const telefoneE164 = lead.telefone_e164 ?? ''
@@ -178,6 +186,37 @@ export function gerarHtml(lead: GerarHtmlInput): string {
     '{{MAPS_QUERY}}': mapsQuery,
     '{{SLUG_TRATAMENTO}}': slugTratamento,
     '{{ANO_ATUAL}}': anoAtual,
+    // Serviços específicos por especialidade
+    '{{SERVICO_1_NOME}}': conteudo.servicos[0].nome,
+    '{{SERVICO_1_DESC}}': conteudo.servicos[0].desc,
+    '{{SERVICO_2_NOME}}': conteudo.servicos[1].nome,
+    '{{SERVICO_2_DESC}}': conteudo.servicos[1].desc,
+    '{{SERVICO_3_NOME}}': conteudo.servicos[2].nome,
+    '{{SERVICO_3_DESC}}': conteudo.servicos[2].desc,
+    // Áreas de atuação específicas por especialidade
+    '{{AREA_1_NOME}}': conteudo.areas[0].nome,
+    '{{AREA_1_DESC}}': conteudo.areas[0].desc,
+    '{{AREA_2_NOME}}': conteudo.areas[1].nome,
+    '{{AREA_2_DESC}}': conteudo.areas[1].desc,
+    '{{AREA_3_NOME}}': conteudo.areas[2].nome,
+    '{{AREA_3_DESC}}': conteudo.areas[2].desc,
+    '{{AREA_4_NOME}}': conteudo.areas[3].nome,
+    '{{AREA_4_DESC}}': conteudo.areas[3].desc,
+    '{{AREA_5_NOME}}': conteudo.areas[4].nome,
+    '{{AREA_5_DESC}}': conteudo.areas[4].desc,
+    '{{AREA_6_NOME}}': conteudo.areas[5].nome,
+    '{{AREA_6_DESC}}': conteudo.areas[5].desc,
+    // FAQ específico por especialidade
+    '{{FAQ_1_Q}}': conteudo.faq[0].q,
+    '{{FAQ_1_A}}': conteudo.faq[0].a,
+    '{{FAQ_2_Q}}': conteudo.faq[1].q,
+    '{{FAQ_2_A}}': conteudo.faq[1].a,
+    '{{FAQ_3_Q}}': conteudo.faq[2].q,
+    '{{FAQ_3_A}}': conteudo.faq[2].a,
+    '{{FAQ_4_Q}}': conteudo.faq[3].q,
+    '{{FAQ_4_A}}': conteudo.faq[3].a,
+    '{{FAQ_5_Q}}': conteudo.faq[4].q,
+    '{{FAQ_5_A}}': conteudo.faq[4].a,
   }
 
   // Substituir todos os tokens de forma global

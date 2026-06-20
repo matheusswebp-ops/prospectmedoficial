@@ -1,0 +1,354 @@
+{
+  "psicologia": {
+    "servicos": [
+      { "nome": "Psicoterapia Individual", "desc": "Processo terapêutico semanal com escuta ativa e técnicas baseadas em evidências para promoção da saúde mental." },
+      { "nome": "Avaliação Psicológica", "desc": "Processo avaliativo com testes e entrevistas estruturadas para diagnóstico, orientação e emissão de laudos." },
+      { "nome": "Acompanhamento em Crise", "desc": "Suporte especializado em momentos de sofrimento agudo, episódios de ansiedade intensa ou luto." }
+    ],
+    "areas": [
+      { "nome": "Ansiedade e Pânico", "desc": "Tratamento de transtornos de ansiedade, síndrome do pânico e fobias específicas." },
+      { "nome": "Depressão", "desc": "Acompanhamento terapêutico para depressão maior, distimia e transtornos do humor." },
+      { "nome": "Relacionamentos", "desc": "Conflitos interpessoais, padrões relacionais disfuncionais e comunicação não-violenta." },
+      { "nome": "Autoestima e Identidade", "desc": "Desenvolvimento de autoconhecimento, fortalecimento da autoestima e construção de identidade." },
+      { "nome": "Estresse e Burnout", "desc": "Manejo do estresse ocupacional e recuperação do esgotamento profissional." },
+      { "nome": "Luto e Perdas", "desc": "Suporte terapêutico no processo de elaboração do luto e adaptação a perdas significativas." }
+    ],
+    "faq": [
+      { "q": "Como funciona a psicoterapia?", "a": "A psicoterapia é um processo de autoconhecimento realizado em sessões regulares. Em cada encontro você fala sobre suas experiências e emoções, e o psicólogo oferece escuta, reflexões e técnicas para promover mudanças duradouras." },
+      { "q": "Quantas sessões são necessárias?", "a": "A duração varia de acordo com os objetivos e a história de cada pessoa. Alguns processos levam meses, outros anos. O avanço é avaliado continuamente em conjunto entre paciente e terapeuta." },
+      { "q": "As sessões são sigilosas?", "a": "Sim. O sigilo é um princípio ético fundamental da Psicologia. Tudo o que é dito nas sessões é absolutamente confidencial, salvo situações de risco de vida previstas pelo Código de Ética Profissional." },
+      { "q": "Qual a diferença entre psicólogo e psiquiatra?", "a": "O psicólogo realiza psicoterapia e avaliação psicológica, mas não prescreve medicamentos. O psiquiatra é médico e pode prescrever. Muitas vezes o trabalho conjunto é indicado e traz os melhores resultados." },
+      { "q": "Como faço para agendar uma consulta?", "a": "O agendamento é feito diretamente pelo WhatsApp. Basta enviar uma mensagem informando o motivo da consulta e aguardar a confirmação de data e horário disponível." }
+    ]
+  },
+  "odontologia": {
+    "servicos": [
+      { "nome": "Consulta e Diagnóstico", "desc": "Avaliação completa da saúde bucal com radiografias e plano de tratamento personalizado." },
+      { "nome": "Tratamento Restaurador", "desc": "Restaurações em resina, tratamento de cáries, endodontia e reabilitação oral com alta precisão." },
+      { "nome": "Odontologia Estética", "desc": "Clareamento dental, facetas em porcelana, lentes de contato e harmonização do sorriso." }
+    ],
+    "areas": [
+      { "nome": "Dentística e Restauração", "desc": "Restaurações em resina composta e tratamento de cáries com técnicas minimamente invasivas." },
+      { "nome": "Implantes Dentários", "desc": "Implantes osseointegrados de titânio para reposição de dentes perdidos com resultado natural." },
+      { "nome": "Ortodontia", "desc": "Aparelhos metálicos, cerâmicos e alinhadores invisíveis para correção do posicionamento dental." },
+      { "nome": "Clareamento Dental", "desc": "Clareamento de consultório e caseiro com géis de alta concentração e resultado duradouro." },
+      { "nome": "Periodontia", "desc": "Tratamento de gengivas, raspagem, controle da periodontite e manutenção periodontal." },
+      { "nome": "Endodontia (Canal)", "desc": "Tratamento de canal com tecnologia rotária para eliminar infecções e preservar o dente." }
+    ],
+    "faq": [
+      { "q": "O tratamento odontológico dói?", "a": "Com anestesia local moderna, os procedimentos são praticamente indolores. Após a consulta pode haver leve sensibilidade, que passa em 24-48h. O conforto do paciente é prioridade em cada atendimento." },
+      { "q": "Com que frequência devo ir ao dentista?", "a": "Recomendamos consultas de revisão a cada 6 meses para prevenção e limpeza profissional. Pacientes com maior risco de cárie ou doença periodontal podem necessitar de visitas mais frequentes." },
+      { "q": "Quantas sessões leva um clareamento?", "a": "O clareamento de consultório leva 1 a 2 sessões de aproximadamente 1h cada. O clareamento caseiro orientado leva de 2 a 3 semanas. O resultado depende da cor inicial dos dentes e dos hábitos alimentares." },
+      { "q": "O implante dentário dói? Quanto tempo leva?", "a": "A cirurgia de implante é feita com anestesia local e é bem tolerada. O período de osseointegração leva de 3 a 6 meses. A dor pós-operatória é controlada com analgésicos comuns." },
+      { "q": "Como faço para agendar uma consulta?", "a": "O agendamento é feito diretamente pelo WhatsApp. Basta enviar uma mensagem informando o que deseja tratar e aguardar a confirmação do melhor horário disponível." }
+    ]
+  },
+  "cardiologia": {
+    "servicos": [
+      { "nome": "Consulta Cardiológica", "desc": "Avaliação clínica completa do sistema cardiovascular com anamnese detalhada e exame físico." },
+      { "nome": "Exames Complementares", "desc": "Solicitação e interpretação de eletrocardiograma, ecocardiograma, holter e teste ergométrico." },
+      { "nome": "Prevenção Cardiovascular", "desc": "Estratificação de risco cardíaco, controle de fatores de risco e orientação para estilo de vida saudável." }
+    ],
+    "areas": [
+      { "nome": "Hipertensão Arterial", "desc": "Diagnóstico, controle e tratamento da pressão alta com ajuste individualizado de medicação." },
+      { "nome": "Arritmias Cardíacas", "desc": "Investigação e manejo de palpitações, taquicardia, bradicardia e fibrilação atrial." },
+      { "nome": "Insuficiência Cardíaca", "desc": "Acompanhamento clínico da IC com ajuste de terapia medicamentosa e orientação de atividade." },
+      { "nome": "Doença Coronariana", "desc": "Prevenção e tratamento da doença arterial coronariana e síndrome coronariana aguda." },
+      { "nome": "Prevenção de AVC", "desc": "Identificação de fatores de risco para acidente vascular cerebral e estratégias preventivas." },
+      { "nome": "Check-up Cardiológico", "desc": "Avaliação cardiovascular periódica para detecção precoce de doenças do coração." }
+    ],
+    "faq": [
+      { "q": "Quando devo procurar um cardiologista?", "a": "Procure um cardiologista se sentir dor no peito, falta de ar, palpitações, desmaios, pressão alta ou se tiver histórico familiar de doenças cardíacas. A prevenção é sempre o melhor caminho." },
+      { "q": "O que é o check-up cardiológico?", "a": "É uma avaliação completa do coração que inclui consulta clínica, eletrocardiograma e exames laboratoriais. É recomendado a partir dos 40 anos ou antes se houver fatores de risco como diabetes ou tabagismo." },
+      { "q": "A pressão alta tem cura?", "a": "A hipertensão arterial geralmente não tem cura, mas tem controle. Com medicação adequada, mudanças no estilo de vida, dieta e exercício regular, é possível manter a pressão sob controle e prevenir complicações." },
+      { "q": "O que fazer em caso de dor no peito?", "a": "Dor no peito, especialmente associada a falta de ar, suor frio ou irradiação para o braço esquerdo, é sinal de emergência. Ligue imediatamente para o SAMU (192) ou vá ao pronto-socorro mais próximo." },
+      { "q": "Como faço para agendar uma consulta?", "a": "O agendamento é feito diretamente pelo WhatsApp. Basta enviar uma mensagem informando seus sintomas ou o motivo da consulta e aguardar a confirmação de data e horário disponível." }
+    ]
+  },
+  "pediatria": {
+    "servicos": [
+      { "nome": "Consulta Pediátrica", "desc": "Atendimento clínico completo para crianças e adolescentes com avaliação do crescimento e desenvolvimento." },
+      { "nome": "Puericultura", "desc": "Acompanhamento periódico do desenvolvimento infantil, vacinação e orientação familiar desde o nascimento." },
+      { "nome": "Urgências Pediátricas", "desc": "Atendimento ágil para febre, infecções, dificuldade respiratória e outras situações agudas." }
+    ],
+    "areas": [
+      { "nome": "Recém-nascidos e Lactentes", "desc": "Acompanhamento do bebê desde os primeiros dias de vida: amamentação, ganho de peso e desenvolvimento." },
+      { "nome": "Vacinação e Imunização", "desc": "Orientação sobre o calendário vacinal, vacinas da rede pública e vacinas recomendadas privadas." },
+      { "nome": "Crescimento e Desenvolvimento", "desc": "Avaliação do desenvolvimento neuropsicomotor, linguagem, sono e comportamento infantil." },
+      { "nome": "Doenças Respiratórias", "desc": "Tratamento de bronquite, asma, pneumonia, bronquiolite e infecções respiratórias recorrentes." },
+      { "nome": "Alergias e Intolerâncias", "desc": "Diagnóstico e manejo de alergia alimentar, rinite alérgica, dermatite e asma na infância." },
+      { "nome": "Saúde do Adolescente", "desc": "Acompanhamento da puberdade, saúde mental, nutrição e orientação para pais de adolescentes." }
+    ],
+    "faq": [
+      { "q": "A partir de que idade o pediatra atende?", "a": "O pediatra acompanha desde recém-nascidos até adolescentes de 18 anos. O ideal é que a primeira consulta aconteça ainda na maternidade ou na primeira semana de vida do bebê." },
+      { "q": "O que é puericultura?", "a": "Puericultura são as consultas periódicas de acompanhamento do crescimento e desenvolvimento da criança. Nos primeiros anos são mais frequentes e vão espaçando conforme a criança cresce. São fundamentais para prevenir e detectar problemas precocemente." },
+      { "q": "Quando devo levar meu filho ao pediatra com urgência?", "a": "Procure atendimento urgente se a criança tiver febre acima de 39°C em menores de 3 meses, dificuldade para respirar, manchas na pele, recusa total de alimentação, convulsão ou alteração do nível de consciência." },
+      { "q": "O pediatra orienta sobre vacinação?", "a": "Sim! Orientação sobre o calendário vacinal faz parte do acompanhamento de rotina. O pediatra indica quais vacinas são necessárias pelo SUS e quais são recomendadas nas clínicas, explicando a importância de cada uma." },
+      { "q": "Como faço para agendar uma consulta?", "a": "O agendamento é feito diretamente pelo WhatsApp. Informe a idade da criança e o motivo da consulta para que possamos indicar o melhor horário disponível." }
+    ]
+  },
+  "dermatologia": {
+    "servicos": [
+      { "nome": "Consulta Dermatológica", "desc": "Avaliação clínica completa da pele, cabelo e unhas com diagnóstico preciso e tratamento personalizado." },
+      { "nome": "Dermatologia Estética", "desc": "Tratamentos estéticos faciais e corporais: toxina botulínica, preenchimento, peelings e bioestimuladores." },
+      { "nome": "Cirurgia Dermatológica", "desc": "Remoção de lesões benignas e malignas da pele com técnica cirúrgica precisa e cicatrização cuidadosa." }
+    ],
+    "areas": [
+      { "nome": "Acne e Oleosidade", "desc": "Tratamento completo da acne juvenil e adulta com dermocosméticos, medicação oral e procedimentos." },
+      { "nome": "Dermatite e Eczema", "desc": "Diagnóstico e controle de dermatite atópica, dermatite de contato e eczema crônico." },
+      { "nome": "Psoríase e Doenças Autoimunes", "desc": "Acompanhamento de psoríase, lúpus cutâneo, vitiligo e outras dermatoses inflamatórias." },
+      { "nome": "Oncologia Cutânea", "desc": "Mapeamento de nevos, diagnóstico precoce de melanoma e rastreamento de câncer de pele." },
+      { "nome": "Estética e Envelhecimento", "desc": "Prevenção e tratamento do envelhecimento cutâneo com toxina botulínica, preenchimento e lasers." },
+      { "nome": "Cabelo e Unhas", "desc": "Diagnóstico e tratamento de queda de cabelo, alopecia androgenética, micoses e onicomicose." }
+    ],
+    "faq": [
+      { "q": "Com que frequência devo fazer o mapeamento de pintas?", "a": "O mapeamento de nevos é recomendado anualmente para todas as pessoas. Quem tem muitas pintas, histórico familiar de melanoma ou exposição solar intensa deve manter acompanhamento mais frequente." },
+      { "q": "A toxina botulínica é segura?", "a": "Sim, quando aplicada por médico habilitado com produto registrado na Anvisa. A toxina botulínica é um dos procedimentos estéticos mais estudados do mundo. Os efeitos duram de 4 a 6 meses." },
+      { "q": "O que fazer para controlar a acne?", "a": "O tratamento da acne varia conforme a gravidade e o tipo. Pode incluir dermocosméticos específicos, antibióticos tópicos ou orais, e procedimentos como peeling. A automedicação pode agravar o quadro." },
+      { "q": "Qual a diferença entre mancha solar e câncer de pele?", "a": "A diferença é feita pelo dermatologista durante o exame clínico, com auxílio da dermatoscopia. Qualquer lesão que mude de cor, tamanho ou sangre espontaneamente deve ser avaliada com urgência." },
+      { "q": "Como faço para agendar uma consulta?", "a": "O agendamento é feito diretamente pelo WhatsApp. Basta enviar uma mensagem descrevendo o que deseja tratar e aguardar a confirmação de data e horário disponível." }
+    ]
+  },
+  "nutricao": {
+    "servicos": [
+      { "nome": "Consulta Nutricional", "desc": "Avaliação completa do estado nutricional com bioimpedância, antropometria e análise dos hábitos alimentares." },
+      { "nome": "Plano Alimentar Personalizado", "desc": "Elaboração de cardápio individualizado respeitando preferências, rotina e objetivos do paciente." },
+      { "nome": "Reeducação Alimentar", "desc": "Acompanhamento contínuo para estabelecer uma relação saudável e sustentável com a alimentação." }
+    ],
+    "areas": [
+      { "nome": "Emagrecimento Saudável", "desc": "Perda de peso sustentável sem dietas restritivas, focada em mudança de comportamento alimentar." },
+      { "nome": "Nutrição Esportiva", "desc": "Adequação alimentar para melhora da performance, ganho de massa muscular e recuperação pós-treino." },
+      { "nome": "Nutrição Clínica", "desc": "Manejo nutricional de doenças crônicas como diabetes, hipertensão, dislipidemia e doenças renais." },
+      { "nome": "Nutrição na Gestação", "desc": "Acompanhamento nutricional durante a gravidez e amamentação para saúde da mãe e do bebê." },
+      { "nome": "Intolerâncias Alimentares", "desc": "Identificação e manejo nutricional de intolerância à lactose, doença celíaca e alergias alimentares." },
+      { "nome": "Saúde Digestiva e Intestinal", "desc": "Suporte nutricional para síndrome do intestino irritável, constipação e microbiota intestinal." }
+    ],
+    "faq": [
+      { "q": "Quantas consultas são necessárias?", "a": "A primeira consulta dura cerca de 1 hora. Os retornos são mensais no início e vão espaçando conforme a evolução. Para resultados duradouros, recomendamos acompanhamento de pelo menos 6 meses." },
+      { "q": "A dieta vai ser muito restritiva?", "a": "Não. A proposta é construir uma alimentação saudável, gostosa e que caiba na sua rotina. Restrições extremas não são sustentáveis a longo prazo e fazem parte de uma visão ultrapassada da nutrição." },
+      { "q": "Preciso fazer exames antes da consulta?", "a": "Não é obrigatório, mas exames laboratoriais recentes (hemograma, glicemia, colesterol, TSH) enriquecem a avaliação. Se não tiver, o nutricionista pode solicitá-los após a consulta." },
+      { "q": "Tenho intolerância à lactose. Consegue me atender?", "a": "Sim! Intolerâncias e alergias alimentares são trabalhadas com adaptações no plano alimentar para garantir nutrição adequada sem os alimentos problemáticos, sem comprometer o prazer de comer." },
+      { "q": "Como faço para agendar uma consulta?", "a": "O agendamento é feito diretamente pelo WhatsApp. Informe seu objetivo principal (emagrecimento, saúde, performance) e aguardar a confirmação de data e horário disponível." }
+    ]
+  },
+  "fisioterapia": {
+    "servicos": [
+      { "nome": "Avaliação Fisioterapêutica", "desc": "Avaliação postural, funcional e cinesiológica completa para identificar causas e elaborar o plano de tratamento." },
+      { "nome": "Reabilitação Musculoesquelética", "desc": "Tratamento de lesões, dores crônicas e pós-cirúrgico com técnicas manuais e exercício terapêutico." },
+      { "nome": "Tratamento da Dor", "desc": "Alívio de dor aguda e crônica com eletroterapia, terapia manual, dry needling e cinesioterapia." }
+    ],
+    "areas": [
+      { "nome": "Coluna Vertebral", "desc": "Tratamento de lombalgia, cervicalgia, hérnia de disco, escoliose e dor ciática." },
+      { "nome": "Joelho e Quadril", "desc": "Reabilitação de lesões do joelho (LCA, menisco), artrose e pós-operatório de prótese." },
+      { "nome": "Ombro e Membros Superiores", "desc": "Tratamento de tendinite, síndrome do manguito rotador, epicondilite e síndrome do túnel do carpo." },
+      { "nome": "Fisioterapia Neurológica", "desc": "Reabilitação de sequelas de AVC, Parkinson, esclerose múltipla e lesões medulares." },
+      { "nome": "Pós-cirúrgico e Trauma", "desc": "Recuperação de cirurgias ortopédicas, fraturas, reconstruções ligamentares e artroplastias." },
+      { "nome": "Fisioterapia Esportiva", "desc": "Prevenção e reabilitação de lesões esportivas com retorno seguro e progressivo à prática." }
+    ],
+    "faq": [
+      { "q": "Quantas sessões de fisioterapia vou precisar?", "a": "Depende da condição tratada. Lesões agudas costumam responder em 8-12 sessões. Condições crônicas ou pós-operatórios podem exigir tratamentos mais longos. O progresso é avaliado a cada 5-6 sessões." },
+      { "q": "A fisioterapia dói?", "a": "Algumas técnicas podem gerar desconforto temporário, mas não devem causar dor intensa. O fisioterapeuta adapta a intensidade ao limiar de cada paciente. Comunicar a dor durante o atendimento é fundamental." },
+      { "q": "Preciso de encaminhamento médico?", "a": "Não é obrigatório para consultar o fisioterapeuta. Porém, se houver suspeita de fratura, lesão grave ou condição clínica complexa, o encaminhamento médico facilita o acesso a exames e garante segurança no tratamento." },
+      { "q": "Qual a diferença entre fisioterapia e academia?", "a": "A fisioterapia é um tratamento de saúde individualizado, realizado por profissional habilitado. Os exercícios são prescritos para sua condição específica, diferente dos exercícios genéricos de academia." },
+      { "q": "Como faço para agendar uma consulta?", "a": "O agendamento é feito diretamente pelo WhatsApp. Informe a região do corpo e o problema que deseja tratar para que possamos indicar o melhor horário disponível." }
+    ]
+  },
+  "oftalmologia": {
+    "servicos": [
+      { "nome": "Consulta Oftalmológica", "desc": "Avaliação completa da visão com refração, tonometria, fundo de olho e prescrição de óculos ou lentes." },
+      { "nome": "Exames Diagnósticos", "desc": "Topografia de córnea, tomografia de retina (OCT), campo visual e angiofluoresceinografia." },
+      { "nome": "Tratamentos e Cirurgias", "desc": "Indicação e acompanhamento de cirurgia de catarata, glaucoma, LASIK e cirurgia refrativa." }
+    ],
+    "areas": [
+      { "nome": "Erros Refrativos", "desc": "Correção de miopia, hipermetropia e astigmatismo com óculos, lentes de contato ou cirurgia." },
+      { "nome": "Catarata", "desc": "Diagnóstico e indicação cirúrgica da catarata com implante de lente intraocular de alta tecnologia." },
+      { "nome": "Glaucoma", "desc": "Rastreamento, diagnóstico precoce e acompanhamento do glaucoma para preservação da visão." },
+      { "nome": "Degeneração Macular", "desc": "Monitoramento e tratamento da DMRI com injeções intravítreas de anti-VEGF." },
+      { "nome": "Estrabismo", "desc": "Avaliação e tratamento do estrabismo em adultos e crianças, com indicação de cirurgia quando necessário." },
+      { "nome": "Check-up Visual", "desc": "Avaliação oftalmológica de rotina para detecção precoce de doenças oculares assintomáticas." }
+    ],
+    "faq": [
+      { "q": "Com que frequência devo ir ao oftalmologista?", "a": "Recomenda-se consulta anual para quem usa óculos ou lentes. Para maiores de 40 anos, a frequência deve ser anual mesmo sem sintomas, para rastrear glaucoma e outras doenças silenciosas." },
+      { "q": "A cirurgia de LASIK é segura?", "a": "Sim, o LASIK é um procedimento seguro e amplamente realizado no mundo. A indicação é feita após avaliação criteriosa da córnea. Nem todos os pacientes são candidatos — a consulta pré-operatória define a elegibilidade." },
+      { "q": "Meu filho precisa de óculos. A partir de quando posso avaliar?", "a": "O exame oftalmológico pode ser feito a partir do nascimento. Recomendamos a primeira consulta entre 6 e 12 meses de vida. Erros refrativos não tratados na infância podem causar ambliopia (olho preguiçoso)." },
+      { "q": "O que é glaucoma e como sei se tenho?", "a": "O glaucoma é uma doença que danifica o nervo óptico, geralmente por aumento da pressão intraocular. Na maioria dos casos é assintomático até estágios avançados. Por isso o rastreamento regular é fundamental." },
+      { "q": "Como faço para agendar uma consulta?", "a": "O agendamento é feito diretamente pelo WhatsApp. Informe se é consulta de rotina, retorno ou se tem algum sintoma específico para que possamos indicar o melhor horário." }
+    ]
+  },
+  "ortopedia": {
+    "servicos": [
+      { "nome": "Consulta Ortopédica", "desc": "Avaliação clínica completa do sistema musculoesquelético com exame físico e análise de imagens." },
+      { "nome": "Tratamento Conservador", "desc": "Manejo não-cirúrgico de lesões e doenças ortopédicas com medicação, infiltração e fisioterapia." },
+      { "nome": "Indicação Cirúrgica", "desc": "Avaliação criteriosa para cirurgias ortopédicas com planejamento pré-operatório e acompanhamento." }
+    ],
+    "areas": [
+      { "nome": "Coluna Vertebral", "desc": "Tratamento de hérnia de disco, estenose, escoliose, dor lombar e cervicalgia crônica." },
+      { "nome": "Joelho", "desc": "Lesões de ligamentos (LCA, LCP), menisco, artrose de joelho e indicação de prótese." },
+      { "nome": "Quadril", "desc": "Artrose de quadril, displasia, impingement femoroacetabular e artroplastia total de quadril." },
+      { "nome": "Ombro e Cotovelo", "desc": "Síndrome do manguito rotador, luxação, epicondilite, lesões do tendão distal do bíceps." },
+      { "nome": "Fraturas e Trauma", "desc": "Diagnóstico e tratamento de fraturas, luxações e lesões traumáticas com cirurgia minimamente invasiva." },
+      { "nome": "Medicina Esportiva", "desc": "Lesões em atletas, entorses, rupturas ligamentares e retorno seguro à prática esportiva." }
+    ],
+    "faq": [
+      { "q": "Toda dor nas costas precisa de cirurgia?", "a": "Não. A grande maioria dos casos de dor lombar melhora com tratamento conservador: fisioterapia, medicação e mudanças de hábito. A cirurgia é indicada em situações específicas após falha do tratamento clínico." },
+      { "q": "O que é infiltração e quando é indicada?", "a": "Infiltração é a aplicação de medicamento (geralmente corticoide + anestésico) diretamente na região afetada. É indicada para dores articulares intensas, tendinites e bursites que não respondem ao tratamento convencional." },
+      { "q": "Com quanto tempo me recupero de uma cirurgia de joelho?", "a": "Depende do procedimento. Uma artroscopia simples pode ter recuperação em 4-6 semanas. Uma prótese total de joelho leva de 3 a 6 meses para retorno às atividades normais, com fisioterapia desde o pós-operatório imediato." },
+      { "q": "Posso continuar praticando esporte com artrose?", "a": "Sim, na maioria dos casos. A atividade física moderada e de baixo impacto é benéfica para a artrose. O ortopedista orienta quais atividades são adequadas para cada grau de comprometimento articular." },
+      { "q": "Como faço para agendar uma consulta?", "a": "O agendamento é feito diretamente pelo WhatsApp. Informe a região afetada e o problema que deseja tratar para que possamos indicar o melhor horário disponível." }
+    ]
+  },
+  "neurologia": {
+    "servicos": [
+      { "nome": "Consulta Neurológica", "desc": "Avaliação completa do sistema nervoso com exame neurológico detalhado e anamnese direcionada." },
+      { "nome": "Investigação Diagnóstica", "desc": "Solicitação e interpretação de eletroencefalograma, eletromiografia, RM e tomografia de crânio." },
+      { "nome": "Tratamento Neurológico", "desc": "Manejo clínico de doenças neurológicas com protocolos atualizados e seguimento longitudinal." }
+    ],
+    "areas": [
+      { "nome": "Cefaleia e Enxaqueca", "desc": "Diagnóstico diferencial e tratamento preventivo e de crise das cefaléias primárias e secundárias." },
+      { "nome": "Epilepsia", "desc": "Investigação, controle de crises epilépticas e ajuste individualizado de medicação antiepiléptica." },
+      { "nome": "Parkinson e Tremores", "desc": "Diagnóstico precoce e manejo da doença de Parkinson, tremor essencial e distúrbios do movimento." },
+      { "nome": "AVC e Prevenção", "desc": "Investigação de episódios isquêmicos, prevenção secundária e reabilitação neurológica pós-AVC." },
+      { "nome": "Doenças Desmielinizantes", "desc": "Diagnóstico e tratamento da esclerose múltipla e neuromielite óptica com medicações modificadoras." },
+      { "nome": "Tontura e Vertigem", "desc": "Diagnóstico diferencial de tontura, vertigem posicional, labirintite e síndrome de Ménière." }
+    ],
+    "faq": [
+      { "q": "Quando devo procurar um neurologista?", "a": "Procure um neurologista se tiver dores de cabeça frequentes e intensas, crises convulsivas, formigamentos, fraqueza em membros, alterações de memória, tontura intensa ou qualquer alteração neurológica persistente." },
+      { "q": "Dor de cabeça sempre é enxaqueca?", "a": "Não. Existem mais de 200 tipos de cefaléia. A enxaqueca é apenas um deles. O diagnóstico correto é fundamental para o tratamento adequado. Dores de cabeça frequentes ou muito intensas merecem avaliação neurológica." },
+      { "q": "O EEG consegue detectar epilepsia?", "a": "O eletroencefalograma é um exame complementar importante, mas não descarta nem confirma sozinho o diagnóstico de epilepsia. O diagnóstico é clínico, baseado na descrição das crises e na história do paciente." },
+      { "q": "Parkinson tem cura?", "a": "Ainda não existe cura para a doença de Parkinson, mas existem tratamentos eficazes que controlam os sintomas e preservam a qualidade de vida por muitos anos. O diagnóstico precoce é fundamental para o início do tratamento." },
+      { "q": "Como faço para agendar uma consulta?", "a": "O agendamento é feito diretamente pelo WhatsApp. Informe os sintomas principais e há quanto tempo os apresenta para que possamos indicar o melhor horário disponível." }
+    ]
+  },
+  "endocrinologia": {
+    "servicos": [
+      { "nome": "Consulta Endocrinológica", "desc": "Avaliação completa do sistema hormonal e metabólico com anamnese detalhada e exame físico." },
+      { "nome": "Controle Metabólico", "desc": "Manejo do diabetes, tireoide, obesidade e dislipidemia com protocolos atualizados e individualizados." },
+      { "nome": "Prevenção de Complicações", "desc": "Rastreamento precoce e prevenção de complicações endócrinas e metabólicas de longo prazo." }
+    ],
+    "areas": [
+      { "nome": "Diabetes", "desc": "Diagnóstico, controle glicêmico e prevenção de complicações do diabetes tipo 1 e tipo 2." },
+      { "nome": "Tireoide", "desc": "Hipotireoidismo, hipertireoidismo, nódulos tireoidianos e doença de Hashimoto." },
+      { "nome": "Obesidade e Sobrepeso", "desc": "Tratamento multidisciplinar da obesidade com abordagem clínica, nutricional e medicamentosa." },
+      { "nome": "Osteoporose", "desc": "Densitometria óssea, diagnóstico de osteoporose e tratamento para prevenção de fraturas." },
+      { "nome": "Desequilíbrios Hormonais", "desc": "Investigação e tratamento de alterações hormonais, tireoide, suprarrenal e hormônios sexuais." },
+      { "nome": "Dislipidemia", "desc": "Controle do colesterol e triglicerídeos com estratégias de redução de risco cardiovascular." }
+    ],
+    "faq": [
+      { "q": "Tenho diabetes. O endocrinologista pode me ajudar?", "a": "Sim! O endocrinologista é especialista no manejo do diabetes. O acompanhamento regular é fundamental para o controle glicêmico, ajuste de medicação e prevenção de complicações como nefropatia, neuropatia e retinopatia." },
+      { "q": "O TSH alto significa que tenho problema na tireoide?", "a": "O TSH elevado pode indicar hipotireoidismo. Porém, a interpretação depende do contexto clínico e de outros exames. Um único valor alterado não define o diagnóstico — a avaliação clínica é essencial." },
+      { "q": "Engordei sem motivo aparente. Pode ser hormonal?", "a": "Pode ser. Alterações na tireoide, insulina e cortisol podem influenciar o peso. O endocrinologista avalia o perfil hormonal completo para identificar se há causa endócrina para o ganho de peso." },
+      { "q": "Quando devo fazer densitometria óssea?", "a": "Mulheres a partir dos 65 anos e homens acima de 70 devem fazer o exame. Antes disso, é indicado para quem usa corticoides, tem histórico de fraturas, menopausa precoce ou baixo peso." },
+      { "q": "Como faço para agendar uma consulta?", "a": "O agendamento é feito diretamente pelo WhatsApp. Informe o problema principal (tireoide, diabetes, peso) e traga seus exames mais recentes para a consulta." }
+    ]
+  },
+  "ginecologia": {
+    "servicos": [
+      { "nome": "Consulta Ginecológica", "desc": "Avaliação completa da saúde feminina com exame clínico, orientação e exames preventivos." },
+      { "nome": "Exames Preventivos", "desc": "Papanicolau, colposcopia, ultrassom transvaginal e rastreamento de doenças ginecológicas." },
+      { "nome": "Acompanhamento Gestacional", "desc": "Pré-natal completo com acompanhamento de cada etapa da gestação até o nascimento." }
+    ],
+    "areas": [
+      { "nome": "Prevenção e Check-up", "desc": "Exame ginecológico de rotina, preventivo e rastreamento de câncer de colo e mama." },
+      { "nome": "Contracepção", "desc": "Orientação sobre todos os métodos contraceptivos: pílulas, DIU, implante e preservativos." },
+      { "nome": "Saúde na Gestação", "desc": "Pré-natal de baixo e alto risco com acompanhamento clínico e exames de cada trimestre." },
+      { "nome": "Menopausa e Climatério", "desc": "Manejo dos sintomas da menopausa com terapia hormonal e alternativas não hormonais." },
+      { "nome": "Doenças Sexualmente Transmissíveis", "desc": "Rastreamento, diagnóstico e tratamento de ISTs incluindo HPV, sífilis e herpes genital." },
+      { "nome": "Mioma e Endometriose", "desc": "Diagnóstico e acompanhamento de miomas uterinos, cistos ovarianos e endometriose." }
+    ],
+    "faq": [
+      { "q": "A partir de quando devo ir ao ginecologista?", "a": "A primeira consulta ginecológica é recomendada quando a menina inicia a vida sexual ou a partir dos 21 anos, o que ocorrer primeiro. Porém, questões sobre menstruação e desenvolvimento podem ser abordadas antes disso." },
+      { "q": "Com que frequência devo fazer o preventivo?", "a": "O Papanicolau é recomendado anualmente a partir do início da vida sexual. Após dois resultados normais consecutivos, pode ser feito a cada 3 anos. Não pare de fazer mesmo que não tenha sintomas." },
+      { "q": "Qual anticoncepcional é melhor para mim?", "a": "Não existe o melhor anticoncepcional — existe o mais adequado para cada mulher. A escolha leva em conta histórico de saúde, hábitos, planos de gravidez futura e preferências pessoais. A consulta ginecológica define a melhor opção." },
+      { "q": "A menopausa tem tratamento?", "a": "Sim. A terapia hormonal alivia os principais sintomas (fogachos, ressecamento vaginal, insônia). Existem também opções não hormonais. A decisão sobre o tratamento é individualizada após avaliação clínica e exames." },
+      { "q": "Como faço para agendar uma consulta?", "a": "O agendamento é feito diretamente pelo WhatsApp. Informe se é consulta de rotina, retorno ou se tem algum sintoma específico para que possamos indicar o melhor horário." }
+    ]
+  },
+  "urologia": {
+    "servicos": [
+      { "nome": "Consulta Urológica", "desc": "Avaliação completa do sistema urinário masculino e feminino e do aparelho genital masculino." },
+      { "nome": "Diagnóstico Urológico", "desc": "Urofluxometria, ultrassom de vias urinárias, PSA e biopsia de próstata com orientação completa." },
+      { "nome": "Tratamento Cirúrgico", "desc": "Cirurgias para litíase renal, hiperplasia de próstata, incontinência e procedimentos endoscópicos." }
+    ],
+    "areas": [
+      { "nome": "Saúde da Próstata", "desc": "Rastreamento de câncer de próstata com PSA, toque retal e acompanhamento da hiperplasia benigna." },
+      { "nome": "Incontinência Urinária", "desc": "Diagnóstico e tratamento da perda involuntária de urina em homens e mulheres." },
+      { "nome": "Cálculo Renal (Pedra nos Rins)", "desc": "Tratamento da litíase renal com litotripsia, ureteroscopia ou cirurgia minimamente invasiva." },
+      { "nome": "Infecção Urinária", "desc": "Diagnóstico e tratamento de ITUs recorrentes, cistite e pielonefrite." },
+      { "nome": "Andrologia", "desc": "Disfunção erétil, infertilidade masculina, varicocele e hipogonadismo." },
+      { "nome": "Oncologia Urológica", "desc": "Diagnóstico e tratamento de câncer de próstata, rim, bexiga e testículo." }
+    ],
+    "faq": [
+      { "q": "A partir de que idade devo fazer o PSA?", "a": "O rastreamento com PSA é recomendado a partir dos 50 anos para homens com risco médio. Homens negros ou com histórico familiar de câncer de próstata devem iniciar aos 40-45 anos. A consulta define o protocolo ideal." },
+      { "q": "Pedra nos rins dói muito? Tem tratamento?", "a": "Sim, a cólica renal é uma das dores mais intensas que existem. O tratamento depende do tamanho e localização do cálculo: pequenos podem passar espontaneamente, maiores precisam de litotripsia ou cirurgia." },
+      { "q": "Disfunção erétil tem cura?", "a": "Em muitos casos sim, especialmente quando há causa identificável (hormonal, vascular, psicológica). O tratamento varia desde ajuste de hábitos e medicação oral até terapias mais específicas. A avaliação urológica define o melhor caminho." },
+      { "q": "Mulheres também precisam de urologista?", "a": "Sim! O urologista trata doenças urinárias em ambos os sexos. Infecções urinárias recorrentes, incontinência urinária e cistite intersticial são condições frequentes em mulheres que têm tratamento urológico específico." },
+      { "q": "Como faço para agendar uma consulta?", "a": "O agendamento é feito diretamente pelo WhatsApp. Informe o problema principal que deseja tratar para que possamos indicar o melhor horário disponível." }
+    ]
+  },
+  "gastroenterologia": {
+    "servicos": [
+      { "nome": "Consulta Gastroenterológica", "desc": "Avaliação completa do aparelho digestivo com anamnese detalhada e exame clínico direcionado." },
+      { "nome": "Endoscopia Digestiva", "desc": "Realização e interpretação de endoscopia alta (EDA) e colonoscopia para diagnóstico e tratamento." },
+      { "nome": "Tratamento de Doenças Digestivas", "desc": "Manejo clínico de doenças inflamatórias intestinais, hepáticas e digestivas funcionais e orgânicas." }
+    ],
+    "areas": [
+      { "nome": "Refluxo e Gastrite", "desc": "Diagnóstico e tratamento do refluxo gastroesofágico (DRGE), gastrite e úlcera péptica." },
+      { "nome": "Síndrome do Intestino Irritável", "desc": "Manejo da SII com abordagem dietética, medicamentosa e comportamental para alívio dos sintomas." },
+      { "nome": "Doenças Inflamatórias Intestinais", "desc": "Tratamento de doença de Crohn e retocolite ulcerativa com medicações convencionais e biológicos." },
+      { "nome": "Doenças do Fígado", "desc": "Diagnóstico e acompanhamento de hepatite B, C, esteatose hepática e cirrose." },
+      { "nome": "Hemorroidas e Doenças do Ânus", "desc": "Diagnóstico e tratamento de hemorroidas, fissura anal e fístulas com ou sem cirurgia." },
+      { "nome": "Rastreamento de Câncer", "desc": "Colonoscopia de rastreamento para prevenção e detecção precoce do câncer colorretal." }
+    ],
+    "faq": [
+      { "q": "A endoscopia dói?", "a": "A endoscopia é realizada com sedação venosa, por isso o paciente fica dormindo durante o exame e não sente dor. O procedimento dura de 10 a 20 minutos e a recuperação da sedação é rápida." },
+      { "q": "Com que frequência devo fazer colonoscopia?", "a": "A colonoscopia de rastreamento é recomendada a partir dos 50 anos para pessoas sem fatores de risco. Com histórico familiar de câncer colorretal, o exame deve ser feito antes. A frequência depende dos achados anteriores." },
+      { "q": "Refluxo tem cura?", "a": "O refluxo gastroesofágico pode ser controlado de forma muito eficaz com mudanças de hábito, alimentação adequada e medicação. Em casos selecionados, a cirurgia antirrefluxo pode oferecer resolução definitiva." },
+      { "q": "Como sei se tenho hemorroidas?", "a": "Os principais sintomas são sangramento após as evacuações, dor anal e sensação de peso. O diagnóstico é feito pelo exame clínico. A maioria dos casos tem tratamento clínico eficaz sem necessidade de cirurgia." },
+      { "q": "Como faço para agendar uma consulta?", "a": "O agendamento é feito diretamente pelo WhatsApp. Informe o sintoma principal (azia, dor abdominal, intestino) para que possamos indicar o melhor horário disponível." }
+    ]
+  },
+  "reumatologia": {
+    "servicos": [
+      { "nome": "Consulta Reumatológica", "desc": "Avaliação especializada de doenças autoimunes e inflamatórias articulares com exame físico completo." },
+      { "nome": "Diagnóstico de Doenças Autoimunes", "desc": "Investigação laboratorial com FAN, anti-DNA, complemento e painel reumatológico para diagnóstico preciso." },
+      { "nome": "Tratamento Biológico", "desc": "Indicação e monitoramento de terapias biológicas e imunossupressoras para doenças autoimunes graves." }
+    ],
+    "areas": [
+      { "nome": "Artrite Reumatoide", "desc": "Diagnóstico precoce e tratamento da artrite reumatoide para prevenção de dano articular." },
+      { "nome": "Lúpus Eritematoso", "desc": "Acompanhamento do lúpus sistêmico com monitoramento de órgãos-alvo e ajuste de terapia." },
+      { "nome": "Fibromialgia", "desc": "Diagnóstico e manejo da fibromialgia com abordagem multidisciplinar para melhora da qualidade de vida." },
+      { "nome": "Osteoporose", "desc": "Densitometria óssea, diagnóstico e tratamento de osteoporose para prevenção de fraturas." },
+      { "nome": "Gota e Hiperuricemia", "desc": "Controle das crises de gota e tratamento do ácido úrico elevado com medicação e dieta." },
+      { "nome": "Vasculites e Doenças Raras", "desc": "Investigação e tratamento de vasculites, espondilite anquilosante e artrite psoriásica." }
+    ],
+    "faq": [
+      { "q": "Dor nas juntas é sempre reumatismo?", "a": "Não. Dor articular tem muitas causas: lesões, sobrecarga, artrose, gota e doenças autoimunes. O reumatologista investiga a causa correta para indicar o tratamento mais eficaz e evitar progressão da doença." },
+      { "q": "Lúpus tem cura?", "a": "O lúpus não tem cura, mas tem controle. Com tratamento adequado, a maioria dos pacientes leva uma vida normal. O acompanhamento regular é fundamental para identificar atividade da doença e ajustar o tratamento." },
+      { "q": "Fibromialgia é uma doença real?", "a": "Sim. A fibromialgia é reconhecida pela OMS e pelas principais sociedades médicas. Causa dor crônica difusa, fadiga e distúrbios do sono. O tratamento combina medicação, exercício e abordagem psicológica." },
+      { "q": "O que é FAN positivo?", "a": "O FAN (fator antinuclear) é um exame de triagem para doenças autoimunes. Um resultado positivo não confirma doença — precisa ser interpretado junto com sintomas e outros exames pelo reumatologista." },
+      { "q": "Como faço para agendar uma consulta?", "a": "O agendamento é feito diretamente pelo WhatsApp. Informe os sintomas principais e há quanto tempo os apresenta para que possamos indicar o melhor horário disponível." }
+    ]
+  },
+  "default": {
+    "servicos": [
+      { "nome": "Consulta Clínica", "desc": "Avaliação completa com anamnese detalhada, exame físico e orientações personalizadas para sua saúde." },
+      { "nome": "Diagnóstico e Orientação", "desc": "Interpretação de exames, diagnóstico preciso e plano de cuidados baseado nas melhores evidências." },
+      { "nome": "Acompanhamento Contínuo", "desc": "Retornos periódicos com seguimento longitudinal para garantir qualidade e continuidade no cuidado." }
+    ],
+    "areas": [
+      { "nome": "Avaliação Clínica", "desc": "Consulta inicial completa com levantamento de histórico e definição do plano de cuidados." },
+      { "nome": "Prevenção e Saúde", "desc": "Orientações preventivas e promoção da saúde com abordagem baseada em evidências científicas." },
+      { "nome": "Diagnóstico Clínico", "desc": "Interpretação de exames e diagnóstico preciso para orientar o melhor tratamento." },
+      { "nome": "Acompanhamento Familiar", "desc": "Atendimento de toda a família com foco em saúde integral e qualidade de vida." },
+      { "nome": "Orientação Profissional", "desc": "Laudos, declarações e orientações para adequação clínica e necessidades específicas." },
+      { "nome": "Consulta de Retorno", "desc": "Reavaliação periódica e ajuste de conduta para garantir continuidade no tratamento." }
+    ],
+    "faq": [
+      { "q": "Como funciona a primeira consulta?", "a": "Na primeira consulta realizamos uma avaliação completa: anamnese detalhada, exame físico e revisão de exames anteriores. Ao final, você recebe orientações claras e um plano de cuidados personalizado." },
+      { "q": "Preciso trazer exames na consulta?", "a": "Recomendamos trazer exames recentes se tiver. Mas não é obrigatório — podemos solicitar o que for necessário durante a consulta. O importante é não adiar o cuidado por falta de documentação." },
+      { "q": "Quais documentos devo levar?", "a": "Documento de identidade, cartão do convênio (se houver), lista de medicamentos em uso e exames anteriores. Qualquer dúvida, entre em contato pelo WhatsApp antes da consulta." },
+      { "q": "Qual é a duração de uma consulta?", "a": "As consultas têm duração variável conforme a necessidade de cada paciente. A primeira consulta costuma ser mais detalhada. O objetivo é sempre garantir um atendimento completo e sem pressa." },
+      { "q": "Como faço para agendar uma consulta?", "a": "O agendamento é feito diretamente pelo WhatsApp. Basta enviar uma mensagem informando o motivo da consulta e aguardar a confirmação de data e horário disponível." }
+    ]
+  }
+}
