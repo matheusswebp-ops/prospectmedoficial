@@ -189,30 +189,24 @@ export async function processJob(job: Job<ProspectarJobData>): Promise<void> {
 
       const { error: insertError } = await supabase
         .from('leads')
-        .upsert(
-          {
-            user_id: userId,
-            batch_id: batchId,
-            nome: place.name,
-            nome_slug: nomeSlug,
-            especialidade,
-            telefone: place.phone || null,
-            telefone_e164: telefoneE164,
-            cidade: place.city || cidade,
-            endereco: place.full_address || null,
-            website_url: siteUrl,
-            google_maps_place_id: place.place_id || null,
-            pagespeed_score: pagespeedScore,
-            pagespeed_classificacao: classificacao,
-            score_total: scoreTotal,
-            foto_url: fotoUrl,
-            status_kanban: 'Novo',
-          },
-          {
-            onConflict: 'google_maps_place_id,user_id',
-            ignoreDuplicates: true,
-          }
-        )
+        .insert({
+          user_id: userId,
+          batch_id: batchId,
+          nome: place.name,
+          nome_slug: nomeSlug,
+          especialidade,
+          telefone: place.phone || null,
+          telefone_e164: telefoneE164,
+          cidade: place.city || cidade,
+          endereco: place.full_address || null,
+          website_url: siteUrl,
+          google_maps_place_id: place.place_id || null,
+          pagespeed_score: pagespeedScore,
+          pagespeed_classificacao: classificacao,
+          score_total: scoreTotal,
+          foto_url: fotoUrl,
+          status_kanban: 'Novo',
+        })
 
       if (!insertError) {
         totalInseridos++
