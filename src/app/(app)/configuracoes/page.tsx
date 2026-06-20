@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState, useTransition } from 'react'
-import { Eye, EyeOff, CheckCircle2, RefreshCw, Save, ExternalLink } from 'lucide-react'
+import { Eye, EyeOff, CheckCircle2, RefreshCw, Save, ExternalLink, Loader2, XCircle } from 'lucide-react'
 import { toast } from 'sonner'
 
 import { createClient } from '@/lib/supabase/client'
@@ -108,6 +108,12 @@ export default function ConfiguracoesPage() {
   const [outscraperConfigured, setOutscraperConfigured] = useState(false)
   const [vercelConfigured, setVercelConfigured] = useState(false)
 
+  // Test connection states
+  const [testingOutscraper, setTestingOutscraper] = useState(false)
+  const [outscraperStatus, setOutscraperStatus] = useState<'idle' | 'ok' | 'error'>('idle')
+  const [testingVercel, setTestingVercel] = useState(false)
+  const [vercelStatus, setVercelStatus] = useState<'idle' | 'ok' | 'error'>('idle')
+
   // Load current profile
   useEffect(() => {
     async function loadProfile() {
@@ -144,13 +150,62 @@ export default function ConfiguracoesPage() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  function handleTestOutscraper() {
+  async function handleTestOutscraper() {
     if (!outscraperKey || isMasked(outscraperKey)) {
-      toast.error('Informe uma API Key válida antes de testar.')
+      toast.error('Informe uma API Key antes de testar.')
       return
     }
-    // Simulated validation — a real test would call the API
-    toast.success('Conexão com Outscraper verificada com sucesso!')
+    setTestingOutscraper(true)
+    setOutscraperStatus('idle')
+    try {
+      const res = await fetch('/api/configuracoes/testar-outscraper', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ apiKey: outscraperKey }),
+      })
+      if (res.ok) {
+        setOutscraperStatus('ok')
+        toast.success('Google Places API conectada e ativa!')
+      } else {
+        const { error } = await res.json()
+        setOutscraperStatus('error')
+        toast.error(error ?? 'Falha ao conectar.')
+      }
+    } catch {
+      setOutscraperStatus('error')
+      toast.error('Erro de rede ao testar conexão.')
+    } finally {
+      setTestingOutscraper(false)
+    }
+  }
+
+  async function handleTestVercel() {
+    if (!vercelToken || isMasked(vercelToken)) {
+      toast.error('Informe o token da Vercel antes de testar.')
+      return
+    }
+    setTestingVercel(true)
+    setVercelStatus('idle')
+    try {
+      const res = await fetch('/api/configuracoes/testar-vercel', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ apiToken: vercelToken }),
+      })
+      if (res.ok) {
+        setVercelStatus('ok')
+        toast.success('Token Vercel verificado com sucesso!')
+      } else {
+        const { error } = await res.json()
+        setVercelStatus('error')
+        toast.error(error ?? 'Falha ao conectar à Vercel.')
+      }
+    } catch {
+      setVercelStatus('error')
+      toast.error('Erro de rede ao testar conexão.')
+    } finally {
+      setTestingVercel(false)
+    }
   }
 
   function handleRestoreTemplate() {
@@ -241,15 +296,32 @@ export default function ConfiguracoesPage() {
             </p>
           </div>
 
-          <Button
-            type="button"
-            variant="outline"
-            size="sm"
-            className="w-fit"
-            onClick={handleTestOutscraper}
-          >
-            Testar conexão
-          </Button>
+          <div className="flex items-center gap-3">
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              className="w-fit"
+              onClick={handleTestOutscraper}
+              disabled={testingOutscraper}
+            >
+              {testingOutscraper ? (
+                <><Loader2 className="w-3.5 h-3.5 mr-1.5 animate-spin" />Testando...</>
+              ) : (
+                'Testar conexão'
+              )}
+            </Button>
+            {outscraperStatus === 'ok' && (
+              <span className="flex items-center gap-1 text-xs font-medium text-emerald-600">
+                <CheckCircle2 className="w-3.5 h-3.5" /> Ativo
+              </span>
+            )}
+            {outscraperStatus === 'error' && (
+              <span className="flex items-center gap-1 text-xs font-medium text-red-500">
+                <XCircle className="w-3.5 h-3.5" /> Falhou
+              </span>
+            )}
+          </div>
         </CardContent>
       </Card>
 
@@ -319,6 +391,33 @@ export default function ConfiguracoesPage() {
               Configure um registro DNS wildcard <code className="bg-blue-100 px-1 py-0.5 rounded text-[11px]">*.seudominio.com</code>{' '}
               apontando para <code className="bg-blue-100 px-1 py-0.5 rounded text-[11px]">cname.vercel-dns.com</code> antes de ativar a geração de landing pages.
             </p>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              className="w-fit"
+              onClick={handleTestVercel}
+              disabled={testingVercel}
+            >
+              {testingVercel ? (
+                <><Loader2 className="w-3.5 h-3.5 mr-1.5 animate-spin" />Testando...</>
+              ) : (
+                'Testar conexão'
+              )}
+            </Button>
+            {vercelStatus === 'ok' && (
+              <span className="flex items-center gap-1 text-xs font-medium text-emerald-600">
+                <CheckCircle2 className="w-3.5 h-3.5" /> Ativo
+              </span>
+            )}
+            {vercelStatus === 'error' && (
+              <span className="flex items-center gap-1 text-xs font-medium text-red-500">
+                <XCircle className="w-3.5 h-3.5" /> Falhou
+              </span>
+            )}
           </div>
         </CardContent>
       </Card>
