@@ -64,11 +64,42 @@ function gerarSlugTratamento(especialidade: string): string {
 
 /**
  * Normaliza a query para o Google Maps embed.
- * Ex: "Dr. João Silva Cardiologista São Paulo" → URL-encoded string
  */
 function gerarMapsQuery(nome: string, especialidade: string, cidade: string): string {
   const query = `${nome} ${especialidade} ${cidade}`
   return encodeURIComponent(query)
+}
+
+/**
+ * Extrai o nome curto do profissional a partir do nome do Google Maps.
+ * Ex: "Psicóloga Clínica em Fortaleza - Penélope Freitas" → "Penélope Freitas"
+ * Ex: "Dr. João Silva" → "João Silva"
+ * Ex: "Clínica Vamos Sorrir" → "Clínica Vamos Sorrir" (sem mudança)
+ */
+function extrairNomeCurto(nome: string): string {
+  // Se tem " - ", pega a parte depois do traço (geralmente o nome pessoal)
+  if (nome.includes(' - ')) {
+    const parte = nome.split(' - ').pop()?.trim()
+    if (parte && parte.length > 3) return parte
+  }
+
+  // Remove prefixos de especialidade + cidade antes do nome
+  // Ex: "Psicóloga em Fortaleza | Ana Silva" → "Ana Silva"
+  const pipeMatch = nome.match(/[|]\s*(.+)$/)
+  if (pipeMatch?.[1]?.trim()) return pipeMatch[1].trim()
+
+  // Remove prefixos Dr/Dra/Prof
+  const semPrefixo = nome.replace(/^(dr\.?|dra\.?|prof\.?)\s+/i, '').trim()
+
+  // Se o nome ainda é muito longo (>35 chars), pega as últimas 2-3 palavras
+  if (semPrefixo.length > 35) {
+    const palavras = semPrefixo.split(/\s+/)
+    if (palavras.length > 3) {
+      return palavras.slice(-2).join(' ')
+    }
+  }
+
+  return semPrefixo
 }
 
 export interface GerarHtmlInput {
@@ -128,7 +159,7 @@ export function gerarHtml(lead: GerarHtmlInput): string {
 
   // Mapa de tokens → valores
   const tokenMap: Record<string, string> = {
-    '{{NOME}}': lead.nome,
+    '{{NOME}}': extrairNomeCurto(lead.nome),
     '{{ESPECIALIDADE}}': lead.especialidade,
     '{{CIDADE}}': lead.cidade,
     '{{TELEFONE_DISPLAY}}': telefoneDisplay,
