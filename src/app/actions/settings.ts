@@ -75,8 +75,7 @@ export async function updateSettings(payload: SettingsPayload): Promise<{ succes
       return { success: false, error: 'Erro ao salvar. Tente novamente.' }
     }
 
-    revalidatePath('/configuracoes')
-    revalidatePath('/dashboard')
+    revalidatePath('/', 'layout')
 
     return { success: true }
   } catch (err) {

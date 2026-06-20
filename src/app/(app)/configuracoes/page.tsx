@@ -296,32 +296,30 @@ export default function ConfiguracoesPage() {
             </p>
           </div>
 
-          <div className="flex items-center gap-3">
-            <Button
-              type="button"
-              variant="outline"
-              size="sm"
-              className="w-fit"
-              onClick={handleTestOutscraper}
-              disabled={testingOutscraper}
-            >
-              {testingOutscraper ? (
-                <><Loader2 className="w-3.5 h-3.5 mr-1.5 animate-spin" />Testando...</>
-              ) : (
-                'Testar conexão'
-              )}
-            </Button>
-            {outscraperStatus === 'ok' && (
-              <span className="flex items-center gap-1 text-xs font-medium text-emerald-600">
-                <CheckCircle2 className="w-3.5 h-3.5" /> Ativo
-              </span>
+          <Button
+            type="button"
+            size="sm"
+            className={`w-fit transition-colors ${
+              outscraperStatus === 'ok'
+                ? 'bg-emerald-600 hover:bg-emerald-700 text-white border-0'
+                : outscraperStatus === 'error'
+                ? 'bg-red-500 hover:bg-red-600 text-white border-0'
+                : 'variant-outline'
+            }`}
+            variant={outscraperStatus === 'idle' ? 'outline' : 'default'}
+            onClick={handleTestOutscraper}
+            disabled={testingOutscraper}
+          >
+            {testingOutscraper ? (
+              <><Loader2 className="w-3.5 h-3.5 mr-1.5 animate-spin" />Testando...</>
+            ) : outscraperStatus === 'ok' ? (
+              <><CheckCircle2 className="w-3.5 h-3.5 mr-1.5" />Ativo</>
+            ) : outscraperStatus === 'error' ? (
+              <><XCircle className="w-3.5 h-3.5 mr-1.5" />Falhou — Testar novamente</>
+            ) : (
+              'Testar conexão'
             )}
-            {outscraperStatus === 'error' && (
-              <span className="flex items-center gap-1 text-xs font-medium text-red-500">
-                <XCircle className="w-3.5 h-3.5" /> Falhou
-              </span>
-            )}
-          </div>
+          </Button>
         </CardContent>
       </Card>
 
@@ -393,32 +391,30 @@ export default function ConfiguracoesPage() {
             </p>
           </div>
 
-          <div className="flex items-center gap-3">
-            <Button
-              type="button"
-              variant="outline"
-              size="sm"
-              className="w-fit"
-              onClick={handleTestVercel}
-              disabled={testingVercel}
-            >
-              {testingVercel ? (
-                <><Loader2 className="w-3.5 h-3.5 mr-1.5 animate-spin" />Testando...</>
-              ) : (
-                'Testar conexão'
-              )}
-            </Button>
-            {vercelStatus === 'ok' && (
-              <span className="flex items-center gap-1 text-xs font-medium text-emerald-600">
-                <CheckCircle2 className="w-3.5 h-3.5" /> Ativo
-              </span>
+          <Button
+            type="button"
+            size="sm"
+            className={`w-fit transition-colors ${
+              vercelStatus === 'ok'
+                ? 'bg-emerald-600 hover:bg-emerald-700 text-white border-0'
+                : vercelStatus === 'error'
+                ? 'bg-red-500 hover:bg-red-600 text-white border-0'
+                : ''
+            }`}
+            variant={vercelStatus === 'idle' ? 'outline' : 'default'}
+            onClick={handleTestVercel}
+            disabled={testingVercel}
+          >
+            {testingVercel ? (
+              <><Loader2 className="w-3.5 h-3.5 mr-1.5 animate-spin" />Testando...</>
+            ) : vercelStatus === 'ok' ? (
+              <><CheckCircle2 className="w-3.5 h-3.5 mr-1.5" />Ativo</>
+            ) : vercelStatus === 'error' ? (
+              <><XCircle className="w-3.5 h-3.5 mr-1.5" />Falhou — Testar novamente</>
+            ) : (
+              'Testar conexão'
             )}
-            {vercelStatus === 'error' && (
-              <span className="flex items-center gap-1 text-xs font-medium text-red-500">
-                <XCircle className="w-3.5 h-3.5" /> Falhou
-              </span>
-            )}
-          </div>
+          </Button>
         </CardContent>
       </Card>
 
