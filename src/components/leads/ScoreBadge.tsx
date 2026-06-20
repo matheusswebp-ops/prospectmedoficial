@@ -8,10 +8,11 @@ interface ScoreBadgeProps {
 }
 
 export function ScoreBadge({ score, className }: ScoreBadgeProps) {
+  // Score vai de 0–12: ≥8 verde, 4–7 amarelo, <4 vermelho
   const config =
-    score >= 70
+    score >= 8
       ? { bg: 'bg-emerald-50', text: 'text-emerald-700', border: 'border-emerald-200', dot: 'bg-emerald-500' }
-      : score >= 40
+      : score >= 4
       ? { bg: 'bg-amber-50', text: 'text-amber-700', border: 'border-amber-200', dot: 'bg-amber-500' }
       : { bg: 'bg-red-50', text: 'text-red-700', border: 'border-red-200', dot: 'bg-red-500' }
 
