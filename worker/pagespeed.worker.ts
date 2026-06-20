@@ -1,5 +1,5 @@
 import { Job } from 'bullmq'
-import { createClient } from '@supabase/supabase-js'
+import { createWorkerSupabase } from './supabase'
 import { avaliarSite } from '../src/lib/pagespeed/client'
 import { calcularScore } from '../src/lib/scoring/calcular'
 
@@ -10,10 +10,7 @@ export interface PagespeedJobData {
 }
 
 export async function processJob(job: Job<PagespeedJobData>): Promise<void> {
-  const supabase = createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.SUPABASE_SERVICE_ROLE_KEY!
-  )
+  const supabase = createWorkerSupabase()
 
   const { leadId, siteUrl } = job.data
 

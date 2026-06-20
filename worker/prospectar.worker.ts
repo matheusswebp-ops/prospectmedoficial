@@ -1,5 +1,5 @@
 import { Job } from 'bullmq'
-import { createClient } from '@supabase/supabase-js'
+import { createWorkerSupabase } from './supabase'
 import { searchPlaces, OutscraperPlace } from '../src/lib/outscraper/client'
 import { normalizarTelefone, gerarSlug, isDomainBlacklisted, isDuplicado } from '../src/lib/dedup/checar'
 import { avaliarSite } from '../src/lib/pagespeed/client'
@@ -24,10 +24,7 @@ function classificarPagespeed(score: number | null): 'sem_site' | 'site_ruim' | 
 }
 
 export async function processJob(job: Job<ProspectarJobData>): Promise<void> {
-  const supabase = createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.SUPABASE_SERVICE_ROLE_KEY!
-  )
+  const supabase = createWorkerSupabase()
 
   const { batchId, userId, cidade, especialidade } = job.data
 

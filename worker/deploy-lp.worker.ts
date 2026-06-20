@@ -1,5 +1,5 @@
 import { Job } from 'bullmq'
-import { createClient } from '@supabase/supabase-js'
+import { createWorkerSupabase } from './supabase'
 import { gerarHtml } from '../src/lib/vercel-deploy/gerar-html'
 import { deployLandingPage } from '../src/lib/vercel-deploy/client'
 
@@ -114,10 +114,7 @@ function getCorPrimaria(especialidade: string): string {
 export async function processJob(job: Job<DeployLpJobData>): Promise<void> {
   const { leadId, userId } = job.data
 
-  const supabase = createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.SUPABASE_SERVICE_ROLE_KEY!
-  )
+  const supabase = createWorkerSupabase()
 
   console.log(`[deploy-lp] Iniciando deploy para leadId=${leadId}, userId=${userId}`)
 
