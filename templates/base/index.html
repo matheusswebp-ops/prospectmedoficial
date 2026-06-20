@@ -4,312 +4,329 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
-  <!-- COMPLIANCE CFM 1974/2011 -->
+  <!-- COMPLIANCE CFM 1974/2011 — DEMO COMERCIAL -->
   <title>{{NOME}} · {{ESPECIALIDADE}}</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&display=swap" rel="stylesheet">
   <style>
     :root {
       --primary:   {{COR_PRIMARIA}};
       --secondary: {{COR_SECUNDARIA}};
-      --p05: {{COR_PRIMARIA}}0d;
-      --p10: {{COR_PRIMARIA}}1a;
-      --p20: {{COR_PRIMARIA}}33;
+      --p03: {{COR_PRIMARIA}}08;
+      --p08: {{COR_PRIMARIA}}14;
+      --p15: {{COR_PRIMARIA}}26;
+      --p25: {{COR_PRIMARIA}}40;
       --p40: {{COR_PRIMARIA}}66;
+      --p60: {{COR_PRIMARIA}}99;
       --cream:  #FAF8F4;
       --cream2: #F3EFE8;
       --cream3: #EAE4DB;
       --white:  #FFFFFF;
-      --dark:   #111110;
-      --dark2:  #1C1917;
+      --dark:   #0E0D0C;
+      --dark2:  #161412;
+      --dark3:  #1E1B18;
       --text:   #1A1816;
       --text2:  #57534E;
-      --text3:  #A8A29E;
+      --text3:  #9C9189;
       --bdr:    #E7E2DA;
-      --ff-s: 'Playfair Display', Georgia, serif;
-      --ff-n: 'Inter', -apple-system, sans-serif;
-      --sh-sm: 0 1px 4px rgba(28,25,23,.06),0 1px 2px rgba(28,25,23,.04);
-      --sh-md: 0 4px 16px rgba(28,25,23,.08),0 2px 6px rgba(28,25,23,.04);
-      --sh-lg: 0 12px 40px rgba(28,25,23,.10),0 4px 12px rgba(28,25,23,.05);
+      --ff: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     }
 
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
-    body{font-family:var(--ff-n);background:var(--cream);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+    body{font-family:var(--ff);background:var(--cream);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;font-weight:300}
     img{display:block;max-width:100%}
     a{text-decoration:none;color:inherit}
     ul{list-style:none}
-    .container{width:100%;max-width:1140px;margin:0 auto;padding:0 32px}
+    .container{width:100%;max-width:1080px;margin:0 auto;padding:0 32px}
+    .container-narrow{width:100%;max-width:740px;margin:0 auto;padding:0 32px}
 
-    /* GRADIENT TEXT */
-    .grad{background:linear-gradient(135deg,var(--primary) 0%,var(--secondary) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:inline}
-    /* Remove italic em — usar .grad em vez disso */
-    em{font-style:normal}
-    .section-title em,.hero-title em,.cta-title em{font-style:normal;background:linear-gradient(135deg,var(--primary) 0%,var(--secondary) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    /* ── TIPOGRAFIA GLOBAL ─────────────────────────── */
+    /* Destaques em cor primária, não em preto bold */
+    strong,.hl{font-weight:500;color:var(--primary)}
+    .dark-section strong,.dark-section .hl{color:var(--secondary)}
+    em{font-style:normal;font-weight:500;color:var(--primary)}
+    .dark-section em{color:var(--secondary)}
 
-    /* REVEAL */
-    .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
-    .reveal.visible{opacity:1;transform:none}
-    .d1{transition-delay:.05s}.d2{transition-delay:.15s}.d3{transition-delay:.25s}.d4{transition-delay:.35s}
+    /* Gradiente texto — usado em títulos e destaques */
+    .grad{background:linear-gradient(135deg,var(--primary) 0%,var(--secondary) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:inline;font-style:normal;font-weight:inherit}
 
-    /* PROGRESS BAR */
-    #progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(to right,var(--primary),var(--secondary));z-index:1001;width:0%;transition:width .08s linear;pointer-events:none}
+    /* DESTAQUES EM TEXTO — em = cor da paleta, sempre visível */
+    /* Seções claras: gradiente no texto para garantir vibração */
+    em{font-style:normal;font-weight:600;background:linear-gradient(135deg,var(--primary) 0%,var(--secondary) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    /* Seções dark: secondary direto (mais claro e contrasta bem) */
+    .dark-section em{background:none;-webkit-text-fill-color:var(--secondary);color:var(--secondary);font-weight:600}
+    /* strong só em áreas realmente críticas, mesma cor */
+    strong{font-weight:600;color:var(--primary)}
+    .dark-section strong{-webkit-text-fill-color:var(--secondary);color:var(--secondary)}
 
-    /* FLOATING WA */
-    .wa-float{position:fixed;bottom:26px;right:26px;z-index:999;width:58px;height:58px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(37,211,102,.45);transition:transform .2s ease;animation:wa-pulse 3s ease-in-out infinite}
-    .wa-float:hover{transform:scale(1.1)}
-    .wa-float svg{width:28px;height:28px;fill:#fff}
-    @keyframes wa-pulse{0%,100%{box-shadow:0 4px 24px rgba(37,211,102,.45),0 0 0 0 rgba(37,211,102,.25)}50%{box-shadow:0 4px 30px rgba(37,211,102,.65),0 0 0 10px rgba(37,211,102,.0)}}
+    /* TÍTULOS — desktop */
+    h1,h2,h3,h4{font-weight:800;line-height:1.1;letter-spacing:-.03em;color:var(--text)}
+    h1,h2{font-size:32px}
+    h3{font-size:20px;font-weight:700;letter-spacing:-.02em}
+    h4{font-size:18px;font-weight:600;letter-spacing:-.01em}
+    .dark-section h1,.dark-section h2,.dark-section h3,.dark-section h4{color:#fff}
+
+    /* TEXTO BASE */
+    p{font-size:17px;font-weight:300;color:var(--text2);line-height:1.85}
+    .dark-section p{color:rgba(255,255,255,.72)}
+    .lead{font-size:17px;font-weight:300;line-height:1.8}
 
     /* EYEBROW */
-    .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--primary);margin-bottom:12px}
-    .eyebrow-line{width:22px;height:2px;background:var(--primary);border-radius:2px;flex-shrink:0}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--primary);margin-bottom:16px}
+    .eyebrow-line{width:20px;height:2px;background:var(--primary);border-radius:2px;flex-shrink:0}
     .dark-section .eyebrow{color:var(--secondary)}
     .dark-section .eyebrow-line{background:var(--secondary)}
 
-    /* SECTION BASE */
-    .section-title{font-family:var(--ff-s);font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:700;line-height:1.1;color:var(--text);letter-spacing:-.015em}
-    .section-body{font-size:.96rem;font-weight:300;color:var(--text2);line-height:1.85}
-    .section-body strong{font-weight:600;color:var(--text)}
-    .section-header{text-align:center;margin-bottom:60px}
-    .section-header .eyebrow{justify-content:center}
-    .section-header .section-body{max-width:500px;margin:10px auto 0}
-    .dark-section .section-title{color:#fff}
-    .dark-section .section-body{color:rgba(255,255,255,.6)}
+    /* ── REVEAL ────────────────────────────────────── */
+    .reveal{opacity:0;transform:translateY(20px);transition:opacity .65s ease,transform .65s ease}
+    .reveal.visible{opacity:1;transform:none}
+    .d1{transition-delay:.07s}.d2{transition-delay:.16s}.d3{transition-delay:.25s}.d4{transition-delay:.34s}.d5{transition-delay:.43s}
 
-    /* BUTTONS */
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:14px 30px;border-radius:9999px;font-family:var(--ff-n);font-size:.92rem;font-weight:600;cursor:pointer;transition:all .22s ease;border:none;white-space:nowrap;position:relative;overflow:hidden}
-    .btn-primary{background:var(--primary);color:#fff;box-shadow:0 2px 12px var(--p40);animation:btn-glow 3s ease-in-out infinite}
-    @keyframes btn-glow{0%,100%{box-shadow:0 2px 12px var(--p40),0 0 0 0 var(--p10)}50%{box-shadow:0 4px 24px var(--p40),0 0 0 8px var(--p05)}}
-    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 28px var(--p40)}
-    .btn-primary::after{content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);transition:left .5s ease}
+    /* ── PROGRESS BAR ──────────────────────────────── */
+    #progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(to right,var(--primary),var(--secondary));z-index:1001;width:0%;pointer-events:none}
+
+    /* ── FLOATING WA ───────────────────────────────── */
+    .wa-float{position:fixed;bottom:26px;right:26px;z-index:999;width:56px;height:56px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;animation:wa-pulse 3s ease-in-out infinite;transition:transform .2s}
+    .wa-float:hover{transform:scale(1.1)}
+    .wa-float svg{width:26px;height:26px;fill:#fff}
+    @keyframes wa-pulse{0%,100%{box-shadow:0 4px 20px rgba(37,211,102,.45),0 0 0 0 rgba(37,211,102,.2)}50%{box-shadow:0 4px 28px rgba(37,211,102,.6),0 0 0 10px rgba(37,211,102,0)}}
+
+    /* ── BUTTONS ───────────────────────────────────── */
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:14px 30px;border-radius:9999px;font-family:var(--ff);font-size:16px;font-weight:700;cursor:pointer;transition:all .22s ease;border:none;white-space:nowrap;position:relative;overflow:hidden;letter-spacing:.01em;text-decoration:none}
+    .btn-primary{background:linear-gradient(135deg,var(--primary) 0%,var(--secondary) 100%);color:#fff;animation:btn-glow 3s ease-in-out infinite}
+    @keyframes btn-glow{0%,100%{box-shadow:0 4px 20px var(--p40),0 0 0 0 var(--p08)}50%{box-shadow:0 6px 32px var(--p60),0 0 0 12px var(--p03)}}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 36px var(--p60)}
+    .btn-primary::after{content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.22),transparent);transition:left .5s}
     .btn-primary:hover::after{left:150%}
-    .btn-outline{background:transparent;color:var(--text);border:1.5px solid var(--bdr)}
-    .btn-outline:hover{border-color:var(--primary);color:var(--primary)}
-    .btn-white{background:#fff;color:var(--primary);font-weight:700;box-shadow:0 4px 20px rgba(0,0,0,.15)}
-    .btn-white:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,0,0,.2)}
-    .btn-sm{padding:10px 22px;font-size:.85rem}
-    .btn-lg{padding:16px 38px;font-size:.97rem}
+    .btn-white{background:#fff;color:var(--dark);font-weight:700;animation:none}
+    .btn-white:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(0,0,0,.2)}
+    /* btn-ghost: usado em fundos claros — texto da paleta */
+    .btn-ghost{background:transparent;color:var(--text3);font-weight:400;font-size:.88rem;padding:0;animation:none;gap:6px;border:none}
+    .btn-ghost:hover{color:var(--primary)}
+    .btn-sm{padding:10px 22px;font-size:16px}
+    .btn-lg{padding:16px 40px;font-size:16px}
     .icon-wa{width:18px;height:18px;flex-shrink:0}
 
-    /* NAVBAR */
-    .navbar{position:sticky;top:0;z-index:100;background:rgba(250,248,244,.94);backdrop-filter:blur(20px);border-bottom:1px solid var(--bdr)}
-    .navbar-inner{display:flex;align-items:center;justify-content:space-between;height:68px}
-    .navbar-logo{display:flex;align-items:center;gap:11px}
-    .logo-mark{width:38px;height:38px;border-radius:50%;background:var(--p10);border:2px solid var(--p20);display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:800;color:var(--primary);flex-shrink:0}
-    .logo-text-name{font-size:.92rem;font-weight:700;color:var(--text);line-height:1.1}
-    .logo-text-spec{font-size:.7rem;color:var(--text3);font-weight:300}
+    /* ── NAVBAR ────────────────────────────────────── */
+    .navbar{position:sticky;top:0;z-index:100;background:rgba(250,248,244,.93);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--bdr)}
+    .navbar-inner{display:flex;align-items:center;justify-content:space-between;height:66px}
+    .logo-wrap{display:flex;align-items:center;gap:11px}
+    .logo-mark{width:36px;height:36px;border-radius:50%;background:var(--p08);border:1.5px solid var(--p25);display:flex;align-items:center;justify-content:center;font-size:.76rem;font-weight:800;color:var(--primary);flex-shrink:0}
+    .logo-name{font-size:.9rem;font-weight:700;color:var(--text);line-height:1.1}
+    .logo-spec{font-size:.68rem;color:var(--text3);font-weight:300}
     .navbar-nav{display:flex;align-items:center;gap:28px}
-    .navbar-nav a{font-size:.88rem;font-weight:500;color:var(--text2);transition:color .2s}
+    .navbar-nav a{font-size:.85rem;font-weight:400;color:var(--text2);transition:color .2s}
     .navbar-nav a:hover{color:var(--primary)}
 
-    /* HERO */
-    .hero{position:relative;overflow:hidden;padding:80px 0 88px;background:var(--cream)}
-    .hero::before{content:'';position:absolute;width:600px;height:600px;border-radius:50%;background:var(--p05);top:-200px;right:-120px;pointer-events:none}
-    .hero::after{content:'';position:absolute;width:280px;height:280px;border-radius:50%;background:var(--cream3);bottom:-100px;left:40px;pointer-events:none}
-    .hero-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:72px;align-items:center;position:relative;z-index:1}
-    .hero-content{display:flex;flex-direction:column;gap:20px}
-    .hero-title{font-family:var(--ff-s);font-size:clamp(2.2rem,4.8vw,3.6rem);font-weight:700;line-height:1.06;color:var(--text);letter-spacing:-.02em}
-    .hero-sub{font-size:.8rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--primary);margin-bottom:4px}
-    .hero-desc{font-size:1rem;font-weight:300;color:var(--text2);line-height:1.85;max-width:480px}
-    .hero-desc strong{font-weight:600;color:var(--text)}
-    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:6px}
-    .hero-tag{display:inline-flex;align-items:center;gap:6px;font-size:.78rem;font-weight:500;color:var(--text3)}
-    .hero-visual{position:relative;display:flex;justify-content:center}
-    .hero-photo-wrap{position:relative;width:100%;max-width:400px}
-    .hero-photo{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center top;border-radius:55% 45% 48% 52%/55% 50% 50% 45%;box-shadow:var(--sh-lg);border:5px solid var(--white)}
-    .hero-photo-circle{position:absolute;inset:-16px;border-radius:50%;border:2px dashed var(--p20);pointer-events:none;animation:spin-slow 25s linear infinite}
-    @keyframes spin-slow{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
-    .hero-badge{position:absolute;background:var(--white);border-radius:16px;padding:12px 16px;display:flex;align-items:center;gap:10px;box-shadow:var(--sh-md);border:1px solid var(--bdr)}
-    .hero-badge.badge-tl{top:40px;left:-32px}
-    .hero-badge.badge-br{bottom:60px;right:-32px}
-    .badge-icon-wrap{width:36px;height:36px;border-radius:10px;background:var(--p10);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-    .badge-info strong{display:block;font-size:.85rem;font-weight:700;color:var(--text);line-height:1.1}
-    .badge-info span{font-size:.7rem;color:var(--text3);font-weight:300}
-    .hero-dots{position:absolute;bottom:-16px;left:-24px;display:grid;grid-template-columns:repeat(4,1fr);gap:6px;pointer-events:none}
-    .hero-dot{width:6px;height:6px;border-radius:50%;background:var(--p20)}
+    /* ── HERO ──────────────────────────────────────── */
+    .hero{padding:100px 0 96px;background:var(--cream);position:relative;overflow:hidden}
+    .hero::before{content:'';position:absolute;width:720px;height:720px;border-radius:50%;background:radial-gradient(circle,var(--p08) 0%,transparent 70%);top:-280px;right:-200px;pointer-events:none}
+    .hero::after{content:'';position:absolute;width:320px;height:320px;border-radius:50%;background:var(--cream3);bottom:-120px;left:-60px;pointer-events:none}
+    .hero-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:80px;align-items:center;position:relative;z-index:1}
+    .hero-content{display:flex;flex-direction:column;gap:22px}
+    .hero-title{font-size:32px;font-weight:900;line-height:1.1;letter-spacing:-.03em;color:var(--text)}
+    .hero-sub-title{font-size:17px;font-weight:300;color:var(--text2);line-height:1.8;max-width:520px}
+    .hero-sub-title em{color:var(--primary);font-weight:400;font-style:normal}
+    .hero-cta-wrap{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:4px}
+    .hero-trust{display:flex;align-items:center;gap:6px;font-size:.76rem;font-weight:300;color:var(--text3)}
+    .hero-dot-live{width:6px;height:6px;border-radius:50%;background:#22C55E;animation:dot-live 2s ease infinite}
+    @keyframes dot-live{0%,100%{opacity:1}50%{opacity:.35}}
+    .hero-photo-wrap{position:relative;display:flex;justify-content:center}
+    .hero-photo-inner{position:relative;width:100%;max-width:380px}
+    .hero-ring{position:absolute;inset:-18px;border-radius:50%;border:1.5px dashed var(--p25);pointer-events:none;animation:ring-spin 28s linear infinite}
+    @keyframes ring-spin{to{transform:rotate(360deg)}}
+    .hero-photo{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center top;border-radius:52% 48% 46% 54%/54% 48% 52% 46%;box-shadow:0 20px 60px rgba(28,25,23,.14);border:5px solid var(--white)}
+    .hero-badge{position:absolute;background:var(--white);border-radius:14px;padding:11px 15px;display:flex;align-items:center;gap:10px;box-shadow:0 8px 24px rgba(28,25,23,.1);border:1px solid var(--bdr)}
+    .hero-badge.tl{top:36px;left:-28px}
+    .hero-badge.br{bottom:56px;right:-28px}
+    .badge-icon{width:34px;height:34px;border-radius:9px;background:var(--p08);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .badge-txt strong{display:block;font-size:.82rem;font-weight:700;color:var(--text);line-height:1.1}
+    .badge-txt span{font-size:.67rem;color:var(--text3);font-weight:300}
+    .hero-dots{position:absolute;bottom:-14px;left:-22px;display:grid;grid-template-columns:repeat(4,1fr);gap:6px;pointer-events:none}
+    .hero-dot{width:5px;height:5px;border-radius:50%;background:var(--p25)}
 
-    /* CREDENTIAL STRIP (DARK) */
-    .cred-strip{background:var(--dark);padding:36px 0}
-    .cred-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
-    .cred-item{display:flex;align-items:center;gap:14px;padding:0 40px;border-right:1px solid rgba(255,255,255,.08)}
-    .cred-item:last-child{border-right:none}
-    .cred-icon{width:42px;height:42px;border-radius:12px;background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-    .cred-label{font-size:.72rem;font-weight:300;color:rgba(255,255,255,.4);margin-bottom:2px;letter-spacing:.04em}
-    .cred-value{font-size:.92rem;font-weight:600;color:#fff}
+    /* ── PROBLEMA (DARK) ───────────────────────────── */
+    .problema{padding:100px 0;background:var(--dark);position:relative;overflow:hidden}
+    .problema::before{content:'';position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,var(--p08) 0%,transparent 70%);top:-220px;left:-160px;pointer-events:none}
+    .problema::after{content:'';position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,var(--p08) 0%,transparent 70%);bottom:-200px;right:-150px;pointer-events:none}
+    .problema-inner{position:relative;z-index:1;text-align:center}
+    .problema-inner .eyebrow{justify-content:center}
+    .problema-body{display:flex;flex-direction:column;gap:20px;max-width:700px;margin:48px auto 0;text-align:left}
+    .problema-body p{font-weight:300;color:rgba(255,255,255,.72);line-height:1.9}
+    .problema-destaque{background:rgba(255,255,255,.04);border-left:3px solid var(--secondary);border-radius:0 12px 12px 0;padding:20px 24px;margin-top:8px}
+    .problema-destaque p{color:rgba(255,255,255,.85);font-weight:400;font-size:.97rem}
 
-    /* SOBRE */
-    .sobre{padding:100px 0;background:var(--cream)}
-    .sobre-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:80px;align-items:center}
-    .sobre-photo-wrap{position:relative}
-    .sobre-photo-bg{position:absolute;inset:16px 0 -16px 16px;background:var(--p10);border-radius:32px;z-index:0}
-    .sobre-photo{position:relative;z-index:1;width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top;border-radius:32px;box-shadow:var(--sh-lg)}
-    .sobre-photo-tag{position:absolute;right:-20px;bottom:48px;z-index:2;background:var(--primary);color:#fff;border-radius:16px;padding:14px 18px;box-shadow:var(--sh-md);text-align:center}
-    .sobre-photo-tag strong{display:block;font-size:1.2rem;font-weight:800;line-height:1}
-    .sobre-photo-tag span{font-size:.7rem;font-weight:300;opacity:.85}
-    .sobre-content{display:flex;flex-direction:column;gap:20px}
-    .check-list{display:flex;flex-direction:column;gap:10px;margin-top:4px}
-    .check-item{display:flex;align-items:flex-start;gap:10px;font-size:.92rem;font-weight:300;color:var(--text2)}
-    .check-item strong{font-weight:600;color:var(--text)}
-    .check-dot{width:20px;height:20px;border-radius:6px;background:var(--p10);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+    /* ── SOLUÇÃO (CREAM) ───────────────────────────── */
+    .solucao{padding:100px 0;background:var(--cream2)}
+    .solucao-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+    .solucao-body{display:flex;flex-direction:column;gap:20px}
+    .solucao-body p{font-weight:300;color:var(--text2);line-height:1.9}
+    .check-list{display:flex;flex-direction:column;gap:10px;margin-top:8px}
+    .check-item{display:flex;align-items:flex-start;gap:12px;font-size:.92rem;font-weight:300;color:var(--text2);line-height:1.65}
+    .check-item em{color:var(--primary);font-weight:500;font-style:normal}
+    .check-tick{width:22px;height:22px;border-radius:7px;background:var(--p08);border:1.5px solid var(--p25);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+    .solucao-panel{background:var(--white);border-radius:24px;padding:44px 40px;border:1px solid var(--bdr);box-shadow:0 8px 32px rgba(28,25,23,.05);display:flex;flex-direction:column;gap:24px;position:sticky;top:96px}
+    .solucao-panel h3{font-size:1.15rem;font-weight:800;color:var(--text);letter-spacing:-.025em}
 
-    /* TRATAMENTOS (DARK) */
-    .tratamentos{padding:100px 0;background:var(--dark2)}
-    .trat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    .trat-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:20px;padding:32px 26px;display:flex;flex-direction:column;gap:14px;transition:all .25s ease;cursor:default}
-    .trat-card:hover{background:rgba(255,255,255,.08);border-color:var(--p40);transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.3)}
-    .trat-icon{width:46px;height:46px;border-radius:12px;background:var(--p20);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-    .trat-card h3{font-size:.97rem;font-weight:600;color:#fff;line-height:1.3}
-    .trat-card p{font-size:.84rem;font-weight:300;color:rgba(255,255,255,.5);line-height:1.75}
+    /* ── TRATAMENTOS (DARK) ────────────────────────── */
+    .tratamentos{padding:100px 0;background:var(--dark2);position:relative;overflow:hidden}
+    .tratamentos::before{content:'';position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,var(--p08) 0%,transparent 70%);top:-200px;left:-200px;pointer-events:none}
+    .tratamentos::after{content:'';position:absolute;width:450px;height:450px;border-radius:50%;background:radial-gradient(circle,var(--p08) 0%,transparent 70%);bottom:-170px;right:-140px;pointer-events:none}
+    .trat-intro{position:relative;z-index:1;margin-bottom:56px;text-align:center}
+    .trat-intro p{max-width:520px;margin:10px auto 0}
+    .trat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;position:relative;z-index:1}
+    .trat-card{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.07);border-radius:18px;padding:30px 28px;display:flex;flex-direction:column;gap:12px;transition:all .3s ease;position:relative;overflow:hidden;cursor:default}
+    .trat-card::before{content:'';position:absolute;inset:0;border-radius:18px;background:linear-gradient(135deg,var(--p15),transparent);opacity:0;transition:opacity .3s}
+    .trat-card:hover{border-color:var(--p40);transform:translateY(-5px);box-shadow:0 20px 50px rgba(0,0,0,.35),0 0 0 1px var(--p25),inset 0 1px 0 rgba(255,255,255,.07)}
+    .trat-card:hover::before{opacity:1}
+    .trat-card:hover .trat-icon{box-shadow:0 0 22px var(--p40)}
+    .trat-icon{width:44px;height:44px;border-radius:11px;background:var(--p25);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:box-shadow .3s}
+    .trat-card h4{font-size:.97rem;font-weight:700;color:#fff;line-height:1.3}
+    .trat-card p{font-size:.84rem;font-weight:300;color:rgba(255,255,255,.68);line-height:1.75;margin:0}
+    .trat-card .para-quem{font-size:.76rem;font-weight:400;color:var(--secondary);margin-top:4px}
+    .trat-footer{position:relative;z-index:1;text-align:center;margin-top:48px;display:flex;flex-direction:column;align-items:center;gap:16px}
+    .trat-footer p{font-size:.9rem;font-weight:300;color:rgba(255,255,255,.82);max-width:380px}
 
-    /* COMO FUNCIONA */
-    .como-funciona{padding:100px 0;background:var(--cream2)}
-    .steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;position:relative}
-    .steps-grid::before{content:'';position:absolute;top:36px;left:calc(16.6%);right:calc(16.6%);height:2px;background:repeating-linear-gradient(to right,var(--p20) 0,var(--p20) 12px,transparent 12px,transparent 24px)}
-    .step-item{display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 28px;gap:16px;position:relative}
-    .step-num{width:72px;height:72px;border-radius:50%;background:var(--white);border:2px solid var(--bdr);display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:800;color:var(--primary);box-shadow:var(--sh-sm);transition:all .25s;flex-shrink:0;position:relative;z-index:1}
-    .step-item:hover .step-num{background:var(--primary);color:#fff;border-color:var(--primary);box-shadow:0 8px 24px var(--p40)}
-    .step-title{font-size:.97rem;font-weight:600;color:var(--text)}
-    .step-desc{font-size:.85rem;font-weight:300;color:var(--text2);line-height:1.75}
+    /* ── AUTORIDADE / SOBRE (CREAM) ─────────────────── */
+    .autoridade{padding:100px 0;background:var(--cream)}
+    .auto-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:80px;align-items:center}
+    .auto-photo-wrap{position:relative}
+    .auto-photo-bg{position:absolute;inset:16px 0 -16px 16px;background:var(--p08);border-radius:28px;z-index:0}
+    .auto-photo{position:relative;z-index:1;width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top;border-radius:28px;box-shadow:0 16px 48px rgba(28,25,23,.1)}
+    .auto-content{display:flex;flex-direction:column;gap:20px}
+    .auto-content p{font-weight:300;color:var(--text2);line-height:1.9}
+    .creds{display:flex;flex-direction:column;gap:8px;margin-top:4px}
+    .cred-item{display:flex;align-items:center;gap:10px;font-size:.84rem;font-weight:300;color:var(--text2)}
+    .cred-dot{width:5px;height:5px;border-radius:50%;background:var(--primary);flex-shrink:0}
 
-    /* DIFERENCIAIS */
-    .diferenciais{padding:100px 0;background:var(--cream)}
-    .dif-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
-    .dif-left{display:flex;flex-direction:column;gap:20px}
-    .dif-cards{display:flex;flex-direction:column;gap:12px}
-    .dif-card{display:flex;align-items:flex-start;gap:16px;background:var(--white);border:1px solid var(--bdr);border-radius:16px;padding:22px 24px;box-shadow:var(--sh-sm);transition:all .22s ease}
-    .dif-card:hover{border-color:var(--p40);transform:translateX(5px);box-shadow:var(--sh-md)}
-    .dif-num{font-family:var(--ff-s);font-size:1.5rem;font-weight:700;color:var(--p20);line-height:1;min-width:24px}
-    .dif-card h3{font-size:.95rem;font-weight:600;color:var(--text);margin-bottom:4px}
-    .dif-card p{font-size:.84rem;font-weight:300;color:var(--text2);line-height:1.7}
-    .dif-cta-panel{background:linear-gradient(135deg,var(--primary) 0%,var(--secondary) 100%);border-radius:28px;padding:52px 44px;display:flex;flex-direction:column;gap:24px;position:relative;overflow:hidden}
-    .dif-cta-panel::before{content:'';position:absolute;width:320px;height:320px;border-radius:50%;background:rgba(255,255,255,.06);bottom:-100px;right:-80px;pointer-events:none}
-    .dif-cta-title{font-family:var(--ff-s);font-size:1.9rem;font-weight:700;line-height:1.15;color:#fff}
-    .dif-cta-desc{font-size:.9rem;font-weight:300;color:rgba(255,255,255,.8);line-height:1.75}
+    /* ── PROVA SOCIAL (CREAM2) ─────────────────────── */
+    .prova{padding:100px 0;background:var(--cream2)}
+    .prova-disclaimer{display:inline-flex;align-items:center;gap:6px;font-size:.7rem;font-weight:400;color:var(--text3);background:var(--cream3);border:1px solid var(--bdr);padding:5px 12px;border-radius:9999px;margin-bottom:48px}
+    .testemunhos{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .test-card{background:var(--white);border:1px solid var(--bdr);border-radius:20px;padding:32px 28px;display:flex;flex-direction:column;gap:16px;box-shadow:0 2px 8px rgba(28,25,23,.04);transition:all .25s}
+    .test-card:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(28,25,23,.07);border-color:var(--p25)}
+    .test-quote{font-size:.9rem;font-weight:300;color:var(--text2);line-height:1.85;font-style:italic}
+    .test-author strong{display:block;font-size:.82rem;font-weight:600;color:var(--text)}
+    .test-author span{font-size:.72rem;font-weight:300;color:var(--text3)}
+    .test-stars{display:flex;gap:2px}
+    .star{color:var(--primary);font-size:.8rem}
 
-    /* FAQ (DARK) */
-    .faq{padding:100px 0;background:var(--dark)}
-    .faq-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:80px;align-items:start}
-    .faq-left{position:sticky;top:96px;display:flex;flex-direction:column;gap:20px}
-    .faq-left .section-title{color:#fff}
-    .faq-left .section-body{color:rgba(255,255,255,.5);font-weight:300}
+    /* ── PROCESSO (DARK) ───────────────────────────── */
+    .processo{padding:100px 0;background:var(--dark3);position:relative;overflow:hidden}
+    .processo::before{content:'';position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,var(--p08) 0%,transparent 70%);top:-150px;right:-100px;pointer-events:none}
+    .processo::after{content:'';position:absolute;width:350px;height:350px;border-radius:50%;background:radial-gradient(circle,var(--p08) 0%,transparent 70%);bottom:-120px;left:-90px;pointer-events:none}
+    .processo-header{text-align:center;display:flex;flex-direction:column;align-items:center;gap:10px;margin-bottom:56px;position:relative;z-index:1}
+    .processo-header .eyebrow{justify-content:center}
+    .steps{display:flex;flex-direction:column;gap:0;position:relative;z-index:1;margin-top:56px}
+    .step{display:grid;grid-template-columns:80px 1fr;gap:24px;padding:32px 0;border-bottom:1px solid rgba(255,255,255,.06);transition:all .25s}
+    .step:last-child{border-bottom:none}
+    .step:hover .step-num-wrap{border-color:var(--p40);box-shadow:0 0 20px var(--p25)}
+    .step-num-wrap{width:64px;height:64px;border-radius:50%;border:1.5px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .3s}
+    .step-num{font-size:1.4rem;font-weight:900;color:var(--secondary);letter-spacing:-.02em}
+    .step-content{display:flex;flex-direction:column;gap:8px;padding-top:8px}
+    .step-content h4{font-size:1rem;font-weight:700;color:#fff;letter-spacing:-.02em}
+    .step-content p{font-size:.88rem;font-weight:300;color:rgba(255,255,255,.7);line-height:1.8;margin:0}
+
+    /* ── OBJEÇÕES / FAQ (CREAM) ────────────────────── */
+    .objecoes{padding:100px 0;background:var(--cream)}
+    .objecoes-grid{display:grid;grid-template-columns:1fr 1.6fr;gap:80px;align-items:start}
+    .objecoes-left{position:sticky;top:96px;display:flex;flex-direction:column;gap:20px}
+    .objecoes-left p{font-weight:300;color:var(--text2);line-height:1.85}
     .faq-list{display:flex;flex-direction:column;gap:8px}
-    .faq-item{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:16px;overflow:hidden}
-    .faq-question{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 24px;cursor:pointer;font-size:.93rem;font-weight:500;color:rgba(255,255,255,.85);transition:color .2s;user-select:none;list-style:none}
-    .faq-question:hover{color:#fff}
-    .faq-question::marker,.faq-question::-webkit-details-marker{display:none}
-    details[open] .faq-question{color:#fff}
-    .faq-chevron{width:18px;height:18px;flex-shrink:0;color:rgba(255,255,255,.3);transition:transform .3s}
-    details[open] .faq-chevron{transform:rotate(180deg);color:var(--secondary)}
-    .faq-answer{padding:0 24px 20px;font-size:.88rem;font-weight:300;color:rgba(255,255,255,.5);line-height:1.8;border-top:1px solid rgba(255,255,255,.06)}
-    .faq-answer-inner{padding-top:14px}
+    .faq-item{border:1px solid var(--bdr);border-radius:14px;overflow:hidden;transition:all .25s}
+    .faq-item:hover{border-color:var(--p25)}
+    details[open].faq-item{border-color:var(--p40);box-shadow:0 0 0 3px var(--p08)}
+    .faq-q{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:18px 22px;cursor:pointer;font-size:.9rem;font-weight:500;color:var(--text);transition:color .2s;user-select:none;list-style:none}
+    .faq-q::marker,.faq-q::-webkit-details-marker{display:none}
+    details[open] .faq-q{color:var(--primary)}
+    .faq-chev{width:16px;height:16px;flex-shrink:0;color:var(--text3);transition:transform .3s,color .3s}
+    details[open] .faq-chev{transform:rotate(180deg);color:var(--primary)}
+    .faq-a{padding:0 22px 18px;font-size:.86rem;font-weight:300;color:var(--text2);line-height:1.85;border-top:1px solid var(--bdr)}
+    .faq-a-inner{padding-top:14px}
+    .faq-a em{color:var(--primary);font-style:normal;font-weight:500}
 
-    /* LOCALIZAÇÃO */
-    .localizacao{padding:100px 0;background:var(--cream)}
-    .loc-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:64px;align-items:start}
-    .loc-info{display:flex;flex-direction:column;gap:28px}
-    .loc-item{display:flex;align-items:flex-start;gap:14px}
-    .loc-icon{width:44px;height:44px;border-radius:12px;background:var(--p10);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-    .loc-label{font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--text3);margin-bottom:2px}
-    .loc-value{font-size:.95rem;font-weight:500;color:var(--text)}
-    .loc-map{border-radius:24px;overflow:hidden;border:1px solid var(--bdr);box-shadow:var(--sh-md)}
-    .loc-map iframe{width:100%;height:380px;display:block;border:none}
+    /* ── OFERTA / CTA FINAL (DARK) ─────────────────── */
+    .cta-final{padding:120px 0;background:var(--dark);position:relative;overflow:hidden}
+    .cta-orb1{position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,var(--p08) 0%,transparent 70%);top:-280px;right:-220px;pointer-events:none;animation:orb1 9s ease-in-out infinite}
+    .cta-orb2{position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,var(--p08) 0%,transparent 70%);bottom:-220px;left:-180px;pointer-events:none;animation:orb2 11s ease-in-out infinite}
+    @keyframes orb1{0%,100%{transform:translate(0,0)}50%{transform:translate(-50px,40px)}}
+    @keyframes orb2{0%,100%{transform:translate(0,0)}50%{transform:translate(40px,-50px)}}
+    .cta-box{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+    .cta-left{display:flex;flex-direction:column;gap:20px}
+    .cta-eyebrow{display:inline-flex;align-items:center;gap:8px;padding:5px 14px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:9999px;font-size:.68rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);align-self:flex-start}
+    .cta-title{font-size:32px;font-weight:900;line-height:1.1;color:#fff;letter-spacing:-.03em}
+    .cta-title .grad{font-weight:900}
+    .cta-body{font-weight:300;color:rgba(255,255,255,.72);line-height:1.9}
+    .cta-panel{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:24px;padding:40px 36px;display:flex;flex-direction:column;gap:20px}
+    .cta-panel h3{font-size:1rem;font-weight:700;color:#fff;letter-spacing:-.02em}
+    .cta-items{display:flex;flex-direction:column;gap:10px}
+    .cta-item{display:flex;align-items:flex-start;gap:12px;font-size:.88rem;font-weight:300;color:rgba(255,255,255,.78);line-height:1.7}
+    .cta-item::before{content:'✓';color:var(--secondary);font-weight:700;flex-shrink:0;width:16px;text-align:center;font-size:.9rem;margin-top:.1em}
 
-    /* CTA FINAL (DARK) */
-    .cta-final{padding:112px 0;background:var(--dark2);position:relative;overflow:hidden}
-    .cta-final::before{content:'';position:absolute;width:600px;height:600px;border-radius:50%;background:var(--p05);top:-250px;right:-200px;pointer-events:none}
-    .cta-final::after{content:'';position:absolute;width:400px;height:400px;border-radius:50%;background:var(--p05);bottom:-180px;left:-150px;pointer-events:none}
-    .cta-box{position:relative;z-index:1;text-align:center;display:flex;flex-direction:column;align-items:center;gap:28px;max-width:640px;margin:0 auto}
-    .cta-eyebrow{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:9999px;font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.7)}
-    .cta-title{font-family:var(--ff-s);font-size:clamp(2.2rem,5vw,3.4rem);font-weight:700;line-height:1.08;color:#fff;letter-spacing:-.02em}
-    .cta-title em{background:linear-gradient(135deg,var(--primary) 0%,var(--secondary) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-    .cta-desc{font-size:1rem;font-weight:300;color:rgba(255,255,255,.55);max-width:420px;line-height:1.8}
-    .cta-actions{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
-    .cta-note{font-size:.78rem;font-weight:300;color:rgba(255,255,255,.3)}
+    /* ── FECHAMENTO (DARK2) ────────────────────────── */
+    .fechamento{padding:100px 0;background:var(--dark2);border-top:1px solid rgba(255,255,255,.05);position:relative;overflow:hidden}
+    .fechamento::before{content:'';position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,var(--p08) 0%,transparent 70%);top:-200px;right:-150px;pointer-events:none}
+    .fechamento::after{content:'';position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,var(--p08) 0%,transparent 70%);bottom:-150px;left:-100px;pointer-events:none}
+    .fechamento-inner{text-align:center;display:flex;flex-direction:column;align-items:center;gap:24px;max-width:660px;margin:0 auto;position:relative;z-index:1}
+    .fechamento-deco{font-size:5rem;line-height:.9;background:linear-gradient(135deg,var(--primary) 0%,var(--secondary) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;opacity:.7;margin-bottom:-8px}
+    .fechamento p{font-weight:300;color:rgba(255,255,255,.72);line-height:1.9}
+    .fechamento-destaque{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:18px 32px;width:100%}
+    .fechamento-destaque p{font-size:1.05rem !important;font-weight:500 !important;color:rgba(255,255,255,.9) !important;margin:0}
+    .fechamento-quote{font-size:.88rem;font-weight:300;font-style:italic;color:rgba(255,255,255,.4);border-top:1px solid rgba(255,255,255,.08);padding-top:20px;margin-top:4px;width:100%}
 
-    /* FOOTER */
-    .footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.06);padding:36px 0 28px}
-    .footer-inner{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center}
-    .footer-name{font-size:.9rem;font-weight:600;color:rgba(255,255,255,.7)}
-    .footer-sub{font-size:.75rem;font-weight:300;color:rgba(255,255,255,.3)}
-    .footer-disclaimer{margin-top:10px;font-size:.65rem;color:rgba(255,255,255,.2);padding:6px 14px;border:1px solid rgba(255,255,255,.06);border-radius:6px;max-width:460px}
+    /* ── FOOTER ────────────────────────────────────── */
+    .footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.05);padding:32px 0 26px}
+    .footer-inner{display:flex;flex-direction:column;align-items:center;gap:5px;text-align:center}
+    .footer-name{font-size:.88rem;font-weight:600;color:rgba(255,255,255,.78)}
+    .footer-sub{font-size:.72rem;font-weight:300;color:rgba(255,255,255,.5)}
+    .footer-disclaimer{margin-top:12px;font-size:.63rem;color:rgba(255,255,255,.38);padding:6px 14px;border:1px solid rgba(255,255,255,.1);border-radius:6px;max-width:460px;line-height:1.6}
 
-    /* RESPONSIVE 960 */
+    /* ── RESPONSIVE ────────────────────────────────── */
     @media(max-width:960px){
-      .hero{padding:52px 0 60px}
-      .hero-grid{grid-template-columns:1fr;gap:48px}
-      .hero-visual{order:-1}
-      .hero-photo-wrap{max-width:260px;margin:0 auto}
-      .hero-photo-circle,.hero-badge,.hero-dots{display:none}
-      .sobre-grid{grid-template-columns:1fr;gap:48px}
-      .sobre-photo-wrap{max-width:300px}
-      .sobre-photo-tag{right:0}
-      .trat-grid{grid-template-columns:1fr 1fr}
-      .steps-grid{grid-template-columns:1fr;gap:40px}
-      .steps-grid::before{display:none}
-      .dif-grid{grid-template-columns:1fr;gap:48px}
-      .faq-grid{grid-template-columns:1fr}
-      .faq-left{position:static}
-      .loc-grid{grid-template-columns:1fr;gap:40px}
-      .cred-grid{grid-template-columns:1fr;gap:0}
-      .cred-item{border-right:none;border-bottom:1px solid rgba(255,255,255,.08);padding:18px 24px}
-      .cred-item:last-child{border-bottom:none}
+      .hero-grid,.auto-grid,.solucao-grid,.cta-box,.objecoes-grid{grid-template-columns:1fr;gap:48px}
+      .hero-photo-inner{max-width:260px;margin:0 auto}
+      .hero-photo-wrap{order:-1}
+      .hero-ring,.hero-badge,.hero-dots{display:none}
+      .auto-photo-wrap{max-width:300px}
+      .testemunhos{grid-template-columns:1fr}
+      .trat-grid{grid-template-columns:repeat(2,1fr)}
+      .cta-panel{padding:32px 24px}
+      .solucao-panel{position:static}
+      .objecoes-left{position:static}
     }
-
-    /* RESPONSIVE 600 */
     @media(max-width:600px){
-      .container{padding:0 18px}
+      .container,.container-narrow{padding:0 18px}
       .navbar-nav{display:none}
-      .sobre,.diferenciais,.como-funciona,.tratamentos,.faq,.localizacao{padding:64px 0}
-      .trat-grid{grid-template-columns:1fr}
-
-      /* Hero mobile */
+      /* Tipografia mobile */
+      h1,h2,.hero-title,.cta-title{font-size:24px}
+      h3{font-size:18px}
+      h4{font-size:17px}
+      p,.lead,.hero-sub-title{font-size:16px}
+      .btn,.btn-sm,.btn-lg{font-size:16px}
+      .hero,.problema,.solucao,.tratamentos,.autoridade,.prova,.processo,.objecoes,.cta-final,.fechamento{padding:64px 0}
       .hero-content{text-align:center;align-items:center}
-      .hero-title{text-align:center}
-      .hero-desc{text-align:center;margin:0 auto}
-      .hero-tag{justify-content:center}
-      .hero-actions{flex-direction:column;align-items:stretch}
-      .hero-actions .btn{width:100%}
-
-      /* Sobre mobile */
-      .sobre-content{text-align:center;align-items:center}
-      .sobre-content .eyebrow{justify-content:center}
-      .sobre-content .section-body{text-align:center}
-      .check-list{text-align:left;align-self:stretch}
-      .sobre-content>.btn{align-self:center}
-
-      /* Diferenciais mobile */
-      .dif-left{text-align:center;align-items:center}
-      .dif-left .eyebrow{justify-content:center}
-      .dif-cta-phone{display:none}
-      .dif-cta-panel .btn{align-self:center}
-
-      /* FAQ mobile */
-      .faq-left{text-align:center;align-items:center}
-      .faq-left .eyebrow{justify-content:center}
-      .faq-left-btn{display:none}
-
-      /* CTA mobile */
-      .cta-box{padding:0 4px}
-      .cta-actions{flex-direction:column;align-items:center;width:100%}
-      .cta-actions .btn{width:100%;font-size:.85rem;padding:15px 18px}
-
-      /* WA float */
-      .wa-float{width:50px;height:50px;bottom:18px;right:18px}
-      .wa-float svg{width:24px;height:24px}
+      .hero-title,.hero-sub-title{text-align:center}
+      .hero-cta-wrap{flex-direction:column;align-items:stretch}
+      .hero-cta-wrap .btn{width:100%}
+      .trat-grid{grid-template-columns:1fr}
+      .auto-content,.objecoes-left,.cta-left,.fechamento-inner{text-align:center;align-items:center}
+      .auto-content .eyebrow,.cta-left .eyebrow,.objecoes-left .eyebrow{justify-content:center}
+      .creds{align-self:stretch}
+      .cta-panel{text-align:left}
+      .cta-final .container{padding:0 18px}
+      .trat-grid{grid-template-columns:1fr}
+      .problema-body{text-align:center}
     }
-
-    @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
-    @keyframes fadeIn{from{opacity:0}to{opacity:1}}
   </style>
 </head>
 <body>
 
-<!-- PROGRESS BAR -->
+<!-- PROGRESS -->
 <div id="progress"></div>
 
-<!-- FLOATING WHATSAPP -->
+<!-- FLOATING WA -->
 <a href="https://wa.me/{{TELEFONE_E164}}" target="_blank" rel="noopener noreferrer" class="wa-float" aria-label="WhatsApp">
   <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
 </a>
@@ -318,17 +335,18 @@
 <header class="navbar">
   <div class="container">
     <div class="navbar-inner">
-      <div class="navbar-logo">
+      <div class="logo-wrap">
         <div class="logo-mark">{{INITIALS}}</div>
         <div>
-          <div class="logo-text-name">{{NOME}}</div>
-          <div class="logo-text-spec">{{ESPECIALIDADE}} · {{CIDADE}}</div>
+          <div class="logo-name">{{NOME}}</div>
+          <div class="logo-spec">{{ESPECIALIDADE}} · {{CIDADE}}</div>
         </div>
       </div>
       <nav class="navbar-nav">
-        <a href="#sobre">Sobre</a>
+        <a href="#problema">O Problema</a>
         <a href="#tratamentos">Tratamentos</a>
-        <a href="#localizacao">Localização</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#processo">Como Funciona</a>
       </nav>
       <a href="https://wa.me/{{TELEFONE_E164}}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
         <svg class="icon-wa" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
@@ -342,35 +360,29 @@
 <section class="hero">
   <div class="container">
     <div class="hero-grid">
-      <div class="hero-content" style="animation:fadeUp .8s ease both">
-        <div class="hero-sub">{{ESPECIALIDADE}} · {{CIDADE}}</div>
-        <h1 class="hero-title">Atendimento<br>que faz <em>diferença</em><br>de verdade</h1>
-        <p class="hero-desc"><strong>{{NOME}}</strong> — especialista em {{ESPECIALIDADE}} com atendimento personalizado em {{CIDADE}}. Cada consulta pensada para o seu caso, do início ao fim.</p>
-        <div class="hero-actions">
+      <div class="hero-content" style="animation:reveal-up .8s ease both">
+        <div class="eyebrow"><span class="eyebrow-line"></span>{{ESPECIALIDADE}} em {{CIDADE}}</div>
+        <h1 class="hero-title">Você não precisa aprender a conviver com isso.</h1>
+        <p class="hero-sub-title">Existe tratamento. Existe solução. E existe um profissional <em>pronto para cuidar de você</em> do jeito que você merece.</p>
+        <div class="hero-cta-wrap">
           <a href="https://wa.me/{{TELEFONE_E164}}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg">
             <svg class="icon-wa" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-            Agendar pelo WhatsApp
+            Agendar minha avaliação
           </a>
-          <a href="#sobre" class="btn btn-outline btn-lg">Saiba mais</a>
         </div>
-        <span class="hero-tag">📍 {{CIDADE}} &nbsp;·&nbsp; Agendamento direto, sem espera</span>
       </div>
-      <div class="hero-visual" style="animation:fadeIn 1s ease .3s both">
-        <div class="hero-photo-wrap">
-          <div class="hero-photo-circle"></div>
+      <div class="hero-photo-wrap" style="animation:reveal-fade 1s ease .3s both">
+        <div class="hero-photo-inner">
+          <div class="hero-ring"></div>
           <img src="{{FOTO_URL}}" alt="{{NOME}} — {{ESPECIALIDADE}} em {{CIDADE}}" class="hero-photo" loading="eager"/>
-          <div class="hero-dots">
-            <div class="hero-dot"></div><div class="hero-dot"></div><div class="hero-dot"></div><div class="hero-dot"></div>
-            <div class="hero-dot"></div><div class="hero-dot"></div><div class="hero-dot"></div><div class="hero-dot"></div>
-            <div class="hero-dot"></div><div class="hero-dot"></div><div class="hero-dot"></div><div class="hero-dot"></div>
+          <div class="hero-dots"><div class="hero-dot"></div><div class="hero-dot"></div><div class="hero-dot"></div><div class="hero-dot"></div><div class="hero-dot"></div><div class="hero-dot"></div><div class="hero-dot"></div><div class="hero-dot"></div><div class="hero-dot"></div><div class="hero-dot"></div><div class="hero-dot"></div><div class="hero-dot"></div></div>
+          <div class="hero-badge tl">
+            <div class="badge-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div class="badge-txt"><strong>{{ESPECIALIDADE}}</strong><span>{{CIDADE}}</span></div>
           </div>
-          <div class="hero-badge badge-tl">
-            <div class="badge-icon-wrap"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2.5" stroke-linecap="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
-            <div class="badge-info"><strong>{{ESPECIALIDADE}}</strong><span>{{CIDADE}}</span></div>
-          </div>
-          <div class="hero-badge badge-br">
-            <div class="badge-icon-wrap"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.8a16 16 0 0 0 5.29 5.29l.88-1a2 2 0 0 1 2.11-.45c.908.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.03z"/></svg></div>
-            <div class="badge-info"><strong>WhatsApp</strong><span>{{TELEFONE_DISPLAY}}</span></div>
+          <div class="hero-badge br">
+            <div class="badge-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.8a16 16 0 0 0 5.29 5.29l.88-1a2 2 0 0 1 2.11-.45c.908.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.03z"/></svg></div>
+            <div class="badge-txt"><strong>WhatsApp</strong><span>{{TELEFONE_DISPLAY}}</span></div>
           </div>
         </div>
       </div>
@@ -378,52 +390,55 @@
   </div>
 </section>
 
-<!-- ═══ CREDENTIAL STRIP (DARK) ═══ -->
-<div class="cred-strip">
+<!-- ═══ O PROBLEMA (DARK) ═══ -->
+<section id="problema" class="problema dark-section">
   <div class="container">
-    <div class="cred-grid reveal">
-      <div class="cred-item">
-        <div class="cred-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--secondary)" stroke-width="2" stroke-linecap="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
-        <div><div class="cred-label">Especialidade</div><div class="cred-value">{{ESPECIALIDADE}}</div></div>
-      </div>
-      <div class="cred-item">
-        <div class="cred-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--secondary)" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-        <div><div class="cred-label">Localização</div><div class="cred-value">{{CIDADE}}</div></div>
-      </div>
-      <div class="cred-item">
-        <div class="cred-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--secondary)" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.8a16 16 0 0 0 5.29 5.29l.88-1a2 2 0 0 1 2.11-.45c.908.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.03z"/></svg></div>
-        <div><div class="cred-label">Agendamento</div><div class="cred-value">Direto pelo WhatsApp</div></div>
+    <div class="problema-inner">
+      <div class="eyebrow reveal"><span class="eyebrow-line"></span>Por que você ainda não resolveu</div>
+      <h2 class="reveal d1">Você já tentou de tudo —<br>e ainda está no mesmo lugar.</h2>
+      <div class="problema-body">
+        <p class="reveal d2" style="font-size:1.02rem;color:rgba(255,255,255,.75);font-weight:300;line-height:1.9">Você pesquisou na internet. Seguiu conselhos de amigos. Talvez até tenha ido a outro profissional que te atendeu em 15 minutos e te mandou embora com uma receita genérica. E mesmo assim a situação não mudou. Ou melhorou um pouco e voltou.</p>
+        <p class="reveal d3">A maioria dos tratamentos falha não porque o paciente é difícil — mas porque nunca houve um olhar de verdade para o que está acontecendo com <em>aquela pessoa específica</em>.</p>
+        <p class="reveal d3">Seu corpo não é uma estatística. Seu caso não é igual ao do vizinho. E o que funciona para um não funciona para todos.</p>
+        <div class="problema-destaque reveal d4">
+          <p>O que você precisa não é de mais um protocolo genérico. É de alguém que <em>te veja de verdade</em>.</p>
+        </div>
+        <div class="reveal d4" style="display:flex;justify-content:center;margin-top:8px">
+          <a href="https://wa.me/{{TELEFONE_E164}}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+            <svg class="icon-wa" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            Quero ser atendido
+          </a>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</section>
 
-<!-- ═══ SOBRE ═══ -->
-<section id="sobre" class="sobre">
+<!-- ═══ A SOLUÇÃO (CREAM) ═══ -->
+<section class="solucao">
   <div class="container">
-    <div class="sobre-grid">
-      <div class="sobre-photo-wrap reveal">
-        <div class="sobre-photo-bg"></div>
-        <img src="{{FOTO_URL}}" alt="{{NOME}} — {{ESPECIALIDADE}}" class="sobre-photo" loading="lazy"/>
-        <div class="sobre-photo-tag"><strong>{{CIDADE}}</strong><span>{{ESPECIALIDADE}}</span></div>
+    <div class="solucao-grid">
+      <div class="solucao-body reveal">
+        <div class="eyebrow"><span class="eyebrow-line"></span>A abordagem</div>
+        <h2>Uma abordagem que começa onde as outras param.</h2>
+        <p>Quando você chega aqui, a primeira coisa que acontece não é um diagnóstico apressado.</p>
+        <p>É <em>uma escuta</em>.</p>
+        <p>Quero entender sua rotina, seu histórico, o que você já tentou, o que funcionou, o que não funcionou — e principalmente o que você quer alcançar. Só depois disso construímos juntos um plano que faz sentido para <em>a sua vida real</em>.</p>
+        <p>O resultado? Um tratamento que você consegue seguir, que respeita o seu corpo, e que entrega mudanças que você realmente sente.</p>
       </div>
-      <div class="sobre-content reveal d2">
-        <div class="eyebrow"><span class="eyebrow-line"></span>Quem sou</div>
-        <h2 class="section-title">Conheça<br><em>{{NOME}}</em></h2>
-        <p class="section-body">Sou especialista em <strong>{{ESPECIALIDADE}}</strong> e atendo em {{CIDADE}} com foco no que realmente importa: <strong>você</strong>. Cada consulta é um espaço de escuta genuína, onde trabalhamos juntos para entender sua situação e definir o melhor caminho.</p>
-        <p class="section-body">Acredito que bons resultados vêm de uma relação de confiança. Por isso, explico cada etapa com clareza e adapto o atendimento à sua necessidade — sem pressa e sem enrolação.</p>
+      <div class="solucao-panel reveal d2">
+        <h3>O que você vai ter aqui</h3>
         <div class="check-list">
-          <div class="check-item"><div class="check-dot"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div><span>Atendimento clínico <strong>individualizado</strong></span></div>
-          <div class="check-item"><div class="check-dot"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div><span>Abordagem baseada em <strong>evidências atuais</strong></span></div>
-          <div class="check-item"><div class="check-dot"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div><span>Consultório em <strong>{{CIDADE}}</strong></span></div>
-          <div class="check-item"><div class="check-dot"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div><span>Agende por <strong>{{TELEFONE_DISPLAY}}</strong></span></div>
+          <div class="check-item"><div class="check-tick"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div><span><em>Avaliação completa e individualizada</em> — sem pressa, sem rótulo fácil</span></div>
+          <div class="check-item"><div class="check-tick"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div><span>Plano de tratamento construído <em>para o seu caso específico</em></span></div>
+          <div class="check-item"><div class="check-tick"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div><span><em>Acompanhamento ativo</em> em cada etapa, não só no início</span></div>
+          <div class="check-item"><div class="check-tick"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div><span>Comunicação direta — você terá a quem recorrer quando surgir uma dúvida</span></div>
+          <div class="check-item"><div class="check-tick"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div><span>Resultados que duram, porque atacam <em>a causa</em> — não só o sintoma</span></div>
         </div>
-        <div style="margin-top:8px">
-          <a href="https://wa.me/{{TELEFONE_E164}}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-            <svg class="icon-wa" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-            Agendar consulta
-          </a>
-        </div>
+        <a href="https://wa.me/{{TELEFONE_E164}}" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="align-self:flex-start">
+          <svg class="icon-wa" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          Agendar avaliação
+        </a>
       </div>
     </div>
   </div>
@@ -432,185 +447,234 @@
 <!-- ═══ TRATAMENTOS (DARK) ═══ -->
 <section id="tratamentos" class="tratamentos dark-section">
   <div class="container">
-    <div class="section-header reveal">
+    <div class="trat-intro reveal">
       <div class="eyebrow"><span class="eyebrow-line"></span>Áreas de atuação</div>
-      <h2 class="section-title">Tratamentos</h2>
-      <p class="section-body">Condições e situações que atendo como especialista em <strong style="color:rgba(255,255,255,.85)">{{ESPECIALIDADE}}</strong> em {{CIDADE}}.</p>
+      <h2>O que você pode tratar aqui.</h2>
+      <p style="max-width:520px;margin-top:10px">Cada pessoa chega com uma história diferente. Por isso atendo uma ampla variedade de condições — sempre com o mesmo nível de atenção e personalização.</p>
     </div>
     <div class="trat-grid">
       <div class="trat-card reveal d1">
-        <div class="trat-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--secondary)" stroke-width="2" stroke-linecap="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
-        <h3>{{AREA_1_NOME}}</h3>
+        <div class="trat-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--secondary)" stroke-width="2" stroke-linecap="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+        <h4>{{AREA_1_NOME}}</h4>
         <p>{{AREA_1_DESC}}</p>
       </div>
       <div class="trat-card reveal d2">
-        <div class="trat-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--secondary)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
-        <h3>{{AREA_2_NOME}}</h3>
+        <div class="trat-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--secondary)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+        <h4>{{AREA_2_NOME}}</h4>
         <p>{{AREA_2_DESC}}</p>
       </div>
       <div class="trat-card reveal d3">
-        <div class="trat-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--secondary)" stroke-width="2" stroke-linecap="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
-        <h3>{{AREA_3_NOME}}</h3>
+        <div class="trat-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--secondary)" stroke-width="2" stroke-linecap="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+        <h4>{{AREA_3_NOME}}</h4>
         <p>{{AREA_3_DESC}}</p>
       </div>
-      <div class="trat-card reveal d1">
-        <div class="trat-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--secondary)" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
-        <h3>{{AREA_4_NOME}}</h3>
+      <div class="trat-card reveal d4">
+        <div class="trat-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--secondary)" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+        <h4>{{AREA_4_NOME}}</h4>
         <p>{{AREA_4_DESC}}</p>
       </div>
-      <div class="trat-card reveal d2">
-        <div class="trat-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--secondary)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg></div>
-        <h3>{{AREA_5_NOME}}</h3>
+      <div class="trat-card reveal d3">
+        <div class="trat-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--secondary)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg></div>
+        <h4>{{AREA_5_NOME}}</h4>
         <p>{{AREA_5_DESC}}</p>
       </div>
-      <div class="trat-card reveal d3">
-        <div class="trat-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--secondary)" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
-        <h3>{{AREA_6_NOME}}</h3>
+      <div class="trat-card reveal d4">
+        <div class="trat-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--secondary)" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+        <h4>{{AREA_6_NOME}}</h4>
         <p>{{AREA_6_DESC}}</p>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- ═══ COMO FUNCIONA ═══ -->
-<section class="como-funciona">
-  <div class="container">
-    <div class="section-header reveal">
-      <div class="eyebrow"><span class="eyebrow-line"></span>Passo a passo</div>
-      <h2 class="section-title">Como <em>funciona</em></h2>
-      <p class="section-body">Do primeiro contato ao acompanhamento — simples e direto.</p>
-    </div>
-    <div class="steps-grid">
-      <div class="step-item reveal d1">
-        <div class="step-num">01</div>
-        <div class="step-title">Entre em contato</div>
-        <div class="step-desc">Manda uma mensagem no WhatsApp para checar disponibilidade e agendar.</div>
-      </div>
-      <div class="step-item reveal d2">
-        <div class="step-num">02</div>
-        <div class="step-title">Confirme o horário</div>
-        <div class="step-desc">Escolha o melhor dia e horário. Confirmação rápida, tudo pelo WhatsApp.</div>
-      </div>
-      <div class="step-item reveal d3">
-        <div class="step-num">03</div>
-        <div class="step-title">Realize a consulta</div>
-        <div class="step-desc">Atendimento presencial em {{CIDADE}}, com avaliação completa e orientações personalizadas.</div>
-      </div>
+    <div class="trat-footer reveal">
+      <p>Não encontrou o que procura? Isso não significa que não posso te ajudar. <em>Entre em contato</em> e me conta o que está sentindo — juntos descobrimos o melhor caminho.</p>
+      <a href="https://wa.me/{{TELEFONE_E164}}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+        <svg class="icon-wa" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        Quero saber se posso ser atendido
+      </a>
     </div>
   </div>
 </section>
 
-<!-- ═══ DIFERENCIAIS ═══ -->
-<section class="diferenciais">
+<!-- ═══ AUTORIDADE / SOBRE (CREAM) ═══ -->
+<section id="sobre" class="autoridade">
   <div class="container">
-    <div class="dif-grid">
-      <div class="dif-left reveal">
-        <div class="eyebrow"><span class="eyebrow-line"></span>Por que me escolher</div>
-        <h2 class="section-title">O que me<br><em>diferencia</em></h2>
-        <p class="section-body">Meu compromisso é que você saia de cada consulta com clareza, confiança e o cuidado que precisa.</p>
-        <div class="dif-cards">
-          <div class="dif-card"><div class="dif-num">01</div><div><h3>Você é ouvido</h3><p>Sem pressa. Cada dúvida e queixa importa — a consulta é focada em você.</p></div></div>
-          <div class="dif-card"><div class="dif-num">02</div><div><h3>Explicação clara</h3><p>Sem linguagem técnica desnecessária. Explico cada etapa de forma simples e direta.</p></div></div>
-          <div class="dif-card"><div class="dif-num">03</div><div><h3>Fácil de agendar</h3><p>Sem formulário, sem fila. Uma mensagem no WhatsApp e pronto.</p></div></div>
+    <div class="auto-grid">
+      <div class="auto-photo-wrap reveal">
+        <div class="auto-photo-bg"></div>
+        <img src="{{FOTO_URL}}" alt="{{NOME}} — {{ESPECIALIDADE}}" class="auto-photo" loading="lazy"/>
+      </div>
+      <div class="auto-content reveal d2">
+        <div class="eyebrow"><span class="eyebrow-line"></span>Quem vai cuidar de você</div>
+        <h2>{{NOME}}</h2>
+        <p>Sou especialista em <em>{{ESPECIALIDADE}}</em> e ao longo da minha trajetória atendi pessoas que chegaram frustradas, descrentes, depois de anos tentando resolver algo que parecia sem saída. A grande maioria encontrou aqui uma virada que não esperava mais.</p>
+        <p>Minha abordagem une rigor técnico e atenção humana. Acredito que um bom profissional de saúde não trata apenas o problema — <em>trata a pessoa que carrega esse problema</em>.</p>
+        <p>Estou em <em>{{CIDADE}}</em> e o agendamento é direto pelo WhatsApp — sem formulário, sem fila.</p>
+        <div class="creds">
+          <div class="cred-item"><span class="cred-dot"></span>Especialista em {{ESPECIALIDADE}}</div>
+          <div class="cred-item"><span class="cred-dot"></span>Atendimento em {{CIDADE}}</div>
+          <div class="cred-item"><span class="cred-dot"></span>Agendamento direto · {{TELEFONE_DISPLAY}}</div>
+        </div>
+        <a href="https://wa.me/{{TELEFONE_E164}}" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="align-self:flex-start;margin-top:4px">
+          <svg class="icon-wa" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          Agendar minha consulta
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROVA SOCIAL (CREAM2) ═══ -->
+<section class="prova">
+  <div class="container">
+    <div class="eyebrow reveal"><span class="eyebrow-line"></span>O que dizem os pacientes</div>
+    <h2 class="reveal d1">Histórias reais de quem<br>decidiu cuidar da saúde.</h2>
+    <div class="reveal d2">
+      <span class="prova-disclaimer">⚠ Exemplos ilustrativos — depoimentos fictícios para fins de demonstração</span>
+    </div>
+    <div class="testemunhos reveal d3">
+      <div class="test-card">
+        <div class="test-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <p class="test-quote">"Eu tinha desistido de acreditar que ia melhorar. Cheguei aqui sem muita esperança, honestamente. Depois de alguns meses de acompanhamento, pela primeira vez em anos eu sinto que meu corpo está do meu lado."</p>
+        <div class="test-author"><strong>Ana Paula R.</strong><span>38 anos · {{CIDADE}} (exemplo fictício)</span></div>
+      </div>
+      <div class="test-card">
+        <div class="test-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <p class="test-quote">"Fui a vários especialistas antes. Todos me deram a mesma resposta. Aqui foi completamente diferente — o plano foi feito para mim, respeitando minha rotina e meu ritmo."</p>
+        <div class="test-author"><strong>Marcos T.</strong><span>45 anos · {{CIDADE}} (exemplo fictício)</span></div>
+      </div>
+      <div class="test-card">
+        <div class="test-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <p class="test-quote">"Minha maior resistência era achar que não ia conseguir seguir o tratamento. Me mostraram que dá pra cuidar da saúde sem virar a vida de cabeça pra baixo. Hoje indico para todo mundo."</p>
+        <div class="test-author"><strong>Fernanda L.</strong><span>52 anos · {{CIDADE}} (exemplo fictício)</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROCESSO (DARK) ═══ -->
+<section id="processo" class="processo dark-section">
+  <div class="container">
+    <div class="processo-header">
+      <div class="eyebrow reveal"><span class="eyebrow-line"></span>Passo a passo</div>
+      <h2 class="reveal d1">Como funciona na prática.</h2>
+      <p class="reveal d2" style="color:rgba(255,255,255,.65);max-width:480px">Sem mistério, sem enrolação. É assim que começa.</p>
+    </div>
+    <div class="steps reveal d3">
+      <div class="step">
+        <div class="step-num-wrap"><span class="step-num">01</span></div>
+        <div class="step-content">
+          <h4>Você agenda sua avaliação</h4>
+          <p>Um processo simples, rápido. Uma mensagem no WhatsApp é o suficiente para checar disponibilidade e marcar seu horário em <em>{{CIDADE}}</em>.</p>
         </div>
       </div>
-      <div class="dif-cta-panel reveal d2">
-        <p class="dif-cta-title">Pronto para<br>dar o primeiro passo?</p>
-        <p class="dif-cta-desc">Agende com <strong style="color:#fff">{{NOME}}</strong> agora. É rápido, direto pelo WhatsApp — sem formulários, sem espera.</p>
-        <a href="https://wa.me/{{TELEFONE_E164}}" target="_blank" rel="noopener noreferrer" class="btn btn-white btn-lg" style="align-self:flex-start">
-          <svg class="icon-wa" viewBox="0 0 24 24" fill="var(--primary)"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-          Agendar agora
-        </a>
-        <p class="dif-cta-phone" style="font-size:.78rem;color:rgba(255,255,255,.45);font-weight:300">{{TELEFONE_DISPLAY}}</p>
+      <div class="step">
+        <div class="step-num-wrap"><span class="step-num">02</span></div>
+        <div class="step-content">
+          <h4>A gente se conhece de verdade</h4>
+          <p>Na primeira consulta, não existe pressa. Quero ouvir <em>sua história completa</em> antes de qualquer conclusão — rotina, histórico, o que já tentou, o que quer alcançar.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num-wrap"><span class="step-num">03</span></div>
+        <div class="step-content">
+          <h4>Você recebe um plano claro</h4>
+          <p>Nada de orientações vagas. Você sai sabendo <em>exatamente o que fazer</em>, por quê, e o que esperar — um plano construído para o seu caso específico.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num-wrap"><span class="step-num">04</span></div>
+        <div class="step-content">
+          <h4>Caminhamos juntos</h4>
+          <p>O acompanhamento não termina na primeira consulta. Estou aqui durante <em>todo o processo</em> — para ajustar, responder, evoluir junto com você.</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ FAQ (DARK) ═══ -->
-<section class="faq dark-section">
+<!-- ═══ OBJEÇÕES / FAQ (CREAM) ═══ -->
+<section class="objecoes">
   <div class="container">
-    <div class="faq-grid">
-      <div class="faq-left reveal">
+    <div class="objecoes-grid">
+      <div class="objecoes-left reveal">
         <div class="eyebrow"><span class="eyebrow-line"></span>Tire suas dúvidas</div>
-        <h2 class="section-title">Perguntas<br><em>frequentes</em></h2>
-        <p class="section-body">Ainda tem dúvidas? Fala pelo WhatsApp — respondo pessoalmente.</p>
-        <a href="https://wa.me/{{TELEFONE_E164}}" target="_blank" rel="noopener noreferrer" class="btn btn-white btn-sm faq-left-btn" style="align-self:flex-start;margin-top:8px">
-          <svg class="icon-wa" viewBox="0 0 24 24" fill="var(--primary)"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        <h2>Suas dúvidas, respondidas com honestidade.</h2>
+        <p>Ainda tem dúvidas? Fala pelo WhatsApp — respondo pessoalmente, sem enrolação.</p>
+        <a href="https://wa.me/{{TELEFONE_E164}}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm" style="align-self:flex-start;margin-top:4px">
+          <svg class="icon-wa" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
           Falar pelo WhatsApp
         </a>
       </div>
       <div class="faq-list reveal d2">
         <details class="faq-item" open>
-          <summary class="faq-question">{{FAQ_1_Q}}<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></summary>
-          <div class="faq-answer"><div class="faq-answer-inner">{{FAQ_1_A}}</div></div>
+          <summary class="faq-q">{{FAQ_1_Q}}<svg class="faq-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></summary>
+          <div class="faq-a"><div class="faq-a-inner">{{FAQ_1_A}}</div></div>
         </details>
         <details class="faq-item">
-          <summary class="faq-question">{{FAQ_2_Q}}<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></summary>
-          <div class="faq-answer"><div class="faq-answer-inner">{{FAQ_2_A}}</div></div>
+          <summary class="faq-q">{{FAQ_2_Q}}<svg class="faq-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></summary>
+          <div class="faq-a"><div class="faq-a-inner">{{FAQ_2_A}}</div></div>
         </details>
         <details class="faq-item">
-          <summary class="faq-question">{{FAQ_3_Q}}<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></summary>
-          <div class="faq-answer"><div class="faq-answer-inner">{{FAQ_3_A}}</div></div>
+          <summary class="faq-q">{{FAQ_3_Q}}<svg class="faq-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></summary>
+          <div class="faq-a"><div class="faq-a-inner">{{FAQ_3_A}}</div></div>
         </details>
         <details class="faq-item">
-          <summary class="faq-question">{{FAQ_4_Q}}<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></summary>
-          <div class="faq-answer"><div class="faq-answer-inner">{{FAQ_4_A}}</div></div>
+          <summary class="faq-q">{{FAQ_4_Q}}<svg class="faq-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></summary>
+          <div class="faq-a"><div class="faq-a-inner">{{FAQ_4_A}}</div></div>
         </details>
         <details class="faq-item">
-          <summary class="faq-question">{{FAQ_5_Q}}<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></summary>
-          <div class="faq-answer"><div class="faq-answer-inner">{{FAQ_5_A}}</div></div>
+          <summary class="faq-q">{{FAQ_5_Q}}<svg class="faq-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></summary>
+          <div class="faq-a"><div class="faq-a-inner">{{FAQ_5_A}}</div></div>
         </details>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ LOCALIZAÇÃO ═══ -->
-<section id="localizacao" class="localizacao">
-  <div class="container">
-    <div class="loc-grid">
-      <div class="loc-info reveal">
-        <div class="eyebrow"><span class="eyebrow-line"></span>Como chegar</div>
-        <h2 class="section-title">Minha <em>localização</em></h2>
-        <div class="loc-item">
-          <div class="loc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-          <div><div class="loc-label">Cidade</div><div class="loc-value">{{CIDADE}}</div></div>
-        </div>
-        <div class="loc-item">
-          <div class="loc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.8a16 16 0 0 0 5.29 5.29l.88-1a2 2 0 0 1 2.11-.45c.908.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.03z"/></svg></div>
-          <div><div class="loc-label">WhatsApp</div><div class="loc-value">{{TELEFONE_DISPLAY}}</div></div>
-        </div>
-        <div class="loc-item">
-          <div class="loc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
-          <div><div class="loc-label">Agendamento</div><div class="loc-value">Via WhatsApp · consultar disponibilidade</div></div>
-        </div>
-        <a href="https://wa.me/{{TELEFONE_E164}}" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="align-self:flex-start">
-          <svg class="icon-wa" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-          Agendar consulta
-        </a>
-      </div>
-      <div class="loc-map reveal d2">
-        <iframe src="https://maps.google.com/maps?q={{MAPS_QUERY}}&output=embed" width="100%" height="380" style="border:0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="{{NOME}} {{CIDADE}}"></iframe>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ CTA FINAL (DARK) ═══ -->
-<section class="cta-final">
+<!-- ═══ CTA FINAL / OFERTA (DARK) ═══ -->
+<section class="cta-final dark-section">
+  <div class="cta-orb1"></div>
+  <div class="cta-orb2"></div>
   <div class="container">
     <div class="cta-box reveal">
-      <div class="cta-eyebrow"><svg width="7" height="7" viewBox="0 0 8 8" fill="var(--secondary)"><circle cx="4" cy="4" r="4"/></svg>Comece agora</div>
-      <h2 class="cta-title">Agende sua consulta<br>com <em>{{NOME}}</em></h2>
-      <p class="cta-desc">Atendimento especializado em <strong style="color:rgba(255,255,255,.85)">{{ESPECIALIDADE}}</strong> em {{CIDADE}}. Sem fila, sem formulário — só uma mensagem no WhatsApp.</p>
-      <div class="cta-actions">
-        <a href="https://wa.me/{{TELEFONE_E164}}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg">
+      <div class="cta-left">
+        <div class="cta-eyebrow"><svg width="6" height="6" viewBox="0 0 8 8" fill="var(--secondary)"><circle cx="4" cy="4" r="4"/></svg>Seu próximo passo</div>
+        <h2 class="cta-title">Pronto para cuidar<br>da <span class="grad">sua saúde?</span></h2>
+        <p class="cta-body">Agende sua consulta de avaliação e descubra, com clareza e sem compromisso, qual é o <em>melhor caminho para o seu caso</em>. Você não precisa chegar sabendo o que quer. Precisa só chegar.</p>
+        <p class="cta-body" style="margin-top:-8px"><em>{{NOME}}</em> responde pessoalmente e confirma seu horário em {{CIDADE}}.</p>
+        <a href="https://wa.me/{{TELEFONE_E164}}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg" style="align-self:flex-start">
           <svg class="icon-wa" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-          Agendar — {{TELEFONE_DISPLAY}}
+          Agendar minha avaliação — {{TELEFONE_DISPLAY}}
         </a>
       </div>
-      <p class="cta-note">Atendimento em {{CIDADE}} · {{ESPECIALIDADE}}</p>
+      <div class="cta-panel reveal d2">
+        <h3>O que acontece na sua primeira consulta</h3>
+        <div class="cta-items">
+          <div class="cta-item"><em>Escuta completa</em> do seu histórico e das suas queixas — sem pressa</div>
+          <div class="cta-item">Avaliação clínica <em>individualizada</em></div>
+          <div class="cta-item">Orientações iniciais <em>já na primeira sessão</em></div>
+          <div class="cta-item">Proposta de <em>plano de tratamento personalizado</em></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FECHAMENTO (DARK2) ═══ -->
+<section class="fechamento dark-section">
+  <div class="container">
+    <div class="fechamento-inner reveal">
+      <div class="fechamento-deco">❝</div>
+      <h3 style="color:#fff;font-size:1.5rem;letter-spacing:-.02em">Se você chegou até aqui, uma parte de você já tomou a decisão.</h3>
+      <p>Cuidar da saúde não é luxo. Não é frescura. Não é para depois. É a base de tudo que você quer construir — na carreira, na família, no seu próprio bem-estar.</p>
+      <p>Você passou tempo demais tentando resolver isso sozinho, convivendo com algo que não precisava conviver, adiando uma conversa que <em>pode mudar bastante coisa</em>.</p>
+      <div class="fechamento-destaque">
+        <p>Esse adiamento acaba hoje.</p>
+      </div>
+      <a href="https://wa.me/{{TELEFONE_E164}}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg">
+        <svg class="icon-wa" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        Agendar minha avaliação agora
+      </a>
+      <p class="fechamento-quote">Sem julgamentos. Sem pressa. Só cuidado.</p>
     </div>
   </div>
 </section>
@@ -621,25 +685,28 @@
     <div class="footer-inner">
       <div class="footer-name">{{NOME}}</div>
       <div class="footer-sub">{{ESPECIALIDADE}} · {{CIDADE}} · © {{ANO_ATUAL}}</div>
-      <p class="footer-disclaimer">Esta é uma demonstração de site. Não representa o profissional real.</p>
+      <p class="footer-disclaimer">Esta é uma demonstração de site. Não representa o profissional real. Este conteúdo tem fins informativos e não substitui avaliação clínica presencial.</p>
     </div>
   </div>
 </footer>
 
+<style>
+  @keyframes reveal-up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+  @keyframes reveal-fade{from{opacity:0}to{opacity:1}}
+</style>
 <script>
-  // Scroll reveal
+  // Reveal on scroll
   const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target) } });
-  }, { threshold: .1, rootMargin: '0px 0px -40px 0px' });
-  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target) } })
+  }, { threshold: .08, rootMargin: '0px 0px -30px 0px' })
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el))
 
   // Progress bar
-  const bar = document.getElementById('progress');
+  const bar = document.getElementById('progress')
   window.addEventListener('scroll', () => {
-    const h = document.documentElement;
-    const pct = h.scrollTop / (h.scrollHeight - h.clientHeight) * 100;
-    bar.style.width = Math.min(pct, 100) + '%';
-  }, { passive: true });
+    const h = document.documentElement
+    bar.style.width = Math.min(h.scrollTop / (h.scrollHeight - h.clientHeight) * 100, 100) + '%'
+  }, { passive: true })
 </script>
 </body>
 </html>
