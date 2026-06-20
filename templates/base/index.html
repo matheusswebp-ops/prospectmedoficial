@@ -301,11 +301,16 @@
     .cta-title .grad{font-weight:900}
     .cta-body{font-weight:300;color:rgba(255,255,255,.72);line-height:1.9}
     .cta-main-btn{align-self:flex-start}
-    .cta-panel{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:24px;padding:40px 36px;display:flex;flex-direction:column;gap:20px}
-    .cta-panel h3{font-size:1rem;font-weight:700;color:#fff;letter-spacing:-.02em}
-    .cta-items{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:28px}
-    .cta-item{display:flex;flex-direction:column;gap:6px;font-size:.78rem;font-weight:300;color:rgba(255,255,255,.7);line-height:1.55}
-    .cta-item::before{content:'✓';color:var(--secondary);font-weight:700;font-size:.85rem}
+    .cta-panel{background:var(--cream);border:1px solid var(--bdr);border-radius:24px;padding:36px 32px;display:flex;flex-direction:column;gap:0}
+    .cta-panel h3{font-size:.95rem;font-weight:700;color:var(--text);letter-spacing:-.02em;margin-bottom:32px}
+    .cta-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;position:relative}
+    /* Trilha da linha animada — de centro do 1º nó ao centro do último */
+    .step-track-wrap{position:absolute;top:14px;left:12.5%;right:12.5%;height:2px;background:var(--bdr);border-radius:2px;overflow:hidden;z-index:0}
+    @keyframes line-flow{0%{left:-35%}100%{left:110%}}
+    .step-track-fill{position:absolute;top:0;height:100%;width:35%;background:linear-gradient(90deg,transparent 0%,var(--primary) 35%,var(--secondary) 65%,transparent 100%);animation:line-flow 2s linear infinite;border-radius:2px}
+    .cta-step{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;position:relative;z-index:1;padding-top:2px}
+    .step-dot{width:30px;height:30px;border-radius:50%;background:var(--primary);display:flex;align-items:center;justify-content:center;color:#fff;font-size:.7rem;font-weight:700;flex-shrink:0}
+    .cta-step span{font-size:.74rem;font-weight:400;color:var(--text2);line-height:1.55}
 
     /* ── FECHAMENTO (DARK2) ────────────────────────── */
     .fechamento{padding:100px 0;background:var(--dark-bg2);border-top:1px solid rgba(255,255,255,.05);position:relative;overflow:hidden}
@@ -362,7 +367,8 @@
       .cta-panel{text-align:left}
       .cta-final .container{padding:0 18px}
       .cta-main-btn{align-self:stretch;white-space:normal;text-align:center;justify-content:center}
-      .cta-items{grid-template-columns:repeat(2,1fr);gap:12px}
+      .cta-steps{grid-template-columns:repeat(2,1fr);gap:20px 8px}
+      .step-track-wrap{display:none}
       .trat-grid{grid-template-columns:1fr}
       .problema-inner{text-align:center}
       .problema-inner .eyebrow{justify-content:center}
@@ -753,11 +759,25 @@
       </div>
       <div class="cta-panel reveal d2">
         <h3>O que acontece na sua primeira consulta</h3>
-        <div class="cta-items">
-          <div class="cta-item">Escuta completa do seu histórico, sem pressa</div>
-          <div class="cta-item">Avaliação clínica individualizada</div>
-          <div class="cta-item">Orientações práticas na primeira consulta</div>
-          <div class="cta-item">Plano de tratamento personalizado</div>
+        <div class="cta-steps">
+          <!-- Linha animada conectando os 4 nós -->
+          <div class="step-track-wrap"><div class="step-track-fill"></div></div>
+          <div class="cta-step">
+            <div class="step-dot">✓</div>
+            <span>Escuta completa do seu histórico, sem pressa</span>
+          </div>
+          <div class="cta-step">
+            <div class="step-dot">✓</div>
+            <span>Avaliação clínica individualizada</span>
+          </div>
+          <div class="cta-step">
+            <div class="step-dot">✓</div>
+            <span>Orientações práticas na primeira consulta</span>
+          </div>
+          <div class="cta-step">
+            <div class="step-dot">✓</div>
+            <span>Plano de tratamento personalizado</span>
+          </div>
         </div>
       </div>
     </div>
