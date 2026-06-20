@@ -388,6 +388,19 @@ export default function ProspeccaoForm({ leadsHoje }: Props) {
         <p className="text-xs text-center text-muted-foreground">
           Pode navegar à vontade — a prospecção continua em segundo plano e atualiza automaticamente ao voltar.
         </p>
+
+        <div className="flex justify-center">
+          <Button
+            type="button"
+            variant="outline"
+            size="sm"
+            className="text-muted-foreground gap-2"
+            onClick={handleReset}
+          >
+            <XCircle className="w-3.5 h-3.5" />
+            Cancelar acompanhamento
+          </Button>
+        </div>
       </div>
     )
   }
