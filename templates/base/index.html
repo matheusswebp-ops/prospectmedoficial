@@ -259,15 +259,22 @@
     .processo::after{content:'';position:absolute;width:350px;height:350px;border-radius:50%;background:radial-gradient(circle,var(--p25) 0%,transparent 70%);bottom:-120px;left:-90px;pointer-events:none}
     .processo-header{text-align:center;display:flex;flex-direction:column;align-items:center;gap:10px;margin-bottom:56px;position:relative;z-index:1}
     .processo-header .eyebrow{justify-content:center}
-    .steps{display:flex;flex-direction:column;gap:0;position:relative;z-index:1;margin-top:56px}
-    .step{display:grid;grid-template-columns:80px 1fr;gap:24px;padding:32px 0;border-bottom:1px solid rgba(255,255,255,.06);transition:all .25s}
-    .step:last-child{border-bottom:none}
-    .step:hover .step-num-wrap{border-color:var(--p40);box-shadow:0 0 20px var(--p25)}
-    .step-num-wrap{width:64px;height:64px;border-radius:50%;border:1.5px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .3s}
-    .step-num{font-size:1.4rem;font-weight:900;color:var(--secondary);letter-spacing:-.02em}
-    .step-content{display:flex;flex-direction:column;gap:8px;padding-top:8px}
-    .step-content h4{font-size:1rem;font-weight:700;color:#fff;letter-spacing:-.02em}
-    .step-content p{font-size:.88rem;font-weight:300;color:rgba(255,255,255,.7);line-height:1.8;margin:0}
+    /* Nós numerados + linha animada */
+    .proc-connect{display:flex;align-items:center;justify-content:space-between;padding:0 calc(100%/8);position:relative;margin-bottom:24px;z-index:1}
+    .proc-connect::before{content:'';position:absolute;top:50%;left:calc(100%/8);right:calc(100%/8);height:1px;background:rgba(255,255,255,.1);transform:translateY(-50%)}
+    .proc-connect-line{position:absolute;top:50%;left:calc(100%/8);right:calc(100%/8);height:1px;transform:translateY(-50%);overflow:hidden}
+    @keyframes proc-flow{0%{left:-40%}100%{left:110%}}
+    .proc-connect-fill{position:absolute;top:0;height:100%;width:40%;background:linear-gradient(90deg,transparent 0%,var(--secondary) 35%,var(--primary) 65%,transparent 100%);animation:proc-flow 2.5s linear infinite}
+    .proc-node{width:36px;height:36px;border-radius:50%;border:1.5px solid var(--secondary);background:var(--dark-bg3);color:var(--secondary);font-size:.68rem;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;z-index:1;box-shadow:0 0 0 6px var(--dark-bg3)}
+    /* Cards em grid */
+    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;position:relative;z-index:1}
+    .step{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.07);border-radius:18px;padding:28px 24px;display:flex;flex-direction:column;gap:14px;transition:all .3s;position:relative;overflow:hidden}
+    .step:hover{border-color:var(--p40);transform:translateY(-5px);box-shadow:0 24px 56px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.06)}
+    .step-watermark{position:absolute;bottom:-14px;right:10px;font-size:5.5rem;font-weight:900;color:rgba(255,255,255,.04);letter-spacing:-.05em;line-height:1;pointer-events:none;user-select:none;transition:color .3s}
+    .step:hover .step-watermark{color:rgba(255,255,255,.07)}
+    .proc-icon{width:44px;height:44px;border-radius:11px;background:var(--p25);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .step h4{font-size:.97rem;font-weight:700;color:#fff;line-height:1.3;letter-spacing:-.02em}
+    .step p{font-size:.84rem;font-weight:300;color:rgba(255,255,255,.65);line-height:1.8;margin:0}
 
     /* ── OBJEÇÕES / FAQ (CREAM) ────────────────────── */
     .objecoes{padding:100px 0;background:var(--cream)}
@@ -341,6 +348,8 @@
       .auto-photo-wrap{max-width:300px;margin:0 auto}
       .testemunhos{grid-template-columns:1fr}
       .trat-grid{grid-template-columns:repeat(2,1fr)}
+      .steps{grid-template-columns:repeat(2,1fr)}
+      .proc-connect{display:none}
       .cta-cards-grid{grid-template-columns:repeat(2,1fr)}
       .cta-connect{display:none}
       .solucao-panel{position:static}
@@ -366,6 +375,8 @@
       .auto-btn{align-self:center}
       .objecoes-btn{align-self:center}
       .creds{align-self:stretch}
+      .steps{grid-template-columns:1fr}
+      .proc-connect{display:none}
       .cta-cards-grid{grid-template-columns:1fr}
       .cta-final-foot .btn{width:100%}
       .trat-grid{grid-template-columns:1fr}
@@ -668,34 +679,41 @@
       <h2 class="reveal d1">Como funciona na prática.</h2>
       <p class="reveal d2" style="color:rgba(255,255,255,.65);max-width:480px">Sem mistério, sem enrolação. É assim que começa.</p>
     </div>
-    <div class="steps reveal d3">
-      <div class="step">
-        <div class="step-num-wrap"><span class="step-num">01</span></div>
-        <div class="step-content">
-          <h4>Você agenda sua avaliação</h4>
-          <p>Um processo simples, rápido. Uma mensagem no WhatsApp é o suficiente para checar disponibilidade e marcar seu horário em <em>{{CIDADE}}</em>.</p>
-        </div>
+
+    <!-- Nós numerados + linha animada -->
+    <div class="proc-connect">
+      <div class="proc-connect-line"><div class="proc-connect-fill"></div></div>
+      <span class="proc-node">01</span>
+      <span class="proc-node">02</span>
+      <span class="proc-node">03</span>
+      <span class="proc-node">04</span>
+    </div>
+
+    <!-- 4 cards em grid -->
+    <div class="steps">
+      <div class="step reveal d1">
+        <span class="step-watermark">01</span>
+        <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--secondary)" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+        <h4>Você agenda sua avaliação</h4>
+        <p>Um processo simples, rápido. Uma mensagem no WhatsApp é o suficiente para checar disponibilidade e marcar seu horário em <em style="color:var(--secondary)">{{CIDADE}}</em>.</p>
       </div>
-      <div class="step">
-        <div class="step-num-wrap"><span class="step-num">02</span></div>
-        <div class="step-content">
-          <h4>A gente se conhece de verdade</h4>
-          <p>Na primeira consulta, não existe pressa. Quero ouvir <em>sua história completa</em> antes de qualquer conclusão — rotina, histórico, o que já tentou, o que quer alcançar.</p>
-        </div>
+      <div class="step reveal d2">
+        <span class="step-watermark">02</span>
+        <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--secondary)" stroke-width="2" stroke-linecap="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+        <h4>A gente se conhece de verdade</h4>
+        <p>Na primeira consulta, não existe pressa. Quero ouvir <em style="color:var(--secondary)">sua história completa</em> antes de qualquer conclusão.</p>
       </div>
-      <div class="step">
-        <div class="step-num-wrap"><span class="step-num">03</span></div>
-        <div class="step-content">
-          <h4>Você recebe um plano claro</h4>
-          <p>Nada de orientações vagas. Você sai sabendo <em>exatamente o que fazer</em>, por quê, e o que esperar — um plano construído para o seu caso específico.</p>
-        </div>
+      <div class="step reveal d3">
+        <span class="step-watermark">03</span>
+        <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--secondary)" stroke-width="2" stroke-linecap="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+        <h4>Você recebe um plano claro</h4>
+        <p>Você sai sabendo <em style="color:var(--secondary)">exatamente o que fazer</em>, por quê, e o que esperar — um plano construído para o seu caso.</p>
       </div>
-      <div class="step">
-        <div class="step-num-wrap"><span class="step-num">04</span></div>
-        <div class="step-content">
-          <h4>Caminhamos juntos</h4>
-          <p>O acompanhamento não termina na primeira consulta. Estou aqui durante <em>todo o processo</em> — para ajustar, responder, evoluir junto com você.</p>
-        </div>
+      <div class="step reveal d4">
+        <span class="step-watermark">04</span>
+        <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--secondary)" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h4>Caminhamos juntos</h4>
+        <p>O acompanhamento não termina na primeira consulta. Estou aqui durante <em style="color:var(--secondary)">todo o processo</em> — para ajustar, responder, evoluir.</p>
       </div>
     </div>
   </div>
