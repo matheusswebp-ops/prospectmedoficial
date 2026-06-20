@@ -61,6 +61,7 @@ export function LeadCard({ lead: initialLead, onLeadUpdate }: LeadCardProps) {
         )}
         {...attributes}
         {...listeners}
+        onClick={() => { if (!isDragging) setDetailOpen(true) }}
       >
         {/* Row 1: Avatar + Name */}
         <div className="flex items-start gap-2.5">
