@@ -137,6 +137,13 @@ export default function ProspeccaoForm({ leadsHoje }: Props) {
       const res = await fetch(`/api/prospeccao/status/${id}`, { signal: controller.signal })
       clearTimeout(timeout)
 
+      if (res.status === 404) {
+        // Batch não existe mais — limpar localStorage e resetar
+        localStorage.removeItem(STORAGE_KEY)
+        if (intervalRef.current) clearInterval(intervalRef.current)
+        handleReset()
+        return
+      }
       if (!res.ok) return
       const data = await res.json()
 
