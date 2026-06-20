@@ -125,6 +125,24 @@ export function LeadDetailSheet({
     }
   }, [open, loadDetails])
 
+  // Polling quando LP está gerando — atualiza a cada 4s até publicar ou errar
+  useEffect(() => {
+    if (!open || lead.landing_page_status !== 'gerando') return
+    const interval = setInterval(async () => {
+      try {
+        const res = await fetch(`/api/leads/${lead.id}`)
+        if (!res.ok) return
+        const data = await res.json()
+        if (data.lead) {
+          setLead(data.lead)
+          onLeadUpdate?.(data.lead)
+          if (data.lead.landing_page_status !== 'gerando') clearInterval(interval)
+        }
+      } catch { /* silently retry */ }
+    }, 4000)
+    return () => clearInterval(interval)
+  }, [open, lead.landing_page_status, lead.id, onLeadUpdate])
+
   async function handleAddNote() {
     if (!noteText.trim()) return
     setIsSavingNote(true)
