@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import {
@@ -50,6 +50,8 @@ const ESPECIALIDADES = [
   'Médico Veterinário',
 ]
 
+const STORAGE_KEY = 'prospectmed_active_batch'
+
 // ─── Types ────────────────────────────────────────────────────────────────────
 
 type Phase = 'form' | 'running' | 'completed' | 'failed'
@@ -62,6 +64,12 @@ interface Totais {
 
 interface Props {
   leadsHoje: number
+}
+
+interface StoredBatch {
+  batchId: string
+  cidade: string
+  especialidade: string
 }
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
@@ -87,53 +95,110 @@ export default function ProspeccaoForm({ leadsHoje }: Props) {
   const [totais, setTotais] = useState<Totais>({ encontrados: 0, novos: 0, duplicados: 0 })
   const [erroMsg, setErroMsg] = useState<string | null>(null)
 
-  // Form state
   const [especialidade, setEspecialidade] = useState('')
   const [cidade, setCidade] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
 
   const isLimitReached = leadsHoje >= 12
 
-  // ── Polling ──────────────────────────────────────────────────────────────────
+  // Ref para o interval para que o visibilitychange possa cancelar e recriar
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
+  const phaseRef = useRef<Phase>('form')
+  const batchIdRef = useRef<string | null>(null)
+
+  phaseRef.current = phase
+  batchIdRef.current = batchId
+
+  // ── Restaurar prospecção ativa ao montar ─────────────────────────────────────
   useEffect(() => {
-    if (phase !== 'running' || !batchId) return
+    const stored = localStorage.getItem(STORAGE_KEY)
+    if (!stored) return
+    try {
+      const { batchId: savedId, cidade: savedCidade, especialidade: savedEsp } = JSON.parse(stored) as StoredBatch
+      if (savedId) {
+        setBatchId(savedId)
+        setCidade(savedCidade)
+        setEspecialidade(savedEsp)
+        setProgresso(5)
+        setStatusText('Retomando acompanhamento...')
+        setPhase('running')
+      }
+    } catch {
+      localStorage.removeItem(STORAGE_KEY)
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
-    const interval = setInterval(async () => {
-      try {
-        const res = await fetch(`/api/prospeccao/status/${batchId}`)
-        if (!res.ok) return
+  // ── Função de poll ───────────────────────────────────────────────────────────
+  const poll = useCallback(async (id: string) => {
+    try {
+      const controller = new AbortController()
+      const timeout = setTimeout(() => controller.abort(), 10_000)
+      const res = await fetch(`/api/prospeccao/status/${id}`, { signal: controller.signal })
+      clearTimeout(timeout)
 
-        const data = await res.json()
+      if (!res.ok) return
+      const data = await res.json()
 
-        const p = data.progresso ?? 0
-        setProgresso(p)
-        setStatusText(getStatusText(p))
+      const p = data.progresso ?? 0
+      setProgresso(p)
+      setStatusText(getStatusText(p))
+      setTotais({
+        encontrados: data.total_encontrados ?? 0,
+        novos: data.total_novos ?? 0,
+        duplicados: data.total_duplicados ?? 0,
+      })
+
+      if (data.status === 'completed' || data.status === 'partial') {
+        setProgresso(100)
+        setStatusText('Concluído!')
         setTotais({
           encontrados: data.total_encontrados ?? 0,
           novos: data.total_novos ?? 0,
           duplicados: data.total_duplicados ?? 0,
         })
-
-        if (data.status === 'completed' || data.status === 'partial') {
-          setProgresso(100)
-          setStatusText('Concluído!')
-          setPhase('completed')
-          clearInterval(interval)
-          router.refresh()
-        }
-
-        if (data.status === 'failed') {
-          setErroMsg(data.erro_mensagem ?? 'Erro desconhecido. Tente novamente.')
-          setPhase('failed')
-          clearInterval(interval)
-        }
-      } catch {
-        // Network error — keep polling silently
+        setPhase('completed')
+        localStorage.removeItem(STORAGE_KEY)
+        if (intervalRef.current) clearInterval(intervalRef.current)
+        router.refresh()
+        return
       }
-    }, 3000)
 
-    return () => clearInterval(interval)
-  }, [phase, batchId, router])
+      if (data.status === 'failed') {
+        setErroMsg(data.erro_mensagem ?? 'Erro desconhecido. Tente novamente.')
+        setPhase('failed')
+        localStorage.removeItem(STORAGE_KEY)
+        if (intervalRef.current) clearInterval(intervalRef.current)
+      }
+    } catch {
+      // timeout ou rede — tenta na próxima iteração
+    }
+  }, [router])
+
+  // ── Polling ──────────────────────────────────────────────────────────────────
+  useEffect(() => {
+    if (phase !== 'running' || !batchId) return
+
+    // Poll imediato ao entrar em 'running'
+    poll(batchId)
+
+    intervalRef.current = setInterval(() => poll(batchId), 3000)
+
+    // Retomar polling ao voltar para a aba
+    function handleVisibility() {
+      if (document.visibilityState === 'visible' && phaseRef.current === 'running' && batchIdRef.current) {
+        if (intervalRef.current) clearInterval(intervalRef.current)
+        poll(batchIdRef.current)
+        intervalRef.current = setInterval(() => poll(batchIdRef.current!), 3000)
+      }
+    }
+    document.addEventListener('visibilitychange', handleVisibility)
+
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current)
+      document.removeEventListener('visibilitychange', handleVisibility)
+    }
+  }, [phase, batchId, poll])
 
   // ── Submit ────────────────────────────────────────────────────────────────────
   async function handleSubmit(e: React.FormEvent) {
@@ -156,6 +221,16 @@ export default function ProspeccaoForm({ leadsHoje }: Props) {
       }
 
       const { batchId: newBatchId } = await res.json()
+      if (!newBatchId) {
+        setErroMsg('Erro ao iniciar (ID inválido). Tente novamente.')
+        setPhase('failed')
+        return
+      }
+
+      // Persistir no localStorage para sobreviver à navegação
+      const stored: StoredBatch = { batchId: newBatchId, cidade: cidade.trim(), especialidade }
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(stored))
+
       setBatchId(newBatchId)
       setProgresso(5)
       setStatusText('Iniciando busca...')
@@ -169,6 +244,7 @@ export default function ProspeccaoForm({ leadsHoje }: Props) {
   }
 
   function handleReset() {
+    localStorage.removeItem(STORAGE_KEY)
     setPhase('form')
     setBatchId(null)
     setProgresso(0)
@@ -196,7 +272,6 @@ export default function ProspeccaoForm({ leadsHoje }: Props) {
         )}
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          {/* Especialidade */}
           <div className="flex flex-col gap-1.5">
             <Label htmlFor="especialidade" className="text-sm font-medium text-foreground flex items-center gap-1.5">
               <Stethoscope className="w-3.5 h-3.5 text-muted-foreground" />
@@ -220,7 +295,6 @@ export default function ProspeccaoForm({ leadsHoje }: Props) {
             </Select>
           </div>
 
-          {/* Cidade */}
           <div className="flex flex-col gap-1.5">
             <Label htmlFor="cidade" className="text-sm font-medium text-foreground flex items-center gap-1.5">
               <MapPin className="w-3.5 h-3.5 text-muted-foreground" />
@@ -269,7 +343,6 @@ export default function ProspeccaoForm({ leadsHoje }: Props) {
   if (phase === 'running') {
     return (
       <div className="flex flex-col gap-5">
-        {/* Header */}
         <div className="flex items-center gap-3">
           <div className="flex items-center justify-center w-10 h-10 rounded-full bg-[#4F6EF5]/10 shrink-0">
             <Loader2 className="w-5 h-5 text-[#4F6EF5] animate-spin" />
@@ -282,7 +355,6 @@ export default function ProspeccaoForm({ leadsHoje }: Props) {
           </div>
         </div>
 
-        {/* Progress bar */}
         <div className="flex flex-col gap-2">
           <Progress value={progresso} className="h-2" />
           <div className="flex items-center justify-between text-xs text-muted-foreground">
@@ -291,7 +363,6 @@ export default function ProspeccaoForm({ leadsHoje }: Props) {
           </div>
         </div>
 
-        {/* Counters */}
         <div className="grid grid-cols-3 gap-3">
           <div className="rounded-lg border border-border bg-white px-3 py-2.5 text-center">
             <p className="text-xl font-bold text-foreground">{totais.encontrados}</p>
@@ -308,7 +379,7 @@ export default function ProspeccaoForm({ leadsHoje }: Props) {
         </div>
 
         <p className="text-xs text-center text-muted-foreground">
-          Isso pode levar até 2 minutos. Você pode fechar esta janela — a prospecção continuará em segundo plano.
+          Pode navegar à vontade — a prospecção continua em segundo plano e atualiza automaticamente ao voltar.
         </p>
       </div>
     )
