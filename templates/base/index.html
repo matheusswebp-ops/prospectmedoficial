@@ -149,8 +149,8 @@
 
     /* ── PROBLEMA (DARK) ───────────────────────────── */
     .problema{padding:100px 0;background:var(--dark);position:relative;overflow:hidden}
-    .problema::before{content:'';position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,var(--p08) 0%,transparent 70%);top:-220px;left:-160px;pointer-events:none}
-    .problema::after{content:'';position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,var(--p08) 0%,transparent 70%);bottom:-200px;right:-150px;pointer-events:none}
+    .problema::before{content:'';position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,var(--p25) 0%,transparent 70%);top:-220px;left:-160px;pointer-events:none}
+    .problema::after{content:'';position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,var(--p25) 0%,transparent 70%);bottom:-200px;right:-150px;pointer-events:none}
     .problema-inner{position:relative;z-index:1;text-align:center}
     .problema-inner .eyebrow{justify-content:center}
     .problema-body{display:flex;flex-direction:column;gap:20px;max-width:700px;margin:48px auto 0;text-align:left}
@@ -172,8 +172,8 @@
 
     /* ── TRATAMENTOS (DARK) ────────────────────────── */
     .tratamentos{padding:100px 0;background:var(--dark2);position:relative;overflow:hidden}
-    .tratamentos::before{content:'';position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,var(--p08) 0%,transparent 70%);top:-200px;left:-200px;pointer-events:none}
-    .tratamentos::after{content:'';position:absolute;width:450px;height:450px;border-radius:50%;background:radial-gradient(circle,var(--p08) 0%,transparent 70%);bottom:-170px;right:-140px;pointer-events:none}
+    .tratamentos::before{content:'';position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,var(--p25) 0%,transparent 70%);top:-200px;left:-200px;pointer-events:none}
+    .tratamentos::after{content:'';position:absolute;width:450px;height:450px;border-radius:50%;background:radial-gradient(circle,var(--p25) 0%,transparent 70%);bottom:-170px;right:-140px;pointer-events:none}
     .trat-intro{position:relative;z-index:1;margin-bottom:56px;text-align:center}
     .trat-intro p{max-width:520px;margin:10px auto 0}
     .trat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;position:relative;z-index:1}
@@ -197,13 +197,16 @@
     .auto-photo{position:relative;z-index:1;width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top;border-radius:28px;box-shadow:0 16px 48px rgba(28,25,23,.1)}
     .auto-content{display:flex;flex-direction:column;gap:20px}
     .auto-content p{font-weight:300;color:var(--text2);line-height:1.9}
+    .auto-btn{align-self:flex-start}
     .creds{display:flex;flex-direction:column;gap:8px;margin-top:4px}
     .cred-item{display:flex;align-items:center;gap:10px;font-size:.84rem;font-weight:300;color:var(--text2)}
     .cred-dot{width:5px;height:5px;border-radius:50%;background:var(--primary);flex-shrink:0}
 
     /* ── PROVA SOCIAL (CREAM2) ─────────────────────── */
     .prova{padding:100px 0;background:var(--cream2)}
-    .prova-disclaimer{display:inline-flex;align-items:center;gap:6px;font-size:.7rem;font-weight:400;color:var(--text3);background:var(--cream3);border:1px solid var(--bdr);padding:5px 12px;border-radius:9999px;margin-bottom:48px}
+    .prova-header{text-align:center;display:flex;flex-direction:column;align-items:center;gap:10px;margin-bottom:48px}
+    .prova-header .eyebrow{justify-content:center}
+    .prova-disclaimer{display:inline-flex;align-items:center;gap:6px;font-size:.7rem;font-weight:400;color:var(--text3);background:var(--cream3);border:1px solid var(--bdr);padding:5px 12px;border-radius:9999px}
     .testemunhos{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
     .test-card{background:var(--white);border:1px solid var(--bdr);border-radius:20px;padding:32px 28px;display:flex;flex-direction:column;gap:16px;box-shadow:0 2px 8px rgba(28,25,23,.04);transition:all .25s}
     .test-card:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(28,25,23,.07);border-color:var(--p25)}
@@ -215,8 +218,8 @@
 
     /* ── PROCESSO (DARK) ───────────────────────────── */
     .processo{padding:100px 0;background:var(--dark3);position:relative;overflow:hidden}
-    .processo::before{content:'';position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,var(--p08) 0%,transparent 70%);top:-150px;right:-100px;pointer-events:none}
-    .processo::after{content:'';position:absolute;width:350px;height:350px;border-radius:50%;background:radial-gradient(circle,var(--p08) 0%,transparent 70%);bottom:-120px;left:-90px;pointer-events:none}
+    .processo::before{content:'';position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,var(--p25) 0%,transparent 70%);top:-150px;right:-100px;pointer-events:none}
+    .processo::after{content:'';position:absolute;width:350px;height:350px;border-radius:50%;background:radial-gradient(circle,var(--p25) 0%,transparent 70%);bottom:-120px;left:-90px;pointer-events:none}
     .processo-header{text-align:center;display:flex;flex-direction:column;align-items:center;gap:10px;margin-bottom:56px;position:relative;z-index:1}
     .processo-header .eyebrow{justify-content:center}
     .steps{display:flex;flex-direction:column;gap:0;position:relative;z-index:1;margin-top:56px}
@@ -249,8 +252,8 @@
 
     /* ── OFERTA / CTA FINAL (DARK) ─────────────────── */
     .cta-final{padding:120px 0;background:var(--dark);position:relative;overflow:hidden}
-    .cta-orb1{position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,var(--p08) 0%,transparent 70%);top:-280px;right:-220px;pointer-events:none;animation:orb1 9s ease-in-out infinite}
-    .cta-orb2{position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,var(--p08) 0%,transparent 70%);bottom:-220px;left:-180px;pointer-events:none;animation:orb2 11s ease-in-out infinite}
+    .cta-orb1{position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,var(--p25) 0%,transparent 70%);top:-280px;right:-220px;pointer-events:none;animation:orb1 9s ease-in-out infinite}
+    .cta-orb2{position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,var(--p25) 0%,transparent 70%);bottom:-220px;left:-180px;pointer-events:none;animation:orb2 11s ease-in-out infinite}
     @keyframes orb1{0%,100%{transform:translate(0,0)}50%{transform:translate(-50px,40px)}}
     @keyframes orb2{0%,100%{transform:translate(0,0)}50%{transform:translate(40px,-50px)}}
     .cta-box{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
@@ -259,6 +262,7 @@
     .cta-title{font-size:32px;font-weight:900;line-height:1.1;color:#fff;letter-spacing:-.03em}
     .cta-title .grad{font-weight:900}
     .cta-body{font-weight:300;color:rgba(255,255,255,.72);line-height:1.9}
+    .cta-main-btn{align-self:flex-start}
     .cta-panel{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:24px;padding:40px 36px;display:flex;flex-direction:column;gap:20px}
     .cta-panel h3{font-size:1rem;font-weight:700;color:#fff;letter-spacing:-.02em}
     .cta-items{display:flex;flex-direction:column;gap:10px}
@@ -267,8 +271,8 @@
 
     /* ── FECHAMENTO (DARK2) ────────────────────────── */
     .fechamento{padding:100px 0;background:var(--dark2);border-top:1px solid rgba(255,255,255,.05);position:relative;overflow:hidden}
-    .fechamento::before{content:'';position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,var(--p08) 0%,transparent 70%);top:-200px;right:-150px;pointer-events:none}
-    .fechamento::after{content:'';position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,var(--p08) 0%,transparent 70%);bottom:-150px;left:-100px;pointer-events:none}
+    .fechamento::before{content:'';position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,var(--p25) 0%,transparent 70%);top:-200px;right:-150px;pointer-events:none}
+    .fechamento::after{content:'';position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,var(--p25) 0%,transparent 70%);bottom:-150px;left:-100px;pointer-events:none}
     .fechamento-inner{text-align:center;display:flex;flex-direction:column;align-items:center;gap:24px;max-width:660px;margin:0 auto;position:relative;z-index:1}
     .fechamento-deco{font-size:5rem;line-height:.9;background:linear-gradient(135deg,var(--primary) 0%,var(--secondary) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;opacity:.7;margin-bottom:-8px}
     .fechamento p{font-weight:300;color:rgba(255,255,255,.72);line-height:1.9}
@@ -289,7 +293,7 @@
       .hero-photo-inner{max-width:260px;margin:0 auto}
       .hero-photo-wrap{order:-1}
       .hero-ring,.hero-badge,.hero-dots{display:none}
-      .auto-photo-wrap{max-width:300px}
+      .auto-photo-wrap{max-width:300px;margin:0 auto}
       .testemunhos{grid-template-columns:1fr}
       .trat-grid{grid-template-columns:repeat(2,1fr)}
       .cta-panel{padding:32px 24px}
@@ -313,9 +317,11 @@
       .trat-grid{grid-template-columns:1fr}
       .auto-content,.objecoes-left,.cta-left,.fechamento-inner{text-align:center;align-items:center}
       .auto-content .eyebrow,.cta-left .eyebrow,.objecoes-left .eyebrow{justify-content:center}
+      .auto-btn{align-self:center}
       .creds{align-self:stretch}
       .cta-panel{text-align:left}
       .cta-final .container{padding:0 18px}
+      .cta-main-btn{align-self:stretch;white-space:normal;text-align:center;justify-content:center}
       .trat-grid{grid-template-columns:1fr}
       .problema-body{text-align:center}
     }
@@ -513,7 +519,7 @@
           <div class="cred-item"><span class="cred-dot"></span>Atendimento em {{CIDADE}}</div>
           <div class="cred-item"><span class="cred-dot"></span>Agendamento direto · {{TELEFONE_DISPLAY}}</div>
         </div>
-        <a href="https://wa.me/{{TELEFONE_E164}}" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="align-self:flex-start;margin-top:4px">
+        <a href="https://wa.me/{{TELEFONE_E164}}" target="_blank" rel="noopener noreferrer" class="btn btn-primary auto-btn" style="margin-top:4px">
           <svg class="icon-wa" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
           Agendar minha consulta
         </a>
@@ -525,10 +531,12 @@
 <!-- ═══ PROVA SOCIAL (CREAM2) ═══ -->
 <section class="prova">
   <div class="container">
-    <div class="eyebrow reveal"><span class="eyebrow-line"></span>O que dizem os pacientes</div>
-    <h2 class="reveal d1">Histórias reais de quem<br>decidiu cuidar da saúde.</h2>
-    <div class="reveal d2">
-      <span class="prova-disclaimer">⚠ Exemplos ilustrativos — depoimentos fictícios para fins de demonstração</span>
+    <div class="prova-header">
+      <div class="eyebrow reveal"><span class="eyebrow-line"></span>O que dizem os pacientes</div>
+      <h2 class="reveal d1">Histórias reais de quem<br>decidiu cuidar da saúde.</h2>
+      <div class="reveal d2">
+        <span class="prova-disclaimer">⚠ Exemplos ilustrativos — depoimentos fictícios para fins de demonstração</span>
+      </div>
     </div>
     <div class="testemunhos reveal d3">
       <div class="test-card">
@@ -641,9 +649,9 @@
         <h2 class="cta-title">Pronto para cuidar<br>da <span class="grad">sua saúde?</span></h2>
         <p class="cta-body">Agende sua consulta de avaliação e descubra, com clareza e sem compromisso, qual é o <em>melhor caminho para o seu caso</em>. Você não precisa chegar sabendo o que quer. Precisa só chegar.</p>
         <p class="cta-body" style="margin-top:-8px"><em>{{NOME}}</em> responde pessoalmente e confirma seu horário em {{CIDADE}}.</p>
-        <a href="https://wa.me/{{TELEFONE_E164}}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg" style="align-self:flex-start">
+        <a href="https://wa.me/{{TELEFONE_E164}}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg cta-main-btn">
           <svg class="icon-wa" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-          Agendar minha avaliação — {{TELEFONE_DISPLAY}}
+          Agendar minha avaliação
         </a>
       </div>
       <div class="cta-panel reveal d2">
