@@ -157,9 +157,17 @@ export function gerarHtml(lead: GerarHtmlInput): string {
   // Foto: se nula usar placeholder (será substituída pelo worker antes do deploy)
   const fotoUrl = lead.foto_url ?? ''
 
+  // Gerar iniciais para o avatar do navbar
+  const nomeCurto = extrairNomeCurto(lead.nome)
+  const palavras = nomeCurto.trim().split(/\s+/)
+  const initials = palavras.length >= 2
+    ? (palavras[0][0] + palavras[palavras.length - 1][0]).toUpperCase()
+    : palavras[0].slice(0, 2).toUpperCase()
+
   // Mapa de tokens → valores
   const tokenMap: Record<string, string> = {
-    '{{NOME}}': extrairNomeCurto(lead.nome),
+    '{{NOME}}': nomeCurto,
+    '{{INITIALS}}': initials,
     '{{ESPECIALIDADE}}': lead.especialidade,
     '{{CIDADE}}': lead.cidade,
     '{{TELEFONE_DISPLAY}}': telefoneDisplay,
