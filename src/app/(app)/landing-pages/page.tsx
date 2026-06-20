@@ -16,6 +16,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import type { LandingStatus } from '@/types/database'
 import LandingPageActions from './LandingPageActions'
+import RegenerarTodasButton from './RegerarTodasButton'
 
 // ── Tipos ────────────────────────────────────────────────────────────────────
 
@@ -130,6 +131,7 @@ export default async function LandingPagesPage() {
           <span className="text-sm text-muted-foreground">
             {totalPublicadas} ativa{totalPublicadas !== 1 ? 's' : ''}
           </span>
+          <RegenerarTodasButton />
         </div>
       </div>
 
