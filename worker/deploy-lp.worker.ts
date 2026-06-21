@@ -41,6 +41,66 @@ function gerarSlugDeployment(nome: string, cidade: string): string {
  * Gera um avatar SVG com as iniciais do nome e a cor primária da especialidade.
  * Retorna uma data URI base64 pronta para usar no HTML.
  */
+/**
+ * Infere o gênero do profissional a partir do primeiro nome.
+ * Heurística: nomes terminados em 'a' são femininos (funciona para ~80% dos nomes brasileiros).
+ */
+function inferirGenero(nome: string): 'male' | 'female' {
+  const primeiro = nome
+    .replace(/^(dr\.?|dra\.?|prof\.?)\s+/i, '')
+    .split(/\s+/)[0]
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[̀-ͯ]/g, '')
+  return primeiro.endsWith('a') ? 'female' : 'male'
+}
+
+/**
+ * Busca foto de pessoa no Unsplash (fallback: Pexels) com query de especialidade + gênero.
+ * Retorna URL da foto ou null se não encontrar.
+ */
+async function buscarFotoStockPessoa(
+  especialidade: string,
+  genero: 'male' | 'female'
+): Promise<string | null> {
+  const genderTerm = genero === 'female' ? 'female woman doctor' : 'male man doctor'
+  const query = encodeURIComponent(`${especialidade} ${genderTerm} portrait professional`)
+
+  // Unsplash
+  const unsplashKey = process.env.UNSPLASH_ACCESS_KEY
+  if (unsplashKey) {
+    try {
+      const res = await fetch(
+        `https://api.unsplash.com/search/photos?query=${query}&per_page=3&orientation=portrait`,
+        { headers: { 'Authorization': `Client-ID ${unsplashKey}` } }
+      )
+      if (res.ok) {
+        const data = await res.json() as { results?: { urls?: { regular?: string } }[] }
+        const url = data.results?.[0]?.urls?.regular
+        if (url) return url
+      }
+    } catch { /* continua para Pexels */ }
+  }
+
+  // Pexels fallback
+  const pexelsKey = process.env.PEXELS_API_KEY
+  if (pexelsKey) {
+    try {
+      const res = await fetch(
+        `https://api.pexels.com/v1/search?query=${query}&per_page=3`,
+        { headers: { 'Authorization': pexelsKey } }
+      )
+      if (res.ok) {
+        const data = await res.json() as { photos?: { src?: { large?: string } }[] }
+        const url = data.photos?.[0]?.src?.large
+        if (url) return url
+      }
+    } catch { /* sem foto stock */ }
+  }
+
+  return null
+}
+
 function gerarAvatarSvg(nome: string, corPrimaria: string): string {
   const iniciais = nome
     .split(/\s+/)
@@ -168,9 +228,17 @@ export async function processJob(job: Job<DeployLpJobData>): Promise<void> {
     let fotoResolvida = lead.foto_url
 
     if (!fotoResolvida || fotoResolvida.trim() === '') {
-      const corPrimaria = getCorPrimaria(lead.especialidade)
-      fotoResolvida = gerarAvatarSvg(lead.nome, corPrimaria)
-      console.log(`[deploy-lp] Usando avatar SVG para leadId=${leadId}`)
+      const genero = inferirGenero(lead.nome)
+      console.log(`[deploy-lp] Sem foto pessoal — buscando stock ${genero} para leadId=${leadId}`)
+      const fotoStock = await buscarFotoStockPessoa(lead.especialidade, genero)
+      if (fotoStock) {
+        fotoResolvida = fotoStock
+        console.log(`[deploy-lp] Foto stock encontrada (${genero}): ${fotoStock.substring(0, 60)}`)
+      } else {
+        const corPrimaria = getCorPrimaria(lead.especialidade)
+        fotoResolvida = gerarAvatarSvg(lead.nome, corPrimaria)
+        console.log(`[deploy-lp] Fallback SVG para leadId=${leadId}`)
+      }
     }
 
     // ── 5. Gerar HTML com a foto já resolvida ──────────────────────────────

@@ -129,7 +129,7 @@
     .hero::after{content:'';position:absolute;width:320px;height:320px;border-radius:50%;background:var(--cream3);bottom:-120px;left:-60px;pointer-events:none}
     .hero-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:80px;align-items:center;position:relative;z-index:1}
     .hero-content{display:flex;flex-direction:column;gap:22px}
-    .hero-title{font-size:32px;font-weight:900;line-height:1.1;letter-spacing:-.03em;color:var(--text)}
+    .hero-title{font-size:36px;font-weight:900;line-height:1.1;letter-spacing:-.03em;color:var(--text)}
     .hero-sub-title{font-size:17px;font-weight:300;color:var(--text2);line-height:1.8;max-width:520px}
     .hero-sub-title em{color:var(--primary);font-weight:400;font-style:normal}
     .hero-cta-wrap{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:4px}
@@ -332,11 +332,7 @@
     .fechamento-quote{font-size:.88rem;font-weight:300;font-style:italic;color:rgba(255,255,255,.4);border-top:1px solid rgba(255,255,255,.08);padding-top:20px;margin-top:4px;width:100%}
 
     /* ── FOOTER ────────────────────────────────────── */
-    .footer{background:var(--dark);border-top:1px solid rgba(255,255,255,.05);padding:32px 0 88px}
-    .footer-inner{display:flex;flex-direction:column;align-items:center;gap:5px;text-align:center}
-    .footer-name{font-size:.88rem;font-weight:600;color:rgba(255,255,255,.78)}
-    .footer-sub{font-size:.72rem;font-weight:300;color:rgba(255,255,255,.5)}
-    .footer-disclaimer{margin-top:12px;font-size:.63rem;color:rgba(255,255,255,.38);padding:6px 14px;border:1px solid rgba(255,255,255,.1);border-radius:6px;max-width:460px;line-height:1.6}
+    .site-disclaimer{padding:14px;text-align:center;font-size:.58rem;color:rgba(255,255,255,.25);background:var(--dark);letter-spacing:.04em}
 
     /* ── RESPONSIVE ────────────────────────────────── */
     @media(max-width:960px){
@@ -428,7 +424,7 @@
     <div class="hero-grid">
       <div class="hero-content" style="animation:reveal-up .8s ease both">
         <div class="eyebrow"><span class="eyebrow-line"></span>{{ESPECIALIDADE}} em {{CIDADE}}</div>
-        <h1 class="hero-title">Você não precisa aprender a conviver com isso.</h1>
+        <h1 class="hero-title">Você não precisa<br>aprender a conviver<br>com isso.</h1>
         <p class="hero-sub-title">Existe tratamento. Existe solução. E existe um profissional <em>pronto para cuidar de você</em> do jeito que você merece.</p>
         <div class="hero-cta-wrap">
           <a href="https://wa.me/{{TELEFONE_E164}}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg">
@@ -836,16 +832,8 @@
   </div>
 </section>
 
-<!-- ═══ FOOTER ═══ -->
-<footer class="footer">
-  <div class="container">
-    <div class="footer-inner">
-      <div class="footer-name">{{NOME}}</div>
-      <div class="footer-sub">{{ESPECIALIDADE}} · {{CIDADE}} · © {{ANO_ATUAL}}</div>
-      <p class="footer-disclaimer">Esta é uma demonstração de site. Não representa o profissional real. Este conteúdo tem fins informativos e não substitui avaliação clínica presencial.</p>
-    </div>
-  </div>
-</footer>
+<!-- Disclaimer de compliance (obrigatório LGPD/CFM) -->
+<div class="site-disclaimer">Esta é uma demonstração de site criada por uma agência. Não representa o profissional real. © {{ANO_ATUAL}}</div>
 
 <style>
   @keyframes reveal-up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
